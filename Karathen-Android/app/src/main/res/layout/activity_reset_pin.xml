@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:clipChildren="true"
+    android:background="@color/title_bar_color"
+    tools:context=".ui.ResetPinActivity">
+
+    <com.raistone.wallet.sealwallet.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_52" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/wirte"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_dp_16"
+            android:layout_marginTop="@dimen/common_dp_24"
+            android:text="@string/old_pin_string"
+            android:textColor="@color/common_title_color"
+            android:textSize="@dimen/common_sp_14" />
+
+        <EditText
+            android:id="@+id/old_pin_ed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_dp_8"
+            android:background="@null"
+            android:hint="@string/input_old_pin_string"
+            android:inputType="textPassword"
+            android:digits="@string/input_digits"
+            android:maxLength="20"
+            android:paddingLeft="@dimen/common_dp_16"
+            android:paddingRight="@dimen/common_dp_16"
+            android:singleLine="true"
+            android:textColor="@color/common_title_color"
+            android:textColorHint="@color/edit_text_input_color"
+            android:textSize="@dimen/common_sp_14"
+            tools:text="请输入旧的PIN码" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_dp_1"
+            android:layout_marginLeft="@dimen/common_dp_14"
+            android:layout_marginRight="@dimen/common_dp_14"
+            android:layout_marginTop="@dimen/common_dp_6"
+            android:background="@color/common_line_color" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_dp_16"
+            android:layout_marginTop="@dimen/common_dp_24"
+            android:text="@string/new_pin_string"
+            android:textColor="@color/common_title_color"
+            android:textSize="@dimen/common_sp_14" />
+
+        <EditText
+            android:id="@+id/new_pin_ed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_dp_8"
+            android:background="@null"
+            android:hint="@string/input_six_number_string"
+            android:inputType="textPassword"
+            android:digits="@string/input_digits"
+            android:maxLength="20"
+            android:paddingLeft="@dimen/common_dp_16"
+            android:paddingRight="@dimen/common_dp_16"
+            android:singleLine="true"
+            android:textColor="@color/common_title_color"
+            android:textColorHint="@color/edit_text_input_color"
+            android:textSize="@dimen/common_sp_14"
+            tools:text="请输入6位数字" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_dp_1"
+            android:layout_marginLeft="@dimen/common_dp_14"
+            android:layout_marginRight="@dimen/common_dp_14"
+            android:layout_marginTop="@dimen/common_dp_6"
+            android:background="@color/common_line_color" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_dp_16"
+            android:layout_marginTop="@dimen/common_dp_24"
+            android:text="@string/confirm_pin_string"
+            android:textColor="@color/common_title_color"
+            android:textSize="@dimen/common_sp_14" />
+
+        <EditText
+            android:id="@+id/pin_confirm_ed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_dp_8"
+            android:background="@null"
+            android:hint="@string/confirm_pin_string"
+            android:inputType="textPassword"
+            android:digits="@string/input_digits"
+            android:maxLength="20"
+            android:paddingLeft="@dimen/common_dp_16"
+            android:paddingRight="@dimen/common_dp_16"
+            android:singleLine="true"
+            android:textColor="@color/common_title_color"
+            android:textColorHint="@color/edit_text_input_color"
+            android:textSize="@dimen/common_sp_14"
+            tools:text="PIN码确认" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_dp_1"
+            android:layout_marginLeft="@dimen/common_dp_14"
+            android:layout_marginRight="@dimen/common_dp_14"
+            android:layout_marginTop="@dimen/common_dp_6"
+            android:background="@color/common_line_color" />
+
+        <Button
+            android:id="@+id/confirm_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_dp_28"
+            android:layout_marginRight="@dimen/common_dp_28"
+            android:layout_marginTop="@dimen/common_dp_24"
+            android:gravity="center"
+            android:background="@drawable/btn_bg"
+            android:paddingBottom="@dimen/common_dp_14"
+            android:textColor="@color/wirte"
+            android:paddingTop="@dimen/common_dp_14"
+            android:text="@string/confirm_string" />
+
+    </LinearLayout>
+
+</LinearLayout>

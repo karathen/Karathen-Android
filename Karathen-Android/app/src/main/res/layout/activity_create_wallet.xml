@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.CreateWalletActivity"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:clipChildren="true"
+    android:background="@color/title_bar_color"
+
+    >
+
+    <com.raistone.wallet.sealwallet.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_52"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/setting_pin"
+            android:textColor="@color/three_color"
+            android:layout_marginLeft="@dimen/space_15"
+            android:layout_marginTop="@dimen/dp_25"
+            android:textSize="@dimen/space_12"
+            />
+
+        <EditText
+            android:id="@+id/pin_ed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/create_wallet_tips"
+            android:background="@null"
+            android:layout_marginLeft="@dimen/space_15"
+            android:layout_marginTop="@dimen/space_5"
+            android:textSize="@dimen/space_12"
+            android:inputType="numberPassword"
+            android:textCursorDrawable="@drawable/editcursor"
+            android:maxLength="6"
+            />
+
+        <View style="@style/h_line"
+            android:layout_marginLeft="@dimen/space_15"
+            android:layout_marginRight="@dimen/space_15"
+            android:layout_marginTop="@dimen/space_20"
+            />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm_pin"
+            android:textColor="@color/three_color"
+            android:layout_marginLeft="@dimen/space_15"
+            android:layout_marginTop="@dimen/dp_25"
+            android:textSize="@dimen/space_12"
+            />
+
+        <EditText
+            android:id="@+id/pin_confirm_ed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/confirm_pin"
+            android:background="@null"
+            android:layout_marginLeft="@dimen/space_15"
+            android:layout_marginTop="@dimen/space_5"
+            android:textSize="@dimen/space_12"
+            android:inputType="numberPassword"
+            android:textCursorDrawable="@drawable/editcursor"
+            android:maxLength="6"
+            />
+
+        <View style="@style/h_line"
+            android:layout_marginLeft="@dimen/space_15"
+            android:layout_marginRight="@dimen/space_15"
+            android:layout_marginTop="@dimen/space_20"
+            />
+
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/create_wallet_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_43"
+        android:text="@string/create_wallet"
+        android:layout_marginTop="@dimen/space_40"
+        android:layout_marginLeft="@dimen/space_40"
+        android:layout_marginRight="@dimen/space_40"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_gray_bg"
+        android:textSize="@dimen/space_13"
+        />
+
+    <TextView
+        android:id="@+id/import_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/import_wallet_string"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/space_17"
+        android:textColor="@color/main_color"
+        android:textSize="@dimen/space_12"
+        />
+
+
+</LinearLayout>

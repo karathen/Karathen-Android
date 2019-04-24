@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:clipChildren="true"
+    android:background="@color/title_bar_color"
+    tools:context=".TechnicalSupportActivity">
+
+    <com.raistone.wallet.sealwallet.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_52"/>
+
+    <android.support.v4.widget.NestedScrollView
+        android:background="@color/wirte"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/wirte"
+            android:layout_marginTop="@dimen/space_20"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_15"
+                android:layout_marginRight="@dimen/space_15"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/em_tv"
+                    android:text="@string/email_address"
+                    android:textSize="@dimen/space_12"
+                    android:textColor="@color/three_color"
+                    />
+                <ImageView
+                    android:layout_width="@dimen/space_10"
+                    android:layout_height="@dimen/space_10"
+                    android:background="@mipmap/xinghao_icon"
+                    android:layout_toRightOf="@+id/em_tv"
+                    android:layout_marginLeft="@dimen/space_2"
+                    />
+
+                <EditText
+                    android:id="@+id/email_ed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/input_email_address"
+                    android:maxLines="1"
+                    android:background="@null"
+                    android:layout_marginTop="@dimen/space_10"
+                    android:textSize="@dimen/space_12"
+                    android:layout_below="@+id/em_tv"
+                    />
+
+                <View style="@style/h_line"
+                    android:layout_marginTop="@dimen/space_10"
+                    android:layout_below="@+id/email_ed"/>
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_15"
+                android:layout_marginRight="@dimen/space_15"
+                android:layout_marginTop="@dimen/space_20"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/title_tv"
+                    android:text="@string/phone_number"
+                    android:textSize="@dimen/space_12"
+                    android:textColor="@color/three_color"
+                    />
+                <ImageView
+                    android:layout_width="@dimen/space_10"
+                    android:layout_height="@dimen/space_10"
+                    android:background="@mipmap/xinghao_icon"
+                    android:layout_toRightOf="@+id/title_tv"
+                    android:layout_marginLeft="@dimen/space_2"
+                    />
+
+                <EditText
+                    android:id="@+id/title_ed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/input_phone_number"
+                    android:maxLines="1"
+                    android:background="@null"
+                    android:layout_marginTop="@dimen/space_10"
+                    android:textSize="@dimen/space_12"
+                    android:layout_below="@+id/title_tv"
+                    />
+
+                <View style="@style/h_line"
+                    android:layout_marginTop="@dimen/space_10"
+                    android:layout_below="@+id/title_ed"/>
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_15"
+                android:layout_marginRight="@dimen/space_15"
+                android:layout_marginTop="@dimen/space_20"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/phone_tv"
+                    android:text="@string/title"
+                    android:textSize="@dimen/space_12"
+                    android:textColor="@color/three_color"
+                    />
+                <ImageView
+                    android:layout_width="@dimen/space_10"
+                    android:layout_height="@dimen/space_10"
+                    android:background="@mipmap/xinghao_icon"
+                    android:layout_toRightOf="@+id/phone_tv"
+                    android:layout_marginLeft="@dimen/space_2"
+                    />
+
+                <EditText
+                    android:id="@+id/phone_ed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/input_title_number"
+                    android:maxLines="1"
+                    android:background="@null"
+                    android:layout_marginTop="@dimen/space_10"
+                    android:textSize="@dimen/space_12"
+                    android:layout_below="@+id/phone_tv"
+                    />
+
+                <View style="@style/h_line"
+                    android:layout_marginTop="@dimen/space_10"
+                    android:layout_below="@+id/phone_ed"/>
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_15"
+                android:layout_marginRight="@dimen/space_15"
+                android:layout_marginTop="@dimen/space_20"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/depict_tv"
+                    android:text="@string/depict"
+                    android:textSize="@dimen/space_12"
+                    android:textColor="@color/three_color"
+                    />
+                <ImageView
+                    android:layout_width="@dimen/space_10"
+                    android:layout_height="@dimen/space_10"
+                    android:background="@mipmap/xinghao_icon"
+                    android:layout_toRightOf="@+id/depict_tv"
+                    android:layout_marginLeft="@dimen/space_2"
+                    />
+
+                <EditText
+                    android:id="@+id/depict_ed"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="@string/input_depict"
+                    android:maxLines="5"
+                    android:background="@null"
+                    android:gravity="left|top"
+                    android:paddingLeft="@dimen/space_5"
+                    android:paddingTop="@dimen/space_5"
+                    android:layout_marginTop="@dimen/space_10"
+                    android:textSize="@dimen/space_12"
+                    android:layout_below="@+id/depict_tv"
+                    android:scrollbars="vertical"
+                    />
+
+                <View style="@style/h_line"
+                    android:layout_marginTop="@dimen/space_10"
+                    android:layout_below="@+id/depict_ed"/>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/image_string"
+                android:layout_marginLeft="@dimen/space_15"
+                android:textSize="@dimen/space_12"
+                android:textColor="@color/three_color"
+                android:layout_marginTop="@dimen/space_20"
+                />
+            <ImageView
+                android:id="@+id/select_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/seal_logo"
+                android:layout_marginLeft="@dimen/space_15"
+                android:layout_marginTop="@dimen/space_10"
+                android:visibility="gone"
+                />
+
+            <me.iwf.photopicker.widget.MultiPickResultView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recycler_view"/>
+
+
+            <Button
+                android:id="@+id/commit_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_44"
+                android:layout_marginLeft="@dimen/space_40"
+                android:layout_marginBottom="@dimen/space_10"
+                android:layout_marginTop="@dimen/space_30"
+                android:background="@drawable/btn_bg"
+                android:layout_marginRight="@dimen/space_40"
+                android:textColor="@color/wirte"
+                android:text="@string/commit_string"
+                />
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+</LinearLayout>

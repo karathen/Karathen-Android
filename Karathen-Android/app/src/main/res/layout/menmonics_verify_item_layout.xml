@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="1"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_word"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/space_30"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/wirte"
+        android:background="@drawable/tag_right_top_bg"
+        android:textSize="@dimen/space_14"
+        android:layout_marginTop="@dimen/space_5"
+        android:layout_weight="1"
+        tools:text="good" />
+
+</LinearLayout>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/title_bar_color"
+    android:fitsSystemWindows="true"
+    android:clipChildren="true"
+    tools:context=".ui.ClaimActivity">
+
+    <com.raistone.wallet.sealwallet.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_52"/>
+
+    <android.support.v4.widget.NestedScrollView
+        android:background="@color/wirte"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/wirte"
+            android:layout_marginTop="@dimen/space_20"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_15"
+                android:layout_marginRight="@dimen/space_15"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/claim_name"
+                    android:text="ONT-01"
+                    android:textSize="@dimen/space_12"
+                    android:textColor="@color/three_color"
+                    />
+
+                <TextView
+                    android:id="@+id/claim_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:layout_marginTop="@dimen/space_10"
+                    android:textSize="@dimen/space_12"
+                    android:layout_below="@+id/claim_name"
+                    tools:text="asdfsdfsdfsdfsdfsdfsdfsdfs"
+                    />
+
+                <View style="@style/h_line"
+                    android:layout_marginTop="@dimen/space_10"
+                    android:layout_below="@+id/claim_address"/>
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_15"
+                android:layout_marginRight="@dimen/space_15"
+                android:layout_marginTop="@dimen/space_20"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/extractable_tv"
+                    android:textSize="@dimen/space_12"
+                    android:textColor="@color/three_color"
+                    tools:text="可提取ONG"
+                    />
+
+
+                <TextView
+                    android:id="@+id/extractable_value_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:layout_marginTop="@dimen/space_10"
+                    android:textSize="@dimen/space_12"
+                    android:layout_below="@+id/extractable_tv"
+                    tools:text="0"
+                    android:text="0"
+                    />
+
+                <View style="@style/h_line"
+                    android:layout_marginTop="@dimen/space_10"
+                    android:layout_below="@+id/extractable_value_tv"/>
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_15"
+                android:layout_marginRight="@dimen/space_15"
+                android:layout_marginTop="@dimen/space_20"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/not_extractable_tv"
+                    android:text="@string/title"
+                    android:textSize="@dimen/space_12"
+                    android:textColor="@color/three_color"
+                    tools:text="不可提取 ONG"
+                    />
+
+                <TextView
+                    android:id="@+id/not_extractable_value_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:layout_marginTop="@dimen/space_10"
+                    android:textSize="@dimen/space_12"
+                    android:layout_below="@+id/not_extractable_tv"
+                    tools:text="1"
+                    android:text="\0"
+                    />
+
+                <View style="@style/h_line"
+                    android:layout_marginTop="@dimen/space_10"
+                    android:layout_below="@+id/not_extractable_value_tv"/>
+            </RelativeLayout>
+
+
+
+
+            <Button
+                android:id="@+id/commit_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_44"
+                android:layout_marginLeft="@dimen/space_40"
+                android:layout_marginBottom="@dimen/space_10"
+                android:layout_marginTop="@dimen/space_30"
+                android:background="@drawable/btn_bg"
+                android:layout_marginRight="@dimen/space_40"
+                android:textColor="@color/wirte"
+                android:text="@string/claim_strimg"
+                />
+
+            <TextView
+                android:id="@+id/claim_tips_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_10"
+                android:textSize="@dimen/space_12"
+                android:layout_below="@+id/not_extractable_tv"
+                android:layout_marginLeft="@dimen/space_15"
+                android:layout_marginRight="@dimen/space_15"
+                android:text="@string/claim_tips"
+                android:visibility="gone"
+
+                />
+
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+</LinearLayout>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/space_10"
+    android:background="@color/wirte"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingRight="@dimen/space_15"
+        android:paddingLeft="@dimen/space_10"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <RelativeLayout
+            android:id="@+id/multi_management_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/space_30"
+            android:paddingRight="@dimen/space_10"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/zjc_icon"
+                android:layout_width="@dimen/space_10"
+                android:layout_height="@dimen/space_10"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/space_10"
+                android:background="@drawable/dlgl_min_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/space_10"
+                android:layout_toRightOf="@+id/zjc_icon"
+                android:text="@string/multi_chain_management"
+                android:textColor="@color/three_color"
+                android:textSize="@dimen/space_10" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/wallet_update_name_rl"
+            android:layout_width="wrap_content"
+            android:paddingRight="@dimen/space_10"
+            android:layout_height="@dimen/space_30">
+
+            <ImageView
+                android:id="@+id/sy_icon"
+                android:layout_width="@dimen/space_10"
+                android:layout_height="@dimen/space_10"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/space_10"
+                android:background="@drawable/update_min_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/space_10"
+                android:layout_toRightOf="@+id/sy_icon"
+                android:text="@string/update_name_string"
+                android:textColor="@color/three_color"
+                android:textSize="@dimen/space_10" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/reset_pwd_rl"
+            android:layout_width="wrap_content"
+            android:paddingRight="@dimen/space_10"
+            android:layout_height="@dimen/space_30">
+
+            <ImageView
+                android:id="@+id/wif_icon"
+                android:layout_width="@dimen/space_10"
+                android:layout_height="@dimen/space_10"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/space_10"
+                android:background="@drawable/update_pwd_min_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/space_10"
+                android:layout_toRightOf="@+id/wif_icon"
+                android:text="@string/reset_password"
+                android:textColor="@color/three_color"
+                android:textSize="@dimen/space_10" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/pwd_tips_rl"
+            android:layout_width="wrap_content"
+            android:paddingRight="@dimen/space_10"
+            android:layout_height="@dimen/space_30">
+
+            <ImageView
+                android:id="@+id/xgmc_icon"
+                android:layout_width="@dimen/space_10"
+                android:layout_height="@dimen/space_10"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/space_10"
+                android:background="@drawable/pwd_tips_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/space_10"
+                android:layout_toRightOf="@+id/xgmc_icon"
+                android:text="@string/password_hint"
+                android:textColor="@color/three_color"
+                android:textSize="@dimen/space_10" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/back_rl"
+            android:layout_width="wrap_content"
+            android:paddingRight="@dimen/space_10"
+            android:layout_height="@dimen/space_30">
+
+            <ImageView
+                android:id="@+id/lyqcx_icon"
+                android:layout_width="@dimen/space_10"
+                android:layout_height="@dimen/space_10"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/space_10"
+                android:background="@drawable/bank_min_cion" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/space_10"
+                android:layout_toRightOf="@+id/lyqcx_icon"
+                android:text="@string/backup_wallet_string"
+                android:textColor="@color/three_color"
+                android:textSize="@dimen/space_10" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/delete_rl"
+            android:layout_width="wrap_content"
+            android:paddingRight="@dimen/space_10"
+            android:layout_height="@dimen/space_30">
+
+            <ImageView
+                android:id="@+id/scdz_icon"
+                android:layout_width="@dimen/space_10"
+                android:layout_height="@dimen/space_10"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/space_10"
+                android:background="@drawable/delete_min_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/space_10"
+                android:layout_toRightOf="@+id/scdz_icon"
+                android:text="@string/delete_wallet"
+                android:textColor="@color/three_color"
+                android:textSize="@dimen/space_10" />
+
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

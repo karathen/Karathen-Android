@@ -1,0 +1,22 @@
+{
+  "result": [
+    {
+      "balance":0,
+      "isDefault": true,
+      "notDelete": true,
+      "tokenAddress": "0x0000000000000000000000000000000000000000",
+      "tokenDecimal": "18",
+      "tokenIcon": "",
+      "tokenName": "Ethereum",
+      "tokenSynbol": "ETH",
+      "tokenType": "ETH",
+      "coinType": "ETH",
+      "coinPrice": 0,
+      "price": 0,
+      "priceUSD": 0,
+      "status": 0,
+      "priceFlag":0,
+      "priceUsdFlag":0
+    }
+  ]
+}

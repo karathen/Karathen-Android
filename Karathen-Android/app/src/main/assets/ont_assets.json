@@ -1,0 +1,40 @@
+{
+  "result": [
+    {
+      "balance": 0,
+      "isDefault": true,
+      "notDelete": true,
+      "tokenAddress": "0000000000000000000000000000000000000001",
+      "tokenDecimal": "0",
+      "tokenIcon": "",
+      "tokenName": "Ontology",
+      "tokenSynbol": "ONT",
+      "tokenType": "ONT",
+      "coinType": "ONT",
+      "coinPrice": 0,
+      "price": 0,
+      "priceUSD": 0,
+      "status": 0,
+      "priceFlag": 0,
+      "priceUsdFlag": 0
+    },
+    {
+      "balance": 0,
+      "isDefault": true,
+      "notDelete": true,
+      "tokenAddress": "0000000000000000000000000000000000000002",
+      "tokenDecimal": "9",
+      "tokenIcon": "",
+      "tokenName": "Ontology Gas",
+      "tokenSynbol": "ONG",
+      "tokenType": "ONG",
+      "coinType": "ONT",
+      "coinPrice": 0,
+      "price": 0,
+      "priceUSD": 0,
+      "status": 0,
+      "priceFlag": 0,
+      "priceUsdFlag": 0
+    }
+  ]
+}

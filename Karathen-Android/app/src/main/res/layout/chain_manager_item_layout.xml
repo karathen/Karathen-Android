@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/wirte"
+    android:layout_height="@dimen/space_60">
+
+
+
+    <ImageView
+        android:id="@+id/chain_icon"
+        android:layout_width="@dimen/sp_20"
+        android:layout_height="@dimen/sp_20"
+        android:layout_marginLeft="@dimen/space_15"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/space_10"
+        />
+
+    <TextView
+        android:id="@+id/chain_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_15"
+        android:text="ETH"
+        android:layout_toRightOf="@+id/chain_icon"
+        android:layout_marginTop="@dimen/space_10"
+        android:textSize="@dimen/space_12"
+        />
+
+    <TextView
+        android:id="@+id/chain_tokenName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_15"
+        android:text="ETH"
+        android:layout_toRightOf="@+id/chain_icon"
+        android:textSize="@dimen/space_10"
+        android:layout_below="@+id/chain_name"
+        android:layout_marginTop="@dimen/space_5"
+        android:layout_marginBottom="@dimen/space_10"
+        />
+
+    <View style="@style/h_line"
+        android:layout_marginLeft="@dimen/space_15"
+        android:layout_marginRight="@dimen/space_15"
+
+        android:layout_alignParentBottom="true"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/off_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        >
+        <ImageButton
+            android:id="@+id/off_iv"
+            android:layout_width="@dimen/space_30"
+            android:layout_height="@dimen/space_15"
+            android:background="@drawable/open_icon"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/space_15"
+            android:layout_marginLeft="@dimen/space_10"
+            android:visibility="visible"
+            />
+    </LinearLayout>
+
+
+</RelativeLayout>

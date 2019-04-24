@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bg_fl"
+    android:layout_width="match_parent"
+    android:layout_height="158dp">
+
+    <RelativeLayout
+        android:id="@+id/one_item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="158dp"
+        android:background="@drawable/eth_bg_icon"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/wallet_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|left"
+            android:layout_marginLeft="@dimen/space_22"
+            android:layout_marginTop="@dimen/sp_23"
+            android:gravity="left"
+            android:text="EOS"
+            android:textColor="@color/wirte"
+            android:textSize="@dimen/space_12" />
+
+        <TextView
+            android:id="@+id/status_net_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/wallet_name_tv"
+            android:layout_marginLeft="@dimen/space_10"
+            android:layout_marginRight="@dimen/space_22"
+            android:layout_marginTop="@dimen/sp_23"
+            android:background="@drawable/wallet_item_bg"
+            android:paddingBottom="@dimen/space_2"
+            android:paddingLeft="@dimen/space_5"
+            android:paddingRight="@dimen/space_5"
+            android:paddingTop="2dp"
+            android:text="@string/Offline_string"
+            android:textColor="@color/wirte"
+            android:textSize="@dimen/space_10"
+            android:visibility="gone"/>
+
+
+
+        <TextView
+            android:id="@+id/get_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/space_22"
+            android:layout_marginTop="@dimen/sp_23"
+            android:background="@drawable/wallet_item_bg"
+            android:paddingBottom="@dimen/space_2"
+            android:paddingLeft="@dimen/space_5"
+            android:paddingRight="@dimen/space_5"
+            android:paddingTop="2dp"
+            android:textColor="@color/wirte"
+            android:textSize="@dimen/space_10"
+            android:visibility="gone"
+            tools:text="提取GAS" />
+
+        <TextView
+            android:id="@+id/price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/space_20"
+            android:layout_marginTop="@dimen/sp_28"
+            android:gravity="center"
+            android:text="￥"
+            android:textColor="@color/wirte"
+            android:textSize="@dimen/space_16" />
+
+
+        <TextView
+            android:id="@+id/address_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/price_tv"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/space_10"
+            android:layout_marginRight="@dimen/space_10"
+            android:layout_toLeftOf="@+id/copy_ll"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:textColor="@color/wirte"
+            android:textSize="@dimen/space_10"
+            tools:text="E0S6ppZcu5cskdjsbf67929djhjskls01983" />
+
+        <LinearLayout
+            android:id="@+id/copy_ll"
+            android:layout_width="@dimen/space_20"
+            android:layout_height="@dimen/space_20"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/price_tv"
+            android:layout_marginRight="@dimen/space_10">
+
+            <ImageView
+                android:id="@+id/copy_iv"
+                android:layout_width="@dimen/space_12"
+                android:layout_height="@dimen/space_12"
+                android:background="@drawable/copy_icon"
+
+
+                />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</FrameLayout>

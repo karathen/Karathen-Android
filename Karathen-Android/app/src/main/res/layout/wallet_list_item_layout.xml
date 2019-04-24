@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/address_rl"
+    android:layout_width="match_parent"
+    android:background="@drawable/item_bg_icon"
+    android:layout_height="@dimen/space_80">
+    
+    
+    <ImageView
+        android:id="@+id/item_iv"
+        android:layout_width="@dimen/space_18"
+        android:layout_height="@dimen/space_18"
+        android:background="@drawable/address_01_icon"
+        android:layout_marginTop="@dimen/space_25"
+        android:layout_marginLeft="@dimen/space_15"
+        />
+
+    <TextView
+        android:id="@+id/wallet_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ETH-1"
+        android:layout_marginTop="@dimen/space_18"
+        android:layout_toRightOf="@+id/item_iv"
+        android:layout_marginLeft="@dimen/space_14"
+        android:textSize="@dimen/space_13"
+        android:textColor="@color/three_color"
+        />
+
+    <TextView
+        android:id="@+id/wallet_flag_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="import"
+        android:layout_marginTop="@dimen/space_18"
+        android:layout_toRightOf="@+id/wallet_name_tv"
+        android:layout_marginLeft="@dimen/space_14"
+        android:textSize="@dimen/space_13"
+        />
+    <TextView
+        android:id="@+id/address_tv"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="0xffkashdk79...7239ssdfsfdsfsdfsdsdfsdaafsdfsd"
+        android:layout_toRightOf="@+id/item_iv"
+        android:layout_below="@+id/wallet_name_tv"
+        android:textSize="@dimen/space_10"
+        android:layout_marginLeft="@dimen/space_14"
+        android:ellipsize="middle"
+        android:maxLength="100"
+        android:singleLine="true"
+        />
+
+    <LinearLayout
+        android:id="@+id/copyLl"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/address_tv"
+        >
+
+        <TextView
+            android:id="@+id/copy_iv"
+            android:layout_width="@dimen/space_12"
+            android:layout_height="@dimen/space_12"
+            android:background="@drawable/copy_address_icon"
+            android:layout_marginLeft="@dimen/space_15"
+            android:layout_marginRight="@dimen/space_10"
+            android:layout_gravity="center"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/select_iv"
+        android:layout_width="@dimen/space_13"
+        android:layout_height="9dp"
+        android:background="@drawable/gou_icon"
+        android:layout_toRightOf="@+id/copyLl"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/space_40"
+        android:visibility="gone"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/more_ll"
+        android:layout_width="wrap_content"
+        android:paddingLeft="@dimen/space_10"
+        android:layout_alignParentRight="true"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/more_iv"
+            android:layout_width="@dimen/space_12"
+            android:layout_height="3dp"
+            android:background="@drawable/more_vertical_icon"
+            android:paddingLeft="@dimen/space_15"
+            android:layout_marginTop="@dimen/space_19"
+            android:layout_marginRight="@dimen/space_20"
+            />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

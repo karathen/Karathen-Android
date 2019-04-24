@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#5575fe</color>
+    <color name="colorPrimaryDark">#5575fe</color>
+    <color name="colorAccent">#5575fe</color>
+
+    <color name="oval_color_others">#b9b9b9b9</color>
+    <color name="oval_color_main">#5575fe</color>
+    <color name="title_bar_color">#F8F9F9</color>
+
+    <color name="red_bg">#EE0F38</color>
+
+    <color name="main_color">#5575fe</color>
+    <color name="main_color_two">#F85252</color>
+    <color name="main_color_three">#6b87fd</color>
+    <color name="wirte">#FFFFFF</color>
+
+    <color name="line_color">#e0e0e0</color>
+    <color name="btn_off_color">#F5F5F5</color>
+    <color name="text_main_color">#212121</color>
+    <color name="text_main_color_two">#141414</color>
+
+    <color name="linear_color">#F5F5F5</color>
+    <color name="lin_color">#D3D3D3</color>
+
+    <color name="three_color">#333333</color>
+    <color name="pwd_ed_color">#C6C5CB</color>
+
+
+    <!-- text-->
+    <color name="text_color_common">#909499</color>
+    <color name="text_color_red">#FF0000</color>
+    <color name="text_color_orange">#FCAE05</color>
+    <color name="text_color_maroon">#CD0000</color>
+    <color name="colorTextLogin">#445d96</color>
+    <color name="colorTextCanClick">#21B9F0</color>
+    <color name="colorTextAccountHeader">#7fffffff</color>
+    <color name="colorTextQuotesDetailTab">#33ffffff</color>
+
+
+    <!--持平-->
+    <color name="colorLevel">#ffffff</color>
+    <color name="colorTextAccountRight">#7fffffff</color>
+    <color name="colorTransactionSell">#27e88b</color>
+    <color name="colorTransactionBuy">#ff2567</color>
+    <color name="colorTextTopTabNormal">#66FFFFFF</color>
+    <color name="colorCommonTextNormal">#66FFFFFF</color>
+
+
+    <!-- common -->
+    <color name="common_1">#EEE9BF</color>
+    <color name="common_2">#C0FF3E</color>
+    <color name="colorDivider">#66445d96</color>
+
+    <!-- chart -->
+    <color name="marker_bg">#1C232E</color>
+    <color name="marker_line_bg">#ffffff</color>
+    <color name="marker_text_bg">#282e39</color>
+    <color name="border_color">#282e39</color>
+    <color name="mine_label_txt">#A7ADBC</color>
+    <color name="minute_jizhun">#7F9976</color>
+    <color name="minute_blue">#00D0FC</color>
+    <color name="minute_yellow">#E7B448</color>
+    <color name="colorTouchLine">#4dffffff</color>
+    <color name="colorHighlight">#4dffffff</color>
+
+    <color name="ma5">#ffffff</color>
+    <color name="ma10">#FFD400</color>
+    <color name="ma20">#21B9F0</color>
+    <color name="ma30">#7F9976</color>
+
+    <color name="increasing_color">#CD2626</color>
+    <color name="decreasing_color">#006400</color>
+
+
+    <!--NEW ADD-->
+    <color name="color_FE0000">#FE0000</color>
+    <color name="col_808ca9">#808CA9</color>
+    <!--<color name="main_blue">#6584f2</color>-->
+    <color name="transparent">@android:color/transparent</color>
+
+
+    <color name="black">#88000000</color>
+    <color name="col_d9e1ff">#D9E1FF</color>
+    <color name="bg_snackbar_suc">#E6000000</color>
+
+    <!--UI-->
+    <color name="bg_top_bottom">#182540</color>
+    <color name="bg_com">#0a152d</color>
+
+    <color name="gray">#A19F9F</color>
+
+    <color name="red">#D80D00</color>
+    <color name="green">#28AC56</color>
+
+    <!--边框色 细线-->
+    <color name="bg_divide_color">#11213a</color>
+
+
+    <!--上升-->
+    <color name="colorRise">#00a075</color>
+    <!--下降-->
+    <color name="colorDrop">#cb4848</color>
+
+
+    <color name="white">@android:color/white</color>
+
+    <!--App内的主要字体颜色-->
+    <color name="main_font_color">#b7c2ce</color>
+
+    <!--交易界面-->
+    <color name="colorTextTransactionNormal">@color/gray</color>
+
+
+    <color name="color_add_sub_default">#17223b</color>
+
+    <color name="colorBgListItem">#2a3d6f</color>
+
+    <color name="lock_pattern_indicator_default_color">#ffe1e2e5</color>
+    <color name="lock_pattern_default_color">#ffddddec</color>
+    <color name="lock_pattern_indicator_select_color">#ffe1e2e5</color>
+    <color name="lock_pattern_select_color">#F56350</color>
+    <color name="lock_patter_error_color">#FF001F</color>
+
+    <color name="quotes_price">#FF4D0E</color>
+    <color name="common_title_color">#414851</color>
+
+
+    <color name="common_white">#fff</color>
+    <color name="common_black">#333</color>
+    <color name="common_line_color">#f0f0f0</color>
+    <color name="common_blue_color">#5575fe</color>
+    <color name="common_six_white">#ffffff</color>
+    <color name="base_background_white">#ededed</color>
+    <color name="bottom_tab_unselected_color">#c4cbce</color>
+    <color name="bottom_tab_selected_color">#6478ff</color>
+    <color name="title_background_color">#f8f9f9</color>
+    <color name="toast_bg_color">#dd323232</color>
+    <color name="tabBackground">#777D7D7D</color>
+    <color name="edit_text_input_color">#c6c5cb</color>
+    <color name="confirm_unselected_bg">#edeff2</color>
+    <color name="gray_text_color">#0e1a45</color>
+    <color name="input_pin_dialog_color">#f8f8f8</color>
+    <color name="dialog_line_color">#e3e3e3</color>
+    <color name="dialog_confirm_text_color">#d83829</color>
+    <color name="backup_mnemonics_bg_color">#f7f7f9</color>
+
+    <color name="home_title_color">#343f49</color>
+    <color name="hone_ass_color">#222423</color>
+
+    <color name="color_333">#333333</color>
+    <color name="color_grey">#33333333</color>
+
+    <color name="color_white">#ffffff</color>
+
+    <color name="color_red">#ff0000</color>
+    <color name="color_line">#e0e0e0</color>
+    <color name="color_transparent">#00000000</color>
+
+    <color name="c_ff9900">#ff9900</color>
+
+
+    <color name="red_normal">#FF0000</color>
+    <color name="red_pressed">#FF6666</color>
+
+</resources>

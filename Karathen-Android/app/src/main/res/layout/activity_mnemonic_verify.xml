@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.CreateWalletActivity"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:clipChildren="true"
+    android:background="@color/title_bar_color"
+
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_52">
+        <com.raistone.wallet.sealwallet.widget.TitleBar
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_52"/>
+
+        <TextView
+            android:id="@+id/jump_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/space_19"
+            android:text="@string/jump_over"
+            android:layout_gravity="center|right"
+            android:layout_marginRight="@dimen/space_25"
+            android:paddingLeft="@dimen/space_10"
+            android:paddingRight="@dimen/space_10"
+            android:gravity="center"
+            android:textSize="@dimen/space_10"
+            android:textColor="@color/wirte"
+            android:background="@drawable/tag_right_top_bg"
+            />
+    </FrameLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/wirte"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/verify_tips"
+            android:textSize="@dimen/space_12"
+            android:textColor="#b7b6bb"
+            android:layout_marginLeft="@dimen/space_15"
+            android:layout_marginRight="@dimen/space_15"
+            android:layout_marginTop="@dimen/space_22"
+            android:layout_gravity="center"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/newRecyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_marginTop="@dimen/space_20"
+            android:layout_marginLeft="@dimen/space_15"
+            android:layout_marginRight="@dimen/space_15"
+            android:background="@drawable/recyclerview_bg"
+            />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/oldRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_15"
+            android:layout_marginRight="@dimen/space_15"
+            android:layout_marginTop="@dimen/space_10"
+            />
+
+        <Button
+            android:id="@+id/complete_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_43"
+            android:text="@string/complete"
+            android:textColor="@color/wirte"
+            android:textSize="@dimen/space_13"
+            android:layout_marginRight="@dimen/space_40"
+            android:layout_marginLeft="@dimen/space_40"
+            android:layout_marginTop="@dimen/space_40"
+            android:background="@drawable/btn_bg"
+            />
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+</LinearLayout>

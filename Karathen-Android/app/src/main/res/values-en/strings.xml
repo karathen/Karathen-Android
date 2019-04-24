@@ -1,0 +1,318 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Seal Wallet</string>
+    <!-- seal wallet begin -->
+    <string name="wallet_string">Wallets</string>
+    <string name="discovery_string">Discover</string>
+    <string name="user_center_string">My Profile</string>
+    <string name="HD_wallet_string">HD Wallet</string>
+    <string name="reset_pin_string">reset Password</string>
+    <string name="currency_string">Currency Unit</string>
+    <string name="language_setting_string">Language</string>
+    <string name="backup_wallet_string">Backup Wallet</string>
+    <string name="exit_current_wallet_string">Logout</string>
+    <string name="old_pin_string">Old password</string>
+    <string name="new_pin_string">New password</string>
+    <string name="confirm_pin_string">Confirm password</string>
+    <string name="input_old_pin_string">Please enter the old password</string>
+    <string name="input_six_number_string">Please enter at least 6 passwords</string>
+    <string name="confirm_string">Confirm</string>
+    <string name="determine_string">Yes</string>
+    <string name="cancel_string">Cancel</string>
+    <string name="exit_current_wallet_title">Logout？</string>
+    <string name="simplified_chinese_string">简体中文</string>
+    <string name="language_english">English</string>
+    <string name="have_backup_string">Backed up</string>
+    <string name="not_backup_string">Unbaked</string>
+    <string name="assets_string">Asset</string>
+    <string name="search_string">search</string>
+    <string name="add_assets_string">Add Asset</string>
+    <string name="address_manager_string">Address Management</string>
+    <string name="add_assets_explain_string">Add an available address by creating</string>
+    <string name="import_address_string">Import address</string>
+    <string name="import_string">Import</string>
+    <string name="mnemonic_string">mnemonic</string>
+    <string name="input_mnemonic_string">Please enter 12 words, separated by spaces</string>
+    <string name="set_wallet_name_string">Meaningful names can help you manage your assets better</string>
+    <string name="private_key_string">Private key</string>
+    <string name="create_string">create</string>
+    <string name="hide_zero_assets_string">hide zero assets</string>
+    <string name="assets_sign_string">Asset mark</string>
+    <string name="assets_name_string">Asset Name</string>
+    <string name="assets_type_string">Asset Type</string>
+    <string name="contract_address_string">Contract address</string>
+    <string name="warning_string">Note: This address is not your receipt address</string>
+    <string name="receipt_string">Receive</string>
+    <string name="copy_wallet_address">Copy the Wallet Address</string>
+    <string name="type_wallet_string">%1$s钱包</string>
+    <string name="transfer_string">Transfer</string>
+    <string name="recent_transaction_history_string">Recent transaction history</string>
+    <string name="input_amount_string">Input the amount</string>
+    <string name="collection_address_string">Recipient Address</string>
+    <string name="paste_receipt_address">Paste the recipient address</string>
+    <string name="paying_address_string">Transfer Address</string>
+    <string name="miner_cost_string">Mining Fee</string>
+    <string name="slow_string">Slow</string>
+    <string name="fast_string">Fast</string>
+    <string name="exit_wallet_warning_string">Please confirm the mnemonic words had been backed up,
+        once lost, your wallet will at great risk! Delete wallet will also remove all imported addresses.</string>
+    <string name="all_string">All</string>
+    <string name="about_us_string">About</string>
+    <string name="help_center_string">Suport</string>
+    <string name="check_the_net_string">~~请检查网络~~</string>
+    <string name="service_agreement_string">Terms of Service</string>
+    <string name="privacy_policy_string">Privacy Policy</string>
+    <string name="check_for_updates">Check for updates</string>
+    <string name="contact_us">Contact us</string>
+    <string name="seal_wallet_info_string">Seal Wallet is a decentralized open source tiered light wallet.
+        It supports multi-chain, multi-address and multi-assets.
+        </string>
+    <string name="seal_website">http://sealwallet.org</string>
+    <string name="seal_email_string">sealwallet@gmail.com</string>
+    <string name="copy_success_string">Copy Succeeded</string>
+    <string name="copy_string">Copy</string>
+    <string name="come_soon">Coming soon</string>
+    <string name="ok">OK</string>
+    <string name="current_version_string">current version: %1$s</string>
+    <string name="cny_string">CNY</string>
+    <string name="usd_string">USD</string>
+    <string name="backup_mnemonic_string">Backup Mnemonic Phrase</string>
+    <string name="backup_mnemonic_prompt_string">Mnemonic word is the only way to regain the current wallet,
+        please keep them in a safe and secret place.</string>
+    <string name="backup_success_string">Finished</string>
+    <string name="mnemonic_verification_string">Verify Mnemonic Phrase</string>
+    <string name="skip_string">Skip</string>
+    <string name="click_by_order">Please select Mnemonic Phrase int the correct order</string>
+    <string name="pin_string">PIN</string>
+    <string name="game_string">Game</string>
+    <string name="shop_string">Shop</string>
+    <string name="tools_string">Tool</string>
+    <string name="click_to_detail_string">Enter</string>
+    <string name="item_tag">ITEM_TAG</string>
+    <string name="one_main_title_string">Multi-chain Management Simple and Convenient</string>
+    <string name="two_main_title_string">Multi-address Support More Privacy</string>
+    <string name="three_main_title_string">Decentralized Open sourced</string>
+    <string name="four_main_title_string">Multi-asset types Much richer</string>
+    <string name="one_sub_title_string">Manage multi-chain assets by only a set of mnemonics,
+        making multi-chain asset management easier and more convenient. Currently has supported ETH,NEO,etc.</string>
+    <string name="two_sub_title_string">HD technology makes one set of mnemonics supports multi-address translation.
+        Users could choose on-chain transaction address simply and transaction will be more private.</string>
+    <string name="three_sub_title_string">Mnemonics and private key are absolutely controlled by users,
+        makes it possible to let on-chain assets be more secure.</string>
+    <string name="four_sub_title_string">Fully support for ETH-based ERC-20,ERC-721 tokens and NEO-based NEP-5 tokens,
+        with much richer transaction types.</string>
+    <string name="create_wallet_string">Create Wallet</string>
+    <string name="import_wallet_string">Import Wallet</string>
+    <string name="setting_pin_string">set password</string>
+    <string name="seal_agreement_string">I have carefully read and agree to the Terms of Service and Privacy Policy</string>
+    <string name="import_by_mnemonic">Mnemonic</string>
+    <string name="import_mnemonic">Please use space to separate the mnemonics words</string>
+    <string name="service_and_agreement_string">Service and Privacy Policy</string>
+    <string name="please_click_mnemonics_by_order_string">Please select your mnemonic in the correct order</string>
+    <string name="confirm_backup_mnemonics_string">Please confirm the mnemonic words had already be backuped,
+        once lost, your wallet will at great risk!</string>
+    <string name="address_string">Address</string>
+    <string name="wallet_name_string">Address Name</string>
+    <string name="export_private_key_string">Export Private Key</string>
+    <string name="browser_query_string">Browser query</string>
+    <string name="balance_string">Balance:</string>
+    <string name="remark_string">Remark</string>
+    <string name="transfer_record_string">Transfer Records</string>
+    <string name="all_record_string">All Records</string>
+
+    <string name="unrecognized_qr_code_string">Unrecognized QR code</string>
+    <string name="cannot_transaction">Different chain cannot make transaction</string>
+    <string name="tansfer_amount_cannot_string">Transfer amount cannot be 0</string>
+    <string name="insufficient_balance_string">Insufficient balance</string>
+    <string name="collection_address_cannot_be_empty">Collection address cannot be empty</string>
+    <string name="transfer_middle_string">Transferring</string>
+    <string name="transfer_failed">Transfer failed</string>
+    <string name="add_string">Add</string>
+    <string name="added_string">Added</string>
+    <string name="technical_support_string">Technical Support</string>
+
+    <string name="email_address">email address</string>
+    <string name="input_email_address">Please enter an email address</string>
+
+    <string name="phone_number">cellphone number</string>
+    <string name="input_phone_number">Please enter the phone number</string>
+
+    <string name="title">title</string>
+    <string name="input_title_number">Please enter a title</string>
+
+    <string name="depict">description</string>
+    <string name="input_depict">Please enter the details of your request and one of our support staff will respond to you as soon as possible.</string>
+    <string name="commit_string">submit</string>
+    <string name="image_string">image</string>
+    <string name="currentVersion_string">current version: </string>
+    <string name="multi_chain_management">Multi-chain management</string>
+    <string name="update_pin_string">Reset PIN Code</string>
+    <string name="pin_ma_string">PIN Code</string>
+
+    <string name="six_digitsp_ma_string">Please enter a 6-digit PIN code</string>
+    <string name="pin_error">wrong password</string>
+    <string name="wif_string">WIF</string>
+    <string name="mingwen_string">Plaintext private key</string>
+    <string name="chain_tips_string">The system will display in the order listed below, long press the drag and drop to sort</string>
+    <string name="add_assets_tips">Search Token Name or Contract Address</string>
+    <string name="next_step">Next step</string>
+    <string name="backup_tips">These 12 words are the only way to restore your current wallet, keep them in a safe and private place.</string>
+
+    <string name="create_wallet">Create wallet</string>
+    <string name="import_wallet">Import wallet</string>
+
+    <string name="read_and_agreed">I have read and agreed</string>
+
+    <string name="service_and_privacy">《Service and Privacy Policy》</string>
+    <string name="jump_over">jump over</string>
+    <string name="verify_tips">Click on the words and put them together in the correct order</string>
+    <string name="complete">complete</string>
+
+    <string name="send_address_string">From</string>
+    <string name="receive_address_string">To</string>
+    <string name="transfer_time_string">Transaction time</string>
+    <string name="transfer_Hash_string">TxHash : </string>
+    <string name="transfer_detail_string">Transaction Details</string>
+    <string name="export_mnemonic_string">Export mnemonic</string>
+    <string name="loading_string">Loading...</string>
+
+    <string name="safety_warning_string">Security warning: The private key is not encrypted, the export is risky. It is recommended to use mnemonic for backup.</string>
+
+    <string name="update_name_string">Modify name</string>
+
+    <string name="delete_address_string">Delete address</string>
+
+
+    <string name="multi_address_one">Multi-address support, more privacy</string>
+    <string name="guide_one_tips">HD (layered deterministic) technology enables a single mnemonic to support multiple address translations, allowing users to easily select the transaction address on the chain, making transactions more private</string>
+
+    <string name="multi_address_two">Decentralized, safer</string>
+    <string name="guide_two_tips">The mnemonic or private key is absolutely controlled by the user, and the assets on the chain are safer. \n </string>
+
+    <string name="multi_address_three">Multi-chain management is simple and convenient</string>
+    <string name="guide_three_tips">A set of mnemonic management multi-chain assets, multi-chain asset management \n is simpler and more convenient, currently supported: ETH, NEO and other chains</string>
+
+    <string name="multi_address_four">Multi-asset type is more abundant</string>
+    <string name="guide_four_tips">Full support for ETH-based ERC-20, ERC-721 type TOKEN and NEO-based NEP-5 type TOKEN, more transaction types</string>
+
+    <string name="update_address_name">Modify address name</string>
+    <string name="update_wallet_name">Modify wallet name</string>
+    <string name="name_not_null_string">Address name cannot be empty</string>
+    <string name="wallet_name_not_null_string">Wallet name cannot be empty</string>
+
+    <string name="delete_string">Delete</string>
+
+    <string name="success_string">Success</string>
+    <string name="failure_string">Failure</string>
+    <string name="scanner_string">Scan code</string>
+    <string name="scanner_tips_string">Put the QR code into the box and you can scan it automatically.</string>
+    <string name="photo_permission">Failed to grant photo permission</string>
+    <string name="cant_delete">Cant delete</string>
+    <string name="please_open_permissions">Please open your permissions</string>
+    <string name="mnemonic_cannot_be_empty">Mnemonic cannot be empty</string>
+    <string name="private_cannot_be_empty">Private key cannot be empty</string>
+    <string name="wif_cannot_be_empty">WIF cannot be empty</string>
+    <string name="verification_mnemonic">Verification mnemonic</string>
+    <string name="show_at_least_one_chain">Show at least one chain</string>
+    <string name="new_string">New</string>
+
+    <string name="original_pin_code">Please enter the original password</string>
+    <string name="original_pin_error">Original password code error</string>
+    <string name="please_enter_a_new_pin">Please enter a new password</string>
+    <string name="please_enter_a_confirmation_pin">Please confirm your password</string>
+    <string name="two_pin_codes_are_inconsistent">Two passwords are inconsistent</string>
+
+    <string name="successfully_modified">Successfully modified</string>
+    <string name="no_more_data">No more data yet</string>
+    <string name="backup_mnemonic">Backup mnemonic</string>
+    <string name="jumo_over_tips">Are you sure you want to skip the mnemonic? Failure to properly back up the mnemonic will not restore the deleted wallet.</string>
+    <string name="please_check_your_mnemonic">Please check your mnemonic</string>
+    <string name="exit_tips">Press again to exit the program</string>
+    <string name="claim_gas_string">Claim GAS</string>
+    <string name="claim_ong_string">Claim ONG</string>
+    <string name="creating_wallet">Creating wallet...</string>
+    <string name="importing_wallet">Importing wallet...</string>
+    <string name="please_enter_a_valid_mnemonic">Please enter a valid mnemonic</string>
+    <string name="import_failed">Import failed</string>
+    <string name="setting_pin">Set PIN Code</string>
+    <string name="confirm_pin">Confirm PIN Code</string>
+    <string name="create_wallet_tips">Please enter 6 digits</string>
+    <string name="transfer_confirm_string">Transfer confirmation</string>
+    <string name="existing_address">Existing address</string>
+    <string name="claim_tips">To extract the ONG, you need to pay 0.01 ONG to the main network of the main body. It will be automatically deducted from the user\'s balance. If the balance is insufficient, the extraction will fail. It is recommended to reserve a sufficient amount of ONG before extracting</string>
+
+    <string name="extractable_string">Extractable</string>
+    <string name="not_extractable_string">Not Extractable</string>
+    <string name="claim_strimg">claim</string>
+    <string name="scanner_result_string">Scan result</string>
+
+    <string name="claim_success_strimg">claim success</string>
+    <string name="claim_failure_strimg">claim failure</string>
+    <string name="export_wif_string">Export WIF</string>
+    <string name="safety_warning_wif_string">Security Warning: WIF will be directly related to the security of your assets, please save it properly</string>
+    <string name="submitted_string">submitted</string>
+    <string name="submitted_failed_string">Submission Failed</string>
+
+    <string name="please_enter_an_email_address">Please enter an email address</string>
+    <string name="input_depict_string">Please enter content</string>
+    <string name="latest_version_string">Currently the latest version</string>
+    <string name="invalid_address_string">Invalid address</string>
+    <string name="transaction_repeated">The transaction is repeated, please wait</string>
+    <string name="please_enter_the_amount">Please enter the amount</string>
+    <string name="creating_new_address">Creating new address....</string>
+    <string name="importing_address">Importing address...</string>
+    <string name="please_enter_the_correct_amount">Please enter the correct amount</string>
+    <string name="check_network">Please check your network</string>
+    <string name="Offline_string">Offline</string>
+
+
+    <string name="cloud_wallet_string">Cloud wallet</string>
+    <string name="hd_wallet_string">HD wallet</string>
+    <string name="hardware_wallet_string">Hardware wallet</string>
+
+    <string name="hd_wallet_tips_string">Seal HD wallet is a decentralized open source hierarchical deterministic wallet, users could manage on-chain digital assets by only a set of mnemonics, making multi-chain asset management easier and more convenient. Seal HD wallet also integrates different blockchain applications, you can experience DAPP here!</string>
+    <string name="hardware_wallet_tips_string">Hardware wallet is tailored to the users with large amount of assets or enterprises users. We use encryption algorithms to protect and store the secret key, provide security for your digital assets.</string>
+    <string name="cloud_wallet_tips_string">Seal cloud wallet is designed for entry-level users，without the need to import private key or mnemonics, just use username and password to successfully get it. Cloud wallet supports password recovery, transfer assets for free with lightning speed.</string>
+    <string name="connecting_device">Connecting device</string>
+
+    <string name="login_string">login</string>
+    <string name="register_string">register</string>
+
+    <string name="wallet_name">Wallet name</string>
+    <string name="please_enter_the_name_of_the_wallet">Please enter the name of the wallet</string>
+
+    <string name="set_pwd_string">set password</string>
+    <string name="please_enter_your_password">Please enter at least 6 passwords</string>
+
+    <string name="confirm_password">Confirm password</string>
+    <string name="pleaseconfirm_password">Please confirm your password</string>
+
+    <string name="pwd_tips_info">Password prompt information</string>
+    <string name="input_pwd_tips_info">Please enter a password reminder(Optional)</string>
+    <string name="wallet_manager_string">Wallet management</string>
+
+    <string name="add_wallet_string">Add wallet</string>
+
+    <string name="reset_password">reset Password</string>
+    <string name="password_hint">password hint</string>
+    <string name="delete_wallet">Delete wallet</string>
+    <string name="none_string">None</string>
+
+    <string name="please_enter_password">Please enter your password</string>
+    <string name="password">password</string>
+    <string name="keystore_hint">Please enter the keystore text</string>
+    <string name="keystore_pwd">Keystore password</string>
+    <string name="input_keystore_pwd">Please enter the Keystore password</string>
+    <string name="input_wif_key_string">Please enter a valid WIF</string>
+
+    <string name="safety_warning_mnemonic_string">Safety warning: mnemonics will be directly related to the safety of your assets, please save them properly</string>
+
+    <string name="safety_warning_keystore_string">Security Warning: Keystore will be directly related to the security of your assets, please save it properly</string>
+
+    <string name="import_succ_string">Successfully imported</string>
+    <string name="stay_tuned">Stay tuned</string>
+    <string name="export_keystore_string">Export Keystore</string>
+
+    <string name="exporting_string">Exporting..</string>
+
+    <string name="please_check_qrcode_string">Receipt asset does not match with transferred asset,please check again</string>
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 这个是背景颜色 -->
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="5dip" />
+
+            <gradient
+                android:angle="270"
+                android:centerColor="#E3E3E3"
+                android:centerY="0.75"
+                android:endColor="#CCCCCC"
+                android:startColor="#CCCCCC" />
+        </shape>
+    </item>
+    <!-- 这个是设置你进度的颜色 -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <!-- 这个也是设置时圆角还是直角，左边的 -->
+                <corners android:radius="5dip" />
+                <!-- 设置进度的颜色，将startColor、centerColor、endColor都设置成同一个颜色值 -->
+                <gradient
+                    android:angle="270"
+                    android:centerColor="@color/main_color"
+                    android:centerY="0.75"
+                    android:endColor="@color/main_color"
+                    android:startColor="@color/main_color" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:background="@color/title_bar_color"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:clipChildren="true"
+    tools:context=".ui.GuideActivityNews">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_52">
+
+        <com.raistone.wallet.sealwallet.widget.TitleBar
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_52" />
+
+
+        <LinearLayout
+            android:id="@+id/close_ll"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:paddingLeft="@dimen/space_10"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/delete_icon"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/space_15"
+
+                />
+
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/wirte"
+        android:orientation="vertical">
+
+        <!--<android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/wirte"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/main_color"
+            app:tabIndicatorHeight="2dp"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/main_color"
+            app:tabTextColor="@color/text_main_color" />-->
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/slidingTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/wirte"
+            tl:tl_divider_padding="13dp"
+            tl:tl_indicator_color="@color/main_color"
+            tl:tl_indicator_width_equal_title="true"
+            tl:tl_tab_padding="22dp"
+            tl:tl_tab_space_equal="true"
+            tl:tl_textSelectColor="@color/main_color"
+            tl:tl_textUnselectColor="#66000000"
+            tl:tl_underline_color="#1A000000"/>
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

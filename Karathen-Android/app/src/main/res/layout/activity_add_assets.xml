@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/common_white"
+    tools:context=".ui.AddAssetsActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:background="@color/main_color">
+
+
+        <RelativeLayout
+            android:id="@+id/back_ll"
+            android:layout_width="@dimen/space_50"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ic_back"
+                android:layout_width="@dimen/space_12"
+                android:layout_height="@dimen/space_12"
+                android:layout_centerInParent="true"
+                android:contentDescription="@null"
+                android:scaleType="centerInside"
+                android:src="@drawable/icon_back_write" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/add_assets_string"
+            android:textColor="@color/wirte"
+            android:textSize="@dimen/text_size_15"
+            android:visibility="visible" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/wirte"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_marginTop="@dimen/space_14"
+            >
+
+
+
+            <EditText
+                android:id="@+id/assets_name_ed"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_30"
+                android:background="@drawable/add_assets_bg"
+                android:hint="@string/add_assets_tips"
+                android:layout_marginLeft="@dimen/space_15"
+                android:layout_marginRight="@dimen/space_15"
+                android:textSize="@dimen/space_13"
+                android:paddingLeft="@dimen/space_25"
+                android:singleLine="true"
+                android:inputType="textEmailAddress"
+                />
+
+
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="@dimen/space_14"
+                android:background="@drawable/add_search_icon"
+                android:layout_marginLeft="@dimen/space_22"
+                android:layout_gravity="center|left"
+                />
+
+        </FrameLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_marginTop="@dimen/space_10"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

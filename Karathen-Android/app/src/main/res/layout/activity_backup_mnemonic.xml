@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/title_bar_color"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:clipChildren="true"
+    tools:context=".ui.CreateWalletActivity"
+
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_52">
+
+        <com.raistone.wallet.sealwallet.widget.TitleBar
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_52" />
+
+        <LinearLayout
+            android:id="@+id/qr_code_address_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right|center"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/space_19"
+                android:layout_height="@dimen/space_19"
+                android:layout_marginLeft="@dimen/space_10"
+                android:layout_marginRight="@dimen/space_15"
+                android:background="@drawable/qr_code_icon" />
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/wirte"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_15"
+            android:layout_marginRight="@dimen/space_15"
+            android:layout_marginTop="@dimen/space_22"
+            android:text="@string/backup_tips"
+            android:textColor="#b7b6bb"
+            android:textSize="@dimen/space_12" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_marginLeft="@dimen/space_15"
+            android:layout_marginRight="@dimen/space_15"
+            android:layout_marginTop="@dimen/space_20"
+            android:background="@drawable/recyclerview_bg" />
+
+        <Button
+            android:id="@+id/next_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_43"
+            android:layout_marginLeft="@dimen/space_40"
+            android:layout_marginRight="@dimen/space_40"
+            android:layout_marginTop="@dimen/space_40"
+            android:background="@drawable/btn_bg"
+            android:text="@string/next_step"
+            android:textColor="@color/wirte"
+            android:textSize="@dimen/space_13" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

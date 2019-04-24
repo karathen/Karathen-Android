@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/smartrefreshlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:srlEnableHeaderTranslationContent="false"
+    app:srlEnableLoadMore="false"
+    app:srlEnablePreviewInEditMode="false">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/wirte"
+        android:orientation="vertical"
+        tools:context=".ui.fragment.UserCenterFragment">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_52"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/user_center_string"
+                android:textColor="@color/three_color"
+                android:textSize="@dimen/space_15"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View style="@style/h_line" />
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/wirte">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/space_14"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/space_15"
+                        android:text="@string/HD_wallet_string"
+                        android:textColor="@color/three_color"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/back_tv"
+                        android:layout_width="@dimen/space_50"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/space_10"
+                        android:background="@drawable/tag_right_top_bg"
+                        android:gravity="center"
+                        android:text="@string/not_backup_string"
+                        android:textColor="@color/wirte"
+                        android:paddingTop="@dimen/space_5"
+                        android:paddingBottom="@dimen/space_5"
+                        android:textSize="@dimen/space_10" />
+
+                </LinearLayout>
+
+
+                <com.allen.library.SuperTextView
+                    android:id="@+id/dlgl_super_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_51"
+                    android:layout_marginTop="@dimen/space_10"
+                    app:sBottomDividerLineMarginLeft="@dimen/space_15"
+                    app:sBottomDividerLineMarginRight="@dimen/space_10"
+                    app:sLeftIconMarginLeft="@dimen/space_15"
+                    app:sLeftTextColor="@color/three_color"
+                    app:sLeftTextSize="@dimen/space_12"
+                    app:sLeftTextString="@string/multi_chain_management"
+                    app:sLeftTvDrawableHeight="@dimen/space_18"
+                    app:sLeftTvDrawableLeft="@drawable/user_dlgl_icon"
+                    app:sLeftTvDrawableWidth="@dimen/space_18"
+                    app:sLeftViewMarginLeft="@dimen/space_15"
+                    android:visibility="gone"
+                    app:sRightTvDrawableHeight="@dimen/space_12"
+                    app:sRightTvDrawableRight="@drawable/back_right"
+                    app:sRightTvDrawableWidth="@dimen/space_7"
+                    app:sRightViewMarginRight="@dimen/space_15"
+                    app:sTextViewDrawablePadding="@dimen/space_14" />
+
+                <com.allen.library.SuperTextView
+                    android:id="@+id/wallet_backup_super_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_51"
+                    app:sBottomDividerLineMarginLeft="@dimen/space_15"
+                    app:sBottomDividerLineMarginRight="@dimen/space_10"
+                    app:sLeftIconMarginLeft="@dimen/space_15"
+                    app:sLeftTextColor="@color/three_color"
+                    app:sLeftTextSize="@dimen/space_12"
+                    app:sLeftTextString="@string/backup_wallet_string"
+                    android:visibility="gone"
+                    app:sLeftTvDrawableHeight="@dimen/space_18"
+                    app:sLeftTvDrawableLeft="@drawable/user_wallet_backup"
+                    app:sLeftTvDrawableWidth="@dimen/space_18"
+                    app:sLeftViewMarginLeft="@dimen/space_15"
+                    app:sRightTvDrawableHeight="@dimen/space_12"
+                    app:sRightTvDrawableRight="@drawable/back_right"
+                    app:sRightTvDrawableWidth="@dimen/space_7"
+                    app:sRightViewMarginRight="@dimen/space_15"
+                    app:sTextViewDrawablePadding="@dimen/space_14" />
+
+                <com.allen.library.SuperTextView
+                    android:id="@+id/update_pin_super_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_51"
+                    app:sBottomDividerLineMarginLeft="@dimen/space_15"
+                    app:sBottomDividerLineMarginRight="@dimen/space_10"
+                    app:sLeftIconMarginLeft="@dimen/space_15"
+                    app:sLeftTextColor="@color/three_color"
+                    app:sLeftTextSize="@dimen/space_12"
+                    app:sLeftTextString="@string/update_pin_string"
+                    app:sLeftTvDrawableHeight="@dimen/space_18"
+                    app:sLeftTvDrawableLeft="@drawable/user_reset_icon"
+                    app:sLeftTvDrawableWidth="@dimen/space_18"
+                    app:sLeftViewMarginLeft="@dimen/space_15"
+                    android:visibility="gone"
+                    app:sRightTvDrawableHeight="@dimen/space_12"
+                    app:sRightTvDrawableRight="@drawable/back_right"
+                    app:sRightTvDrawableWidth="@dimen/space_7"
+                    app:sRightViewMarginRight="@dimen/space_15"
+                    app:sTextViewDrawablePadding="@dimen/space_14" />
+
+                <com.allen.library.SuperTextView
+                    android:id="@+id/currency_super_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_51"
+                    app:sBottomDividerLineMarginLeft="@dimen/space_15"
+                    app:sBottomDividerLineMarginRight="@dimen/space_10"
+                    app:sLeftIconMarginLeft="@dimen/space_15"
+                    app:sLeftTextColor="@color/three_color"
+                    app:sLeftTextSize="@dimen/space_12"
+                    app:sLeftTextString="@string/currency_string"
+                    app:sLeftTvDrawableHeight="@dimen/space_18"
+                    app:sLeftTvDrawableLeft="@drawable/user_huobi_icon"
+                    app:sLeftTvDrawableWidth="@dimen/space_18"
+                    app:sLeftViewMarginLeft="@dimen/space_15"
+                    app:sRightTvDrawableHeight="@dimen/space_12"
+                    app:sRightTvDrawableRight="@drawable/back_right"
+                    app:sRightTvDrawableWidth="@dimen/space_7"
+                    app:sRightViewMarginRight="@dimen/space_15"
+                    app:sTextViewDrawablePadding="@dimen/space_14" />
+
+                <com.allen.library.SuperTextView
+                    android:id="@+id/language_setting_super_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_51"
+                    app:sBottomDividerLineMarginLeft="@dimen/space_15"
+                    app:sBottomDividerLineMarginRight="@dimen/space_10"
+                    app:sLeftIconMarginLeft="@dimen/space_15"
+                    app:sLeftTextColor="@color/three_color"
+                    app:sLeftTextSize="@dimen/space_12"
+                    app:sLeftTextString="@string/language_setting_string"
+                    app:sLeftTvDrawableHeight="@dimen/space_18"
+                    app:sLeftTvDrawableLeft="@drawable/user_language_icon"
+                    app:sLeftTvDrawableWidth="@dimen/space_18"
+                    app:sLeftViewMarginLeft="@dimen/space_15"
+                    app:sRightTvDrawableHeight="@dimen/space_12"
+                    app:sRightTvDrawableRight="@drawable/back_right"
+                    app:sRightTvDrawableWidth="@dimen/space_7"
+                    app:sRightViewMarginRight="@dimen/space_15"
+                    app:sTextViewDrawablePadding="@dimen/space_14" />
+
+                <com.allen.library.SuperTextView
+                    android:id="@+id/technical_support_super_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_51"
+                    app:sBottomDividerLineMarginLeft="@dimen/space_15"
+                    app:sBottomDividerLineMarginRight="@dimen/space_10"
+                    app:sLeftIconMarginLeft="@dimen/space_15"
+                    app:sLeftTextColor="@color/three_color"
+                    app:sLeftTextSize="@dimen/space_12"
+                    app:sLeftTextString="@string/technical_support_string"
+                    app:sLeftTvDrawableHeight="@dimen/space_18"
+                    app:sLeftTvDrawableLeft="@drawable/user_jishuzhici_icon"
+                    app:sLeftTvDrawableWidth="@dimen/space_18"
+                    app:sLeftViewMarginLeft="@dimen/space_15"
+                    app:sRightTvDrawableHeight="@dimen/space_12"
+                    app:sRightTvDrawableRight="@drawable/back_right"
+                    app:sRightTvDrawableWidth="@dimen/space_7"
+                    app:sRightViewMarginRight="@dimen/space_15"
+                    app:sTextViewDrawablePadding="@dimen/space_14" />
+
+                <com.allen.library.SuperTextView
+                    android:id="@+id/about_me_super_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_51"
+                    app:sBottomDividerLineMarginLeft="@dimen/space_15"
+                    app:sBottomDividerLineMarginRight="@dimen/space_10"
+                    app:sLeftIconMarginLeft="@dimen/space_15"
+                    app:sLeftTextColor="@color/three_color"
+                    app:sLeftTextSize="@dimen/space_12"
+                    app:sLeftTextString="@string/about_us_string"
+                    app:sLeftTvDrawableHeight="@dimen/space_18"
+                    app:sLeftTvDrawableLeft="@drawable/user_me_icon"
+                    app:sLeftTvDrawableWidth="@dimen/space_18"
+                    app:sLeftViewMarginLeft="@dimen/space_15"
+                    app:sRightTvDrawableHeight="@dimen/space_12"
+                    app:sRightTvDrawableRight="@drawable/back_right"
+                    app:sRightTvDrawableWidth="@dimen/space_7"
+                    app:sRightViewMarginRight="@dimen/space_15"
+                    app:sTextViewDrawablePadding="@dimen/space_14" />
+
+                <Button
+                    android:id="@+id/login_out_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/common_dp_28"
+                    android:layout_marginRight="@dimen/common_dp_28"
+                    android:layout_marginTop="@dimen/common_dp_32"
+                    android:layout_marginBottom="@dimen/space_30"
+                    android:background="@drawable/btn_bg"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/common_dp_12"
+                    android:visibility="gone"
+                    android:paddingTop="@dimen/common_dp_12"
+                    android:text="@string/exit_current_wallet_string"
+                    android:textColor="@color/common_white"
+                    android:textSize="@dimen/common_sp_16" />
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+    </LinearLayout>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

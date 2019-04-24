@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/title_bar_color"
+    android:fitsSystemWindows="true"
+    android:clipChildren="true"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_52">
+
+
+        <com.raistone.wallet.sealwallet.widget.TitleBar
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_52" />
+
+        <ImageView
+            android:id="@+id/scaner_code_iv"
+            android:layout_width="@dimen/space_19"
+            android:layout_height="@dimen/space_19"
+            android:layout_marginLeft="@dimen/space_10"
+            android:layout_marginRight="@dimen/space_10"
+            android:background="@drawable/scanner_icon"
+            android:layout_gravity="right|center"
+            />
+
+    </FrameLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/wirte">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/common_white"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/common_dp_6"
+                android:paddingLeft="@dimen/common_dp_18"
+                android:paddingRight="@dimen/common_dp_18"
+                android:paddingTop="@dimen/common_dp_20">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/common_title_color"
+                    android:textSize="@dimen/common_sp_14"
+                    tools:text="ETH" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/balance_string"
+                        android:textColor="@color/common_title_color"
+                        android:textSize="@dimen/common_sp_14" />
+
+                    <TextView
+                        android:id="@+id/tv_balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/common_dp_4"
+                        android:textColor="@color/common_title_color"
+                        android:textSize="@dimen/common_sp_14"
+                        tools:text="1ETH" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/input_money_ed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_name"
+                    android:layout_marginTop="@dimen/common_dp_8"
+                    android:background="@null"
+                    android:hint="@string/input_amount_string"
+                    android:digits="@string/input_type"
+                    android:maxLines="1"
+                    android:textColorHint="@color/edit_text_input_color"
+                    android:textSize="@dimen/common_sp_13" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_dp_1"
+                android:layout_marginLeft="@dimen/common_dp_16"
+                android:layout_marginRight="@dimen/common_dp_16"
+                android:background="@color/common_line_color" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/common_dp_6"
+                android:paddingLeft="@dimen/common_dp_18"
+                android:paddingRight="@dimen/common_dp_18"
+                android:paddingTop="@dimen/common_dp_16">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/collection_address_string"
+                    android:textColor="@color/common_title_color"
+                    android:textSize="@dimen/common_sp_14" />
+
+                <EditText
+                    android:id="@+id/receiptInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_title"
+                    android:layout_marginTop="@dimen/common_dp_8"
+                    android:background="@null"
+                    android:hint="@string/paste_receipt_address"
+                    android:maxLines="1"
+                    android:textColorHint="@color/edit_text_input_color"
+                    android:textSize="@dimen/common_sp_13" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_dp_1"
+                android:layout_marginLeft="@dimen/common_dp_16"
+                android:layout_marginRight="@dimen/common_dp_16"
+                android:background="@color/common_line_color" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/common_dp_8"
+                android:paddingLeft="@dimen/common_dp_18"
+                android:paddingRight="@dimen/common_dp_18"
+                android:paddingTop="@dimen/common_dp_16">
+
+                <TextView
+                    android:id="@+id/tv_receipt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/paying_address_string"
+                    android:textColor="@color/common_title_color"
+                    android:textSize="@dimen/common_sp_14" />
+
+                <TextView
+                    android:id="@+id/tv_receipt_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_receipt"
+                    android:layout_marginTop="@dimen/common_dp_8"
+                    android:textColor="@color/edit_text_input_color"
+                    android:textSize="@dimen/common_sp_13"
+                    tools:text="0x8979qermk009dada3444f4" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_dp_1"
+                android:layout_marginLeft="@dimen/common_dp_16"
+                android:layout_marginRight="@dimen/common_dp_16"
+                android:background="@color/common_line_color" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/common_dp_6"
+                android:paddingLeft="@dimen/common_dp_18"
+                android:paddingRight="@dimen/common_dp_18"
+                android:paddingTop="@dimen/common_dp_16">
+
+                <TextView
+                    android:id="@+id/tv_remark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/remark_string"
+                    android:textColor="@color/common_title_color"
+                    android:textSize="@dimen/common_sp_14" />
+
+                <EditText
+                    android:id="@+id/remark_ed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_remark"
+                    android:layout_marginTop="@dimen/common_dp_6"
+                    android:background="@null"
+                    android:hint="@string/remark_string"
+                    android:textColorHint="@color/edit_text_input_color"
+                    android:textSize="@dimen/common_sp_13" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_dp_1"
+                android:layout_marginLeft="@dimen/common_dp_16"
+                android:layout_marginRight="@dimen/common_dp_16"
+                android:background="@color/common_line_color" />
+
+            <!-- fixme gas price-->
+
+            <TextView
+                android:id="@+id/tv_transfer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_dp_32"
+                android:layout_marginRight="@dimen/common_dp_32"
+                android:layout_marginTop="@dimen/common_dp_20"
+                android:background="@drawable/btn_bg"
+                android:gravity="center"
+                android:paddingBottom="@dimen/common_dp_10"
+                android:paddingTop="@dimen/common_dp_10"
+                android:text="@string/transfer_string"
+                android:textColor="@color/common_white"
+                android:textSize="@dimen/common_sp_14" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>
+

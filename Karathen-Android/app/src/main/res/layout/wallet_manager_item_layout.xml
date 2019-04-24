@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/wallet_bg_rl"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@drawable/item_bg_un_icon"
+    android:layout_height="@dimen/space_80">
+    
+    
+    <ImageView
+        android:id="@+id/item_iv"
+        android:layout_width="@dimen/space_18"
+        android:layout_height="@dimen/space_26"
+        android:background="@drawable/hd_min_icon"
+        android:layout_marginTop="@dimen/space_25"
+        android:layout_marginLeft="@dimen/space_15"
+        />
+
+    <TextView
+        android:id="@+id/wallet_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_18"
+        android:layout_toRightOf="@+id/item_iv"
+        android:layout_marginLeft="@dimen/space_14"
+        android:textSize="@dimen/space_13"
+        android:textColor="@color/three_color"
+        tools:text="ETH-1"
+        />
+
+    <LinearLayout
+        android:id="@+id/not_backup_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_14"
+        android:layout_below="@+id/wallet_name_tv"
+        android:layout_toRightOf="@+id/item_iv"
+        android:visibility="gone"
+        >
+
+        <ImageView
+            android:id="@+id/bank_icon"
+            android:layout_width="@dimen/space_10"
+            android:layout_height="@dimen/space_10"
+            android:background="@drawable/not_bank_icon"
+            android:layout_marginTop="@dimen/space_5"
+            />
+
+        <TextView
+            android:id="@+id/status_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_5"
+            android:textSize="@dimen/space_9"
+            android:textColor="@color/red"
+            android:text="@string/not_backup_string"
+            android:layout_marginTop="@dimen/space_4"
+            tools:text="未备份"
+            />
+
+    </LinearLayout>
+
+
+
+
+    <ImageView
+        android:id="@+id/select_iv"
+        android:layout_width="@dimen/space_13"
+        android:layout_height="9dp"
+        android:background="@drawable/gou_icon"
+        android:layout_toRightOf="@+id/copyLl"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/space_40"
+        android:visibility="gone"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/space_100"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/more_ll"
+        android:layout_width="wrap_content"
+        android:paddingLeft="@dimen/space_10"
+        android:layout_alignParentRight="true"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/more_iv"
+            android:layout_width="@dimen/space_12"
+            android:layout_height="3dp"
+            android:background="@drawable/more_vertical_icon"
+            android:paddingLeft="@dimen/space_15"
+            android:layout_marginTop="@dimen/space_19"
+            android:layout_marginRight="@dimen/space_20"
+            />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

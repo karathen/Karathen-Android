@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:background="@color/wirte"
+        android:layout_width="match_parent"
+        android:layout_height="62dp">
+
+        <ImageView
+            android:id="@+id/assets_icon_iv"
+            android:layout_width="@dimen/sp_28"
+            android:layout_height="@dimen/sp_28"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/space_15"
+            />
+
+        <TextView
+            android:id="@+id/assets_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/assets_icon_iv"
+            android:text="ETH"
+            android:layout_toRightOf="@+id/assets_icon_iv"
+            android:layout_marginLeft="@dimen/space_10"
+            android:textColor="@color/three_color"
+            android:textSize="@dimen/space_12" />
+        <TextView
+            android:id="@+id/token_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ETH"
+            android:layout_toRightOf="@+id/assets_icon_iv"
+            android:layout_below="@+id/assets_name_tv"
+            android:layout_marginTop="@dimen/space_1"
+            android:textColor="#90939b"
+            android:textSize="@dimen/space_9"
+            android:layout_marginLeft="@dimen/space_10"
+            />
+
+
+        <TextView
+            android:id="@+id/assets_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:layout_marginTop="@dimen/space_15"
+            android:layout_marginRight="@dimen/space_15"
+            android:textColor="@color/three_color"
+            android:layout_toLeftOf="@+id/more_ll"
+            android:textSize="@dimen/space_12"
+            />
+
+        <TextView
+            android:id="@+id/assets_rate_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--"
+            android:layout_marginRight="@dimen/space_15"
+            android:layout_below="@+id/assets_price_tv"
+            android:textColor="#90939b"
+            android:textSize="@dimen/space_12"
+            android:layout_toLeftOf="@+id/more_ll"
+            />
+
+
+    <LinearLayout
+        android:id="@+id/more_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+
+        >
+
+        <ImageView
+            android:id="@+id/more_iv"
+            android:layout_width="@dimen/space_18"
+            android:layout_height="5dp"
+            android:background="@drawable/more_vertical_icon"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/space_15"
+            />
+    </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <View style="@style/h_line"
+        android:layout_marginLeft="@dimen/space_15"
+        android:layout_marginRight="@dimen/space_15"
+        />
+
+</LinearLayout>

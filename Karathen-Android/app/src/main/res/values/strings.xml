@@ -1,0 +1,328 @@
+<resources>
+    <string name="app_name">海豹钱包</string>
+    <string name="multi_address_one">多地址支持 更隐私</string>
+    <string name="guide_one_tips">HD (分层确定性) 技术使单个助记词可支持多地址变换,用户可方便选择链上交易地址,使交易更隐私</string>
+
+    <string name="multi_address_two">去中心化  更安全</string>
+    <string name="guide_two_tips"> 助记词或私钥由用户绝对控制，链上资产更安全 \n                                      </string>
+
+    <string name="multi_address_three">多链管理 简单方便</string>
+    <string name="guide_three_tips">一套助记词管理多链资产，让多链资产管理 \n 更简单方便，当前已支持：ETH、NEO等链</string>
+
+    <string name="multi_address_four">多资产类型 更丰富</string>
+    <string name="guide_four_tips">全面支持基于ETH的ERC-20、ERC-721类型的TOKEN和基于NEO的NEP-5类型的TOKEN,交易类型更丰富</string>
+
+
+    <string name="create_wallet">创建钱包</string>
+    <string name="import_wallet">导入钱包</string>
+
+    <string name="input_type">0123456789.</string>
+
+    <string name="setting_pin">设置PIN码</string>
+    <string name="confirm_pin">确认PIN码</string>
+
+    <string name="create_wallet_tips">请输入6位数字</string>
+
+    <string name="read_and_agreed">我已仔细阅读并同意</string>
+
+    <string name="service_and_privacy">《服务与隐私条款》</string>
+
+    <string name="pin_input_error">两次PIN码不一致，请重新输入</string>
+
+    <string name="backup_tips">这12个单词是恢复当前钱包的唯一方法，请将它们保存在安全和隐秘的地方。</string>
+
+    <string name="verify_tips">点击单词，把它们按正确的顺序放在一起</string>
+
+    <string name="complete">完成</string>
+    <string name="next_step">下一步</string>
+    <string name="jump_over">跳过</string>
+
+    <string name="please_enter_a_valid_mnemonic">请输入有效助记词</string>
+    <string name="import_failed">导入失败</string>
+
+    <!-- seal wallet begin -->
+    <string name="wallet_string">钱包</string>
+    <string name="discovery_string">发现</string>
+    <string name="user_center_string">个人中心</string>
+    <string name="HD_wallet_string">HD钱包</string>
+    <string name="reset_pin_string">重置密码</string>
+    <string name="language_setting_string">语言设置</string>
+    <string name="exit_current_wallet_string">退出钱包</string>
+    <string name="old_pin_string">旧密码</string>
+    <string name="new_pin_string">新密码</string>
+    <string name="confirm_pin_string">确认密码</string>
+    <string name="input_old_pin_string">请输入旧密码</string>
+    <string name="input_six_number_string">请输入至少6位密码</string>
+    <string name="confirm_string">确认</string>
+    <string name="determine_string">确定</string>
+    <string name="cancel_string">取消</string>
+    <string name="exit_current_wallet_title">退出当前钱包？</string>
+    <string name="simplified_chinese_string">简体中文</string>
+    <string name="language_english">English</string>
+    <string name="have_backup_string">已备份</string>
+    <string name="not_backup_string">未备份</string>
+    <string name="assets_string">资产</string>
+    <string name="search_string">搜索</string>
+    <string name="add_assets_string">添加资产</string>
+    <string name="address_manager_string">地址管理</string>
+    <string name="add_assets_explain_string">可通过新建添加可用地址</string>
+    <string name="import_address_string">导入地址</string>
+    <string name="import_string">导入</string>
+    <string name="mnemonic_string">助记词</string>
+    <string name="input_mnemonic_string">请输入12个单词，用空格分隔</string>
+    <string name="set_wallet_name_string">有意义的名字可以更好的帮助您管理资产</string>
+    <string name="private_key_string">私钥</string>
+    <string name="create_string">创建</string>
+    <string name="create_new_address_string">新建%1$s地址</string>
+    <string name="hide_zero_assets_string">隐藏无余额资产</string>
+    <string name="assets_sign_string">资产标志:</string>
+    <string name="assets_name_string">资产名称:</string>
+    <string name="assets_type_string">资产类型:</string>
+    <string name="contract_address_string">合约地址</string>
+    <string name="warning_string">注意: 该地址不是您的收币地址</string>
+    <string name="receipt_string">收款</string>
+    <string name="copy_wallet_address">复制钱包地址</string>
+    <string name="type_wallet_string">%1$s钱包</string>
+    <string name="transfer_string">转账</string>
+    <string name="transfer_confirm_string">转账确认</string>
+    <string name="recent_transaction_history_string">最近交易记录</string>
+    <string name="input_amount_string">输入金额</string>
+    <string name="collection_address_string">收款地址</string>
+    <string name="paste_receipt_address">请粘贴收款地址</string>
+    <string name="paying_address_string">付款地址</string>
+    <string name="miner_cost_string">矿工费用</string>
+    <string name="slow_string">慢</string>
+    <string name="fast_string">快</string>
+    <string name="exit_wallet_warning_string">请确认您已备份助记词，
+        丢失助记词可能会使您的钱包面临巨大风险！退出钱包会同时移除所有已导入当前钱包的收款地址</string>
+    <string name="all_string">所有</string>
+    <string name="help_center_string">帮助中心</string>
+    <string name="check_the_net_string">~~请检查网络~~</string>
+    <string name="service_agreement_string">服务协议</string>
+    <string name="privacy_policy_string">隐私政策</string>
+    <string name="check_for_updates">检查更新</string>
+    <string name="contact_us">联系我们</string>
+    <string name="seal_wallet_info_string">海豹钱包是一款去中心化开源的分层确定性轻钱包，
+        具有支持多链、多地址、多资产的特点。</string>
+    <string name="seal_website">http://sealwallet.org</string>
+    <string name="seal_email_string">sealwallet@gmail.com</string>
+    <string name="copy_success_string">复制成功</string>
+    <string name="copy_string">复制</string>
+    <string name="come_soon">Coming soon</string>
+    <string name="ok">好</string>
+    <string name="current_version_string">当前版本: %1$s</string>
+    <string name="cny_string">CNY</string>
+    <string name="usd_string">USD</string>
+    <string name="backup_mnemonic_string">备份助记词</string>
+    <string name="backup_mnemonic_prompt_string">这12个单词是恢复当前钱包的唯一办法，
+        请将他们保存在安全和隐秘的地方</string>
+    <string name="backup_success_string">备份完成</string>
+    <string name="mnemonic_verification_string">助记词验证</string>
+    <string name="skip_string">跳过</string>
+    <string name="click_by_order">请按照正确顺序依次点击</string>
+    <string name="pin_string">PIN</string>
+    <string name="game_string">游戏</string>
+    <string name="shop_string">商城</string>
+    <string name="tools_string">工具</string>
+    <string name="click_to_detail_string">点击进入</string>
+    <string name="item_tag">ITEM_TAG</string>
+    <string name="one_main_title_string">多链管理 简单方便</string>
+    <string name="two_main_title_string">多地址支持 更隐私</string>
+    <string name="three_main_title_string">去中心化 代码开源</string>
+    <string name="four_main_title_string">多资产类型 更丰富</string>
+    <string name="one_sub_title_string">单组助记词管理多链资产，让多链资产管理更简单方便，当前支持：ETH、NEO等链</string>
+    <string name="two_sub_title_string">HD（分层确定性）技术使单组助记词可支持多地址变换，用户可方便选择链上交易地址，使交易更隐私</string>
+    <string name="three_sub_title_string">助记词或私钥由用户绝对控制，链上资产更安全</string>
+    <string name="four_sub_title_string">全面支持基于ETH的ERC-20、ERC-721类型的token\n和基于NEO的NEP-5类型的token，交易类型更丰富</string>
+    <string name="create_wallet_string">创建钱包</string>
+    <string name="import_wallet_string">导入钱包</string>
+    <string name="import_succ_string">导入成功</string>
+    <string name="setting_pin_string">设置密码</string>
+    <string name="seal_agreement_string">我已经阅读并同意 服务及隐私政策</string>
+    <string name="import_by_mnemonic">通过助记词导入</string>
+    <string name="import_mnemonic">输入助记词，用空格分割</string>
+    <string name="service_and_agreement_string">服务及隐私条款</string>
+    <string name="please_click_mnemonics_by_order_string">请按照正确的顺序选择您的助记词</string>
+    <string name="confirm_backup_mnemonics_string">请确认您已备份助记词，
+        丢失助记词可能会使您的钱包面临巨大风险！</string>
+    <string name="address_string">地址</string>
+    <string name="wallet_name_string">钱包名</string>
+    <string name="export_private_key_string">导出私钥</string>
+    <string name="export_wif_string">导出WIF</string>
+    <string name="export_mnemonic_string">导出助记词</string>
+    <string name="export_keystore_string">导出Keystore</string>
+    <string name="browser_query_string">浏览器查询</string>
+    <string name="delete_address_string">删除地址</string>
+    <string name="balance_string">余额:</string>
+    <string name="remark_string">备注</string>
+    <string name="transfer_record_string">转出交易记录</string>
+    <string name="all_record_string">全部交易记录</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="exit_tips">再按一次退出程序</string>
+
+    <!--个人中心 -->
+    <string name="multi_chain_management">多链管理</string>
+    <string name="backup_wallet_string">备份钱包</string>
+    <string name="update_pin_string">修改PIN码</string>
+    <string name="currency_string">货币单位</string>
+    <string name="technical_support_string">技术支持</string>
+    <string name="about_us_string">关于我们</string>
+
+    <string name="scanner_string">扫码</string>
+    <string name="new_string">新建</string>
+    <string name="pin_ma_string">PIN码</string>
+    <string name="six_digitsp_ma_string">请输入6位PIN码</string>
+    <string name="pin_error">密码错误</string>
+    <string name="wif_string">WIF</string>
+    <string name="mingwen_string">明文私钥</string>
+
+    <string name="imoprt_tips_one_string">已有助记词，请勿重复恢复</string>
+    <string name="imoprt_tips_two_string">请输入有效助记词</string>
+    <string name="import_failed_string">钱包导入失败</string>
+    <string name="input_private_key_string">请输入有效私钥</string>
+    <string name="repeat_recovery_string">已有相同私钥，请勿重复恢复</string>
+
+    <string name="input_wif_key_string">请输入有效WIF</string>
+    <string name="repeat_wif_recovery_string">已有相同WIF，请勿重复恢复</string>
+
+    <string name="update_address_name">修改地址名称</string>
+    <string name="update_wallet_name">修改钱包名称</string>
+    <string name="update_name_string">修改名称</string>
+    <string name="name_not_null_string">地址名称不能为空</string>
+    <string name="wallet_name_not_null_string">钱包名称不能为空</string>
+
+    <string name="safety_warning_mnemonic_string">安全警告:助记词将直接关系到您的资产安全,请妥善保存</string>
+    <string name="safety_warning_string">安全警告:私钥未经加密,导出存在风险，建议使用助记词进行备份</string>
+    <string name="safety_warning_wif_string">安全警告:WIF将直接关系到您的资产安全,请妥善保存</string>
+    <string name="safety_warning_keystore_string">安全警告:Keystore将直接关系到您的资产安全,请妥善保存</string>
+
+    <string name="email_address">电邮地址</string>
+    <string name="input_email_address">请输入电邮地址</string>
+
+    <string name="phone_number">手机号码</string>
+    <string name="input_phone_number">请输入手机号码</string>
+
+    <string name="title">标题</string>
+    <string name="input_title_number">请输入标题</string>
+
+    <string name="depict">描述</string>
+    <string name="input_depict">请输入您请求的详情，我们的一名支持人员将尽快答复您</string>
+    <string name="commit_string">提交</string>
+    <string name="submitted_string">已提交</string>
+    <string name="submitted_failed_string">提交失败</string>
+
+    <string name="send_address_string">发送地址</string>
+    <string name="receive_address_string">接收地址</string>
+    <string name="transfer_time_string">交易时间</string>
+    <string name="transfer_Hash_string">交易号 : </string>
+    <string name="transfer_detail_string">交易详情</string>
+
+    <string name="success_string">成功</string>
+    <string name="failure_string">失败</string>
+
+    <string name="loading_string">加载中...</string>
+    <string name="create_loding_string">正在创建中...</string>
+    <string name="unrecognized_qr_code_string">无法识别的二维码</string>
+    <string name="cannot_transaction">不同的链不能进行交易</string>
+
+    <string name="please_enter_the_amount">请输入金额</string>
+    <string name="please_enter_the_correct_amount">请输入正确金额</string>
+
+    <string name="tansfer_amount_cannot_string">转账金额不能为0</string>
+    <string name="insufficient_balance_string">余额不足</string>
+    <string name="collection_address_cannot_be_empty">收款地址不能为空</string>
+    <string name="transfer_middle_string">转账中</string>
+    <string name="transfer_failed">转账失败</string>
+    <string name="add_string">添加</string>
+    <string name="added_string">已添加</string>
+    <string name="image_string">图片</string>
+    <string name="currentVersion_string">当前版本: </string>
+    <string name="chain_tips_string">系统将根据下面排列的顺序进行展示,长按拖拽可进行排序 </string>
+    <string name="add_assets_tips">搜索 Token 名称或合约地址</string>
+    <string name="delete_string">删除</string>
+    <string name="scanner_tips_string">将二维码放入框内，即可自动扫描</string>
+    <string name="photo_permission">授予拍照权限失败</string>
+    <string name="cant_delete">不能删除</string>
+    <string name="please_open_permissions">请开放您的权限</string>
+    <string name="mnemonic_cannot_be_empty">助记词不能为空</string>
+    <string name="private_cannot_be_empty">私钥不能为空</string>
+    <string name="wif_cannot_be_empty">WIF不能为空</string>
+    <string name="verification_mnemonic">验证助记词</string>
+    <string name="show_at_least_one_chain">至少展示一条链</string>
+    <string name="original_pin_code">请输入原始的密码</string>
+    <string name="original_pin_error">原始密码码错误</string>
+    <string name="please_enter_a_new_pin">请输入新密码</string>
+    <string name="please_enter_a_confirmation_pin">请确认密码</string>
+    <string name="two_pin_codes_are_inconsistent">两次密码不一致</string>
+    <string name="successfully_modified">修改成功</string>
+    <string name="no_more_data">暂无更多数据</string>
+    <string name="backup_mnemonic">备份助记词</string>
+    <string name="jumo_over_tips">确定要跳过助记词吗？没有妥善备份助记词将不能恢复已删除的钱包。</string>
+    <string name="please_check_your_mnemonic">请检查您的助记词</string>
+    <string name="claim_gas_string">提取GAS</string>
+    <string name="claim_ong_string">提取ONG</string>
+    <string name="creating_wallet">正在创建钱包...</string>
+    <string name="importing_wallet">正在导入钱包...</string>
+    <string name="existing_address">已有地址</string>
+    <string name="claim_tips">提取 ONG 需向本体主网支付0.01ONG。会自动从用户余额中扣除，余额不足时，提取失败。建议储备足量的ONG后，再进行提取</string>
+    <string name="extractable_string">可提取</string>
+    <string name="not_extractable_string">不可提取</string>
+    <string name="claim_strimg">提取</string>
+    <string name="claim_success_strimg">提取成功</string>
+    <string name="claim_failure_strimg">提取失败</string>
+    <string name="scanner_result_string">扫描结果</string>
+    <string name="input_depict_string">请输入内容</string>
+    <string name="latest_version_string">当前已是最新版本</string>
+    <string name="invalid_address_string">地址无效</string>
+    <string name="transaction_repeated">交易重复，请等待.....</string>
+    <string name="creating_new_address">正在新建地址.....</string>
+    <string name="importing_address">正在导入地址...</string>
+    <string name="language_auto">自动</string>
+    <string name="language_traditional">繁體</string>
+    <string name="check_network">请检查您的网络</string>
+    <string name="Offline_string">离线</string>
+    <string name="cloud_wallet_string">云钱包</string>
+    <string name="hd_wallet_string">HD钱包</string>
+    <string name="hardware_wallet_string">硬件钱包</string>
+
+    <string name="hd_wallet_tips_string">海豹HD钱包是一款去中心化开源的分层确定性轻钱包，用户通过单组助记词即可安全、方便、简单的管理链上数字资产，同时钱包内集成了不同类目区块链应用，让您轻松玩转DAPP</string>
+    <string name="hardware_wallet_tips_string">为大额资产用户及企业级用户量身定制，通过加密算法对密钥进行防护和存储，为您的数字资产提供安全保障，多重防护只为更安全的资产管理</string>
+    <string name="cloud_wallet_tips_string">海豹云钱包专为入门级用户贴心打造，无需导入私钥和助记词，使用用户名密码就能轻松搞定，支持密码找回，站内收发零费用，秒到账</string>
+    <string name="connecting_device">连接设备</string>
+    <string name="login_string">登录</string>
+    <string name="register_string">注册</string>
+
+
+    <string name="wallet_name">钱包名称</string>
+    <string name="please_enter_the_name_of_the_wallet">请输入钱包名称</string>
+    <string name="set_pwd_string">设置密码</string>
+    <string name="please_enter_your_password">请输入至少6位密码</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="pleaseconfirm_password">请确认密码</string>
+    <string name="pwd_tips_info">密码提示信息</string>
+    <string name="input_pwd_tips_info">请输入密码提示信息(选填)</string>
+
+    <string name="input_digits">"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="wallet_manager_string">钱包管理</string>
+
+    <string name="add_wallet_string">添加钱包</string>
+    <string name="reset_password">重置密码</string>
+    <string name="password_hint">密码提示</string>
+    <string name="delete_wallet">删除钱包</string>
+    <string name="none_string">无</string>
+
+    <string name="please_enter_password">请输入密码</string>
+    <string name="password">密码</string>
+
+    <string name="keystore_hint">请输入keystore文本</string>
+    <string name="keystore_pwd">keystore密码</string>
+    <string name="input_keystore_pwd">请输入Keystore密码</string>
+    <string name="stay_tuned">敬请期待</string>
+    <string name="exporting_string">正在导出..</string>
+    <string name="please_check_qrcode_string">当前二维码的收款资产与转账资产不一致，请检查</string>
+    <string name="about_blank">about:blank</string>
+
+</resources>

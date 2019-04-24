@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/title_bar_color"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/wirte"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/privatekey_ed"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_80"
+                android:layout_marginLeft="@dimen/space_15"
+                android:layout_marginRight="@dimen/space_15"
+                android:layout_marginTop="@dimen/space_5"
+                android:background="@drawable/search_ed_bg"
+                android:gravity="top"
+                android:paddingRight="@dimen/space_10"
+                android:hint="@string/mingwen_string"
+                android:maxLines="5"
+                android:paddingLeft="@dimen/space_10"
+                android:paddingTop="@dimen/space_10"
+                android:textSize="@dimen/space_15" />
+
+
+            <RelativeLayout
+                android:id="@+id/coin_type_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/coin_na_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_15"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:text="ETH"
+                    android:textColor="@color/three_color"
+                    android:textSize="@dimen/space_12" />
+
+
+                <View
+                    style="@style/h_line"
+                    android:layout_marginLeft="@dimen/space_15"
+                    android:layout_marginRight="@dimen/space_15"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@+id/coin_na_tv"
+                    android:layout_marginTop="@dimen/space_10" />
+
+                <ImageView
+                    android:layout_width="@dimen/space_7"
+                    android:layout_height="@dimen/space_15"
+                    android:background="@drawable/back_right"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/space_20"
+                    android:layout_centerVertical="true"
+                    android:rotation="90"
+                    />
+
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_15"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:text="@string/wallet_name"
+                    android:textColor="@color/three_color"
+                    android:textSize="@dimen/space_12" />
+
+                <EditText
+                    android:id="@+id/wallet_name_ed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_15"
+                    android:layout_marginTop="@dimen/space_5"
+                    android:background="@null"
+                    android:hint="@string/please_enter_the_name_of_the_wallet"
+                    android:inputType="text"
+                    android:maxLength="20"
+                    android:maxLines="1"
+                    android:textCursorDrawable="@drawable/editcursor"
+                    android:textSize="@dimen/space_12" />
+
+                <View
+                    style="@style/h_line"
+                    android:layout_marginLeft="@dimen/space_15"
+                    android:layout_marginRight="@dimen/space_15"
+                    android:layout_marginTop="@dimen/space_10" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_15"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:text="@string/set_pwd_string"
+                    android:textColor="@color/three_color"
+                    android:textSize="@dimen/space_12" />
+
+                <EditText
+                    android:id="@+id/pwd_ed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_15"
+                    android:layout_marginTop="@dimen/space_5"
+                    android:background="@null"
+                    android:digits="@string/input_digits"
+                    android:hint="@string/please_enter_your_password"
+                    android:inputType="textPassword"
+                    android:maxLength="20"
+                    android:maxLines="1"
+                    android:textCursorDrawable="@drawable/editcursor"
+                    android:textSize="@dimen/space_12" />
+
+                <View
+                    style="@style/h_line"
+                    android:layout_marginLeft="@dimen/space_15"
+                    android:layout_marginRight="@dimen/space_15"
+                    android:layout_marginTop="@dimen/space_10" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_15"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:text="@string/confirm_password"
+                    android:textColor="@color/three_color"
+                    android:textSize="@dimen/space_12" />
+
+                <EditText
+                    android:id="@+id/pwd_confirm_ed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_15"
+                    android:layout_marginTop="@dimen/space_5"
+                    android:background="@null"
+                    android:digits="@string/input_digits"
+                    android:hint="@string/pleaseconfirm_password"
+                    android:inputType="textPassword"
+                    android:maxLength="20"
+                    android:maxLines="1"
+                    android:textCursorDrawable="@drawable/editcursor"
+                    android:textSize="@dimen/space_12" />
+
+                <View
+                    style="@style/h_line"
+                    android:layout_marginLeft="@dimen/space_15"
+                    android:layout_marginRight="@dimen/space_15"
+                    android:layout_marginTop="@dimen/space_10" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_15"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:text="@string/pwd_tips_info"
+                    android:textColor="@color/three_color"
+                    android:textSize="@dimen/space_12" />
+
+                <EditText
+                    android:id="@+id/pwd_tips_ed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_15"
+                    android:layout_marginTop="@dimen/space_5"
+                    android:background="@null"
+                    android:hint="@string/input_pwd_tips_info"
+                    android:inputType="text"
+                    android:maxLength="100"
+                    android:maxLines="1"
+                    android:textCursorDrawable="@drawable/editcursor"
+                    android:textSize="@dimen/space_12" />
+
+                <View
+                    style="@style/h_line"
+                    android:layout_marginLeft="@dimen/space_15"
+                    android:layout_marginRight="@dimen/space_15"
+                    android:layout_marginTop="@dimen/space_10" />
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/import_wallet_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_43"
+                android:layout_marginLeft="@dimen/space_40"
+                android:layout_marginRight="@dimen/space_40"
+                android:layout_marginTop="@dimen/space_40"
+                android:background="@drawable/btn_gray_bg"
+                android:text="@string/import_wallet_string"
+                android:textColor="@color/white"
+                android:textSize="@dimen/space_13" />
+
+            <TextView
+                android:id="@+id/create_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/space_30"
+                android:layout_marginTop="@dimen/space_17"
+                android:text="@string/create_wallet"
+                android:textColor="@color/main_color"
+                android:textSize="@dimen/space_12" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

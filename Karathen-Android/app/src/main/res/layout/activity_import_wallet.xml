@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/title_bar_color"
+    android:fitsSystemWindows="true"
+    android:clipChildren="true"
+    tools:context=".ui.ImportWalletActivity">
+
+    <com.raistone.wallet.sealwallet.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_52"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/wirte"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_dp_18"
+                android:layout_marginTop="@dimen/common_dp_32"
+                android:text="@string/import_by_mnemonic"
+                android:textColor="@color/common_title_color"
+                android:textSize="@dimen/common_sp_14" />
+
+            <EditText
+                android:id="@+id/et_words"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_70"
+                android:layout_marginTop="@dimen/common_dp_8"
+                android:background="@null"
+                android:hint="@string/import_mnemonic"
+                android:textColorHighlight="@color/edit_text_input_color"
+                android:maxLines="4"
+                android:gravity="top"
+                android:paddingTop="@dimen/space_5"
+                android:paddingLeft="@dimen/common_dp_18"
+                android:paddingRight="@dimen/common_dp_18"
+                android:textColor="@color/common_title_color"
+                android:textColorHint="@color/edit_text_input_color"
+                android:textSize="@dimen/common_sp_14"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_dp_1"
+                android:layout_marginLeft="@dimen/common_dp_14"
+                android:layout_marginRight="@dimen/common_dp_14"
+                android:background="@color/common_line_color" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_dp_18"
+                android:layout_marginTop="@dimen/common_dp_20"
+                android:text="@string/setting_pin_string"
+                android:textColor="@color/common_title_color"
+                android:textSize="@dimen/common_sp_14" />
+
+            <EditText
+                android:id="@+id/et_set_pin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_dp_8"
+                android:background="@null"
+                android:hint="@string/input_six_number_string"
+                android:inputType="numberPassword"
+                android:maxLength="6"
+                android:paddingLeft="@dimen/common_dp_18"
+                android:paddingRight="@dimen/common_dp_18"
+                android:singleLine="true"
+                android:textColor="@color/common_title_color"
+                android:textColorHint="@color/edit_text_input_color"
+                android:textSize="@dimen/common_sp_14" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_dp_1"
+                android:layout_marginLeft="@dimen/common_dp_14"
+                android:layout_marginRight="@dimen/common_dp_14"
+                android:layout_marginTop="@dimen/common_dp_6"
+                android:background="@color/common_line_color" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_dp_18"
+                android:layout_marginTop="@dimen/common_dp_32"
+                android:text="@string/confirm_pin_string"
+                android:textColor="@color/common_title_color"
+                android:textSize="@dimen/common_sp_14" />
+
+            <EditText
+                android:id="@+id/et_confirm_pin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_dp_8"
+                android:background="@null"
+                android:hint="@string/input_six_number_string"
+                android:inputType="numberPassword"
+                android:maxLength="6"
+                android:paddingLeft="@dimen/common_dp_18"
+                android:paddingRight="@dimen/common_dp_18"
+                android:singleLine="true"
+                android:textColor="@color/common_title_color"
+                android:textColorHint="@color/edit_text_input_color"
+                android:textSize="@dimen/common_sp_14" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_dp_1"
+                android:layout_marginLeft="@dimen/common_dp_14"
+                android:layout_marginRight="@dimen/common_dp_14"
+                android:layout_marginTop="@dimen/common_dp_6"
+                android:background="@color/common_line_color" />
+
+            <Button
+                android:id="@+id/btn_import"
+                android:background="@drawable/btn_gray_bg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_dp_32"
+                android:layout_marginRight="@dimen/common_dp_32"
+                android:layout_marginTop="@dimen/common_dp_32"
+                android:gravity="center"
+                android:paddingBottom="@dimen/common_dp_10"
+                android:paddingTop="@dimen/common_dp_10"
+                android:text="@string/import_wallet_string"
+                android:textColor="@color/common_white"
+                android:textSize="@dimen/common_sp_14" />
+
+            <TextView
+                android:id="@+id/tv_create"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/common_dp_10"
+                android:text="@string/create_wallet_string"
+                android:textColor="@color/common_blue_color"
+                android:textSize="@dimen/common_sp_14"
+                tools:text="@string/create_wallet" />
+
+        </LinearLayout>
+
+
+</LinearLayout>

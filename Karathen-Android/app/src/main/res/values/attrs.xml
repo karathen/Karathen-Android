@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TitleBar">
+        <attr name="aTitle" format="string" />
+        <attr name="aSub" format="string" />
+        <attr name="aIcon" format="reference" />
+        <attr name="aMsg" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="XTabLayout">
+        <attr name="x_tabIndicatorAnimation" format="boolean" />
+        <attr name="x_tabIndicatorColor" format="color" />
+        <attr name="x_tabIndicatorHeight" format="dimension" />
+        <attr name="x_tabIndicatorWidth" format="dimension" />
+        <attr name="x_tabContentStart" format="dimension" />
+        <attr name="x_tabBackground" format="reference" />
+        <attr name="x_tabMode">
+            <enum name="scrollable" value="0" />
+            <enum name="fixed" value="1" />
+        </attr>
+        <attr name="x_tabGravity">
+            <enum name="fill" value="0" />
+            <enum name="center" value="1" />
+        </attr>
+        <attr name="x_tabMinWidth" format="dimension" />
+        <attr name="x_tabMaxWidth" format="dimension" />
+        <attr name="x_tabTextAppearance" format="reference" />
+        <attr name="x_tabTextColor" format="color" />
+        <attr name="x_tabSelectedTextColor" format="color" />
+        <attr name="x_tabPaddingStart" format="dimension" />
+        <attr name="x_tabPaddingTop" format="dimension" />
+        <attr name="x_tabPaddingEnd" format="dimension" />
+        <attr name="x_tabPaddingBottom" format="dimension" />
+        <attr name="x_tabPadding" format="dimension" />
+        <attr name="x_indicatorMarginTop" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="XTabItem">
+        <attr name="android:text" />
+        <attr name="android:icon" />
+        <attr name="android:layout" />
+    </declare-styleable>
+
+    <declare-styleable name="SignSeekBar">
+        <attr name="ssb_min" format="float|reference" /> <!--min < max, default: 0.0f-->
+        <attr name="ssb_max" format="float|reference" /> <!--min < max, default: 100.0f-->
+        <attr name="ssb_progress" format="float|reference" /> <!--real time progress value, default: min-->
+        <attr name="ssb_is_float_type" format="boolean" /> <!--support for float type-->
+        <attr name="ssb_track_size" format="dimension|reference" /> <!--height of right-track(on the right of thumb), default: 2dp-->
+        <!--height of left-track(on the left of thumb), default: 2dp higher than right-track's height-->
+        <attr name="ssb_second_track_size" format="dimension|reference" />
+        <attr name="ssb_thumb_radius" format="dimension|reference" /> <!--radius of thumb, default: 2dp higher than left-track's height-->
+        <!--radius of thumb when be dragging, default: 2 times of left-track's height-->
+        <attr name="ssb_thumb_radius_on_dragging" format="dimension|reference" />
+        <attr name="ssb_track_color" format="color|reference" /> <!--color of right-track, default: R.color.colorPrimary-->
+        <attr name="ssb_second_track_color" format="color|reference" /> <!--color of left-track, default: R.color.colorAccent-->
+        <attr name="ssb_thumb_color" format="color|reference" /> <!--color of thumb, default: same as left-track's color-->
+        <attr name="ssb_section_count" format="integer|reference" /> <!--shares of whole progress(max - min), default: 10-->
+        <attr name="ssb_show_section_mark" format="boolean" /> <!--show demarcation points or not, default: false-->
+        <attr name="ssb_auto_adjust_section_mark" format="boolean" /> <!--auto scroll to the nearest section_mark or not, default: false-->
+        <attr name="ssb_show_section_text" format="boolean" /> <!--show section-text or not, default: false-->
+        <attr name="ssb_section_text_size" format="dimension|reference" /> <!--text size of section-text, default: 14sp-->
+        <attr name="ssb_section_text_color" format="color|reference" /> <!--text color of section-text, default: same as right-track's color-->
+        <!--text position of section-text relative to track, sides, bottom_sides, below_section_mark, default: sides-->
+        <attr name="ssb_section_text_position">
+            <enum name="sides" value="0" />
+            <enum name="bottom_sides" value="1" />
+            <enum name="below_section_mark" value="2" />
+        </attr>
+        <attr name="ssb_section_text_interval" format="integer" /> <!--the interval of two section-text, default: 1-->
+        <attr name="ssb_show_thumb_text" format="boolean" /> <!--show real time progress-text under thumb or not, default: false-->
+        <attr name="ssb_thumb_text_size" format="dimension|reference" /> <!--text size of progress-text, default: 14sp-->
+        <attr name="ssb_thumb_text_color" format="color|reference" /> <!--text color of progress-text, default: same as left-track's color-->
+        <attr name="ssb_show_progress_in_float" format="boolean" /> <!--show Sign-progress in float or not, default: false-->
+        <attr name="ssb_touch_to_seek" format="boolean" /> <!--touch anywhere on track to quickly seek, default: false-->
+        <attr name="ssb_seek_by_section" format="boolean" /> <!--seek by section, the progress may not be linear, default: false-->
+        <attr name="ssb_sign_color" format="color|reference" /> <!--color of sign, default: same as left-track's color-->
+        <attr name="ssb_sign_border_color" format="color|reference" /> <!--color of sign, border-->
+        <attr name="ssb_sign_show_border" format="boolean" /> <!--color of sign, default: same as left-track's color-->
+        <attr name="ssb_sign_text_size" format="dimension|reference" /> <!--text size of sign-progress, default: 14sp-->
+        <attr name="ssb_sign_border_size" format="dimension|reference" /> <!--border size, default: 1dp-->
+        <attr name="ssb_sign_text_color" format="color|reference" /> <!--text color of sign-progress, default: #ffffffff-->
+        <attr name="ssb_anim_duration" format="integer" /> <!--duration of animation, default: 200ms-->
+        <attr name="ssb_show_sign" format="boolean" /> <!--hide sign, default: false-->
+        <attr name="ssb_text_space" format="dimension|reference" /><!--default:2dp-->
+        <attr name="ssb_sides_labels" format="reference" /><!--default:null-->
+        <attr name="ssb_thumb_bg_alpha" format="float|reference" /> <!--0.0f-1.0f, default: 0.2f-->
+        <attr name="ssb_thumb_ratio" format="float|reference" /> <!--0.0f-1.0f, default: 0.7f-->
+        <attr name="ssb_show_thumb_shadow" format="boolean" /> <!--0.0f-1.0f, default: false-->
+        <attr name="ssb_sign_arrow_autofloat" format="boolean" /> <!--sign arrow auto float, default: true-->
+        <attr name="ssb_sign_height" format="dimension|reference" /> <!--sign height,default:22dp-->
+        <attr name="ssb_sign_width" format="dimension|reference" /> <!--sign_width ,default:72dp-->
+        <attr name="ssb_sign_arrow_height" format="dimension|reference" /> <!--sign arrow height ,default:3dp-->
+        <attr name="ssb_sign_arrow_width" format="dimension|reference" /> <!--sign arrow width, default:5dp-->
+        <attr name="ssb_sign_round" format="dimension|reference" /> <!--sign round, default:3dp-->
+        <attr name="ssb_unusable_color" format="color|reference" /> <!--unusable text color, default:Color.GRAY-->
+    </declare-styleable>
+
+
+    <!-- 手势解锁自定义属性 -->
+    <declare-styleable name="GestureLockView">
+        <!-- 点半径比例（取值范围[0F,1F]） -->
+        <attr name="radius_ratio" format="float" />
+        <!-- 线厚度（粗细值） -->
+        <attr name="line_thickness" format="dimension" />
+        <!-- 正常状态画笔颜色 -->
+        <attr name="normal_color" format="color|reference" />
+        <!-- 按下状态画笔颜色 -->
+        <attr name="press_color" format="color|reference" />
+        <!-- 出错状态画笔颜色 -->
+        <attr name="error_color" format="color|reference" />
+        <!-- 是否显示辅助线 -->
+        <attr name="is_show_guides" format="boolean" />
+        <!-- 连线是否绘制在顶部 -->
+        <attr name="is_line_top" format="boolean" />
+        <!-- 是否使用动画 -->
+        <attr name="is_use_animation" format="boolean" />
+        <!-- 动画时长 -->
+        <attr name="animation_duration" format="integer" />
+        <!-- 动画缩放类型 -->
+        <attr name="animation_scale_mode">
+            <enum name="normal" value="0" /> <!-- 正常缩放 -->
+            <enum name="reverse" value="1" /> <!-- 反转缩放 -->
+        </attr>
+        <!-- 动画缩放比例 -->
+        <attr name="animation_scale_rate" format="float" />
+        <!-- 是否使用震动 -->
+        <attr name="is_use_vibrate" format="boolean" />
+        <!-- 震动时长 -->
+        <attr name="vibrate_duration" format="integer" />
+        <!-- 正常状态点图片 -->
+        <attr name="normal_image" format="reference" />
+        <!-- 按下状态点图片 -->
+        <attr name="press_image" format="reference" />
+        <!-- 出错状态点图片 -->
+        <attr name="error_image" format="reference" />
+    </declare-styleable>
+
+    <!-- 手势解锁缩略图自定义属性 -->
+    <declare-styleable name="GestureLockThumbnailView">
+        <!-- 点半径比例（取值范围[0F,1F]） -->
+        <attr name="thumbnail_ratio" format="float" />
+        <!-- 缩略图颜色 -->
+        <attr name="thumbnail_color" format="color|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="SmoothCheckBox">
+        <attr name="duration" format="integer" />
+        <attr name="stroke_width" format="dimension" />
+        <attr name="color_tick" format="color" />
+        <attr name="color_checked" format="color" />
+        <attr name="color_unchecked" format="color" />
+        <attr name="color_unchecked_stroke" format="color" />
+    </declare-styleable>
+
+
+    <declare-styleable name="UltraViewPager">
+        <attr name="upv_autoscroll" format="integer" />
+        <attr name="upv_infiniteloop" format="boolean" />
+        <attr name="upv_ratio" format="float" />
+        <attr name="upv_scrollmode" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+        <attr name="upv_disablescroll" format="enum">
+            <enum name="none" value="0" />
+            <enum name="backward" value="1" />
+            <enum name="forward" value="2" />
+        </attr>
+        <attr name="upv_multiscreen" format="float" />
+        <attr name="upv_automeasure" format="boolean" />
+        <attr name="upv_itemratio" format="float" />
+    </declare-styleable>
+
+   <!-- <declare-styleable name="SignSeekBar">
+        <attr name="ssb_min" format="float|reference"/> &lt;!&ndash;min < max, default: 0.0f&ndash;&gt;
+        <attr name="ssb_max" format="float|reference"/> &lt;!&ndash;min < max, default: 100.0f&ndash;&gt;
+        <attr name="ssb_progress" format="float|reference"/> &lt;!&ndash;real time progress value, default: min&ndash;&gt;
+        <attr name="ssb_is_float_type" format="boolean"/> &lt;!&ndash;support for float type&ndash;&gt;
+        <attr name="ssb_track_size" format="dimension|reference"/> &lt;!&ndash;height of right-track(on the right of thumb), default: 2dp&ndash;&gt;
+        &lt;!&ndash;height of left-track(on the left of thumb), default: 2dp higher than right-track's height&ndash;&gt;
+        <attr name="ssb_second_track_size" format="dimension|reference"/>
+        <attr name="ssb_thumb_radius" format="dimension|reference"/> &lt;!&ndash;radius of thumb, default: 2dp higher than left-track's height&ndash;&gt;
+        &lt;!&ndash;radius of thumb when be dragging, default: 2 times of left-track's height&ndash;&gt;
+        <attr name="ssb_thumb_radius_on_dragging" format="dimension|reference"/>
+        <attr name="ssb_track_color" format="color|reference"/> &lt;!&ndash;color of right-track, default: R.color.colorPrimary&ndash;&gt;
+        <attr name="ssb_second_track_color" format="color|reference"/> &lt;!&ndash;color of left-track, default: R.color.colorAccent&ndash;&gt;
+        <attr name="ssb_thumb_color" format="color|reference"/> &lt;!&ndash;color of thumb, default: same as left-track's color&ndash;&gt;
+        <attr name="ssb_section_count" format="integer|reference"/> &lt;!&ndash;shares of whole progress(max - min), default: 10&ndash;&gt;
+        <attr name="ssb_show_section_mark" format="boolean"/> &lt;!&ndash;show demarcation points or not, default: false&ndash;&gt;
+        <attr name="ssb_auto_adjust_section_mark" format="boolean"/> &lt;!&ndash;auto scroll to the nearest section_mark or not, default: false&ndash;&gt;
+        <attr name="ssb_show_section_text" format="boolean"/> &lt;!&ndash;show section-text or not, default: false&ndash;&gt;
+        <attr name="ssb_section_text_size" format="dimension|reference"/> &lt;!&ndash;text size of section-text, default: 14sp&ndash;&gt;
+        <attr name="ssb_section_text_color" format="color|reference"/> &lt;!&ndash;text color of section-text, default: same as right-track's color&ndash;&gt;
+        &lt;!&ndash;text position of section-text relative to track, sides, bottom_sides, below_section_mark, default: sides&ndash;&gt;
+        <attr name="ssb_section_text_position">
+            <enum name="sides" value="0"/>
+            <enum name="bottom_sides" value="1"/>
+            <enum name="below_section_mark" value="2"/>
+        </attr>
+        <attr name="ssb_section_text_interval" format="integer"/> &lt;!&ndash;the interval of two section-text, default: 1&ndash;&gt;
+        <attr name="ssb_show_thumb_text" format="boolean"/> &lt;!&ndash;show real time progress-text under thumb or not, default: false&ndash;&gt;
+        <attr name="ssb_thumb_text_size" format="dimension|reference"/> &lt;!&ndash;text size of progress-text, default: 14sp&ndash;&gt;
+        <attr name="ssb_thumb_text_color" format="color|reference"/> &lt;!&ndash;text color of progress-text, default: same as left-track's color&ndash;&gt;
+        <attr name="ssb_show_progress_in_float" format="boolean"/> &lt;!&ndash;show Sign-progress in float or not, default: false&ndash;&gt;
+        <attr name="ssb_touch_to_seek" format="boolean"/> &lt;!&ndash;touch anywhere on track to quickly seek, default: false&ndash;&gt;
+        <attr name="ssb_seek_by_section" format="boolean"/> &lt;!&ndash;seek by section, the progress may not be linear, default: false&ndash;&gt;
+        <attr name="ssb_sign_color" format="color|reference"/> &lt;!&ndash;color of sign, default: same as left-track's color&ndash;&gt;
+        <attr name="ssb_sign_border_color" format="color|reference"/> &lt;!&ndash;color of sign, border&ndash;&gt;
+        <attr name="ssb_sign_show_border" format="boolean"/> &lt;!&ndash;color of sign, default: same as left-track's color&ndash;&gt;
+        <attr name="ssb_sign_text_size" format="dimension|reference"/> &lt;!&ndash;text size of sign-progress, default: 14sp&ndash;&gt;
+        <attr name="ssb_sign_border_size" format="dimension|reference"/> &lt;!&ndash;border size, default: 1dp&ndash;&gt;
+        <attr name="ssb_sign_text_color" format="color|reference"/> &lt;!&ndash;text color of sign-progress, default: #ffffffff&ndash;&gt;
+        <attr name="ssb_anim_duration" format="integer"/> &lt;!&ndash;duration of animation, default: 200ms&ndash;&gt;
+        <attr name="ssb_show_sign" format="boolean"/> &lt;!&ndash;hide sign, default: false&ndash;&gt;
+        <attr name="ssb_text_space" format="dimension|reference"/>&lt;!&ndash;default:2dp&ndash;&gt;
+        <attr name="ssb_sides_labels" format="reference"/>&lt;!&ndash;default:null&ndash;&gt;
+        <attr name="ssb_thumb_bg_alpha" format="float|reference"/> &lt;!&ndash;0.0f-1.0f, default: 0.2f&ndash;&gt;
+        <attr name="ssb_thumb_ratio" format="float|reference"/> &lt;!&ndash;0.0f-1.0f, default: 0.7f&ndash;&gt;
+        <attr name="ssb_show_thumb_shadow" format="boolean"/> &lt;!&ndash;0.0f-1.0f, default: false&ndash;&gt;
+        <attr name="ssb_sign_arrow_autofloat" format="boolean"/> &lt;!&ndash;sign arrow auto float, default: true&ndash;&gt;
+        <attr name="ssb_sign_height" format="dimension|reference"/> &lt;!&ndash;sign height,default:22dp&ndash;&gt;
+        <attr name="ssb_sign_width" format="dimension|reference"/> &lt;!&ndash;sign_width ,default:72dp&ndash;&gt;
+        <attr name="ssb_sign_arrow_height" format="dimension|reference"/> &lt;!&ndash;sign arrow height ,default:3dp&ndash;&gt;
+        <attr name="ssb_sign_arrow_width" format="dimension|reference"/> &lt;!&ndash;sign arrow width, default:5dp&ndash;&gt;
+        <attr name="ssb_sign_round" format="dimension|reference"/> &lt;!&ndash;sign round, default:3dp&ndash;&gt;
+        <attr name="ssb_unusable_color" format="color|reference"/> &lt;!&ndash;unusable text color, default:Color.GRAY&ndash;&gt;
+    </declare-styleable>-->
+
+</resources>

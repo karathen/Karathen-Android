@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/main_color"
+    tools:context=".ui.ScannerActivity">
+
+
+
+    <com.mylhyl.zxing.scanner.ScannerView
+        android:id="@+id/scanner_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_52"
+        android:background="@color/main_color">
+
+
+        <RelativeLayout
+            android:id="@+id/back_ll"
+            android:layout_width="@dimen/space_50"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ic_back"
+                android:layout_width="@dimen/space_12"
+                android:layout_height="@dimen/space_12"
+                android:layout_centerInParent="true"
+                android:contentDescription="@null"
+                android:scaleType="centerInside"
+                android:src="@drawable/icon_back_write" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/wirte"
+
+            android:textSize="@dimen/text_size_15"
+            android:visibility="visible"
+            android:text="@string/scanner_string" />
+
+
+
+    </RelativeLayout>
+
+</FrameLayout>

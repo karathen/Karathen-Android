@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/wirte"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_60">
+
+        <ImageView
+            android:id="@+id/icon_iv"
+            android:layout_width="@dimen/space_26"
+            android:layout_height="@dimen/space_22"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/space_15"
+            />
+
+        <TextView
+            android:id="@+id/content_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="转账-08fkdlqqjksDKhhhhhhhhhhhhhhhhhhhhhhh"
+            android:textSize="@dimen/space_12"
+            android:layout_toLeftOf="@+id/value_tv"
+            android:textColor="@color/three_color"
+            android:layout_marginRight="@dimen/space_15"
+            android:ellipsize="middle"
+            android:maxLength="100"
+            android:singleLine="true"
+            android:layout_toRightOf="@+id/icon_iv"
+            android:layout_alignTop="@+id/icon_iv"
+            android:layout_marginLeft="@dimen/space_25"
+            />
+
+        <TextView
+            android:id="@+id/time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2018-06-13    19:57"
+            android:textColor="#c6c5cb"
+            android:layout_below="@+id/content_tv"
+            android:layout_marginLeft="@dimen/space_25"
+            android:textSize="@dimen/space_10"
+            android:layout_toRightOf="@+id/icon_iv"
+            android:layout_marginTop="@dimen/space_7"
+            />
+
+        <TextView
+            android:id="@+id/value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            tools:text="-0.000001"
+            android:layout_alignTop="@+id/content_tv"
+            android:textSize="@dimen/space_12"
+            android:textColor="@color/three_color"
+            android:layout_marginRight="@dimen/space_15"
+            />
+
+        <TextView
+            android:id="@+id/status_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="status"
+            android:layout_below="@+id/value_tv"
+            android:layout_alignParentRight="true"
+            android:textSize="@dimen/space_12"
+            android:textColor="@color/main_color"
+            android:layout_marginRight="@dimen/space_15"
+            />
+    </RelativeLayout>
+
+    <View style="@style/h_line"
+        android:layout_marginLeft="@dimen/space_15"
+        android:layout_marginRight="@dimen/space_15"
+        />
+
+</LinearLayout>

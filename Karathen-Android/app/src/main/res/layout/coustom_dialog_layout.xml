@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:background="@drawable/custom_dialog_bot_white"
+    android:layout_marginLeft="@dimen/space_45"
+    android:layout_marginRight="@dimen/space_45"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/please_enter_password"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/space_20"
+            android:textStyle="bold"
+            android:textColor="@color/three_color"
+            android:textSize="@dimen/space_15"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/six_digitsp_ma_string"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/space_8"
+            android:textColor="@color/three_color"
+            android:textSize="@dimen/space_11"
+            />
+        
+        <EditText
+            android:id="@+id/pin_ed"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_22"
+            android:background="@drawable/edit_ractangle_be"
+            android:layout_marginTop="@dimen/space_20"
+            android:inputType="textPassword"
+            android:digits="@string/input_digits"
+            android:layout_marginBottom="@dimen/space_12"
+            android:layout_marginLeft="@dimen/space_15"
+            android:layout_marginRight="@dimen/space_15"
+            android:hint="@string/password"
+            android:textSize="@dimen/space_10"
+            android:paddingLeft="@dimen/space_5"
+            android:maxLength="20"
+            />
+
+        <View style="@style/h_line"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_40"
+
+            >
+
+            <TextView
+                android:id="@+id/cancel_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/cancel_string"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textSize="@dimen/space_15"
+                android:gravity="center"
+                android:textColor="@color/main_color"
+                />
+
+            <View style="@style/v_line"/>
+
+            <TextView
+                android:id="@+id/confirm_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/confirm_string"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="@dimen/space_15"
+                android:layout_gravity="center"
+                android:textColor="@color/red"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

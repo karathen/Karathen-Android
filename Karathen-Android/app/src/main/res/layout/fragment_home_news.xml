@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/smartrefreshlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:srlEnableHeaderTranslationContent="false"
+    app:srlEnableLoadMore="false"
+    app:srlEnablePreviewInEditMode="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_52">
+
+            <ImageView
+                android:id="@+id/qr_code_address"
+                android:layout_width="@dimen/space_19"
+                android:layout_height="@dimen/space_19"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/space_10"
+                android:background="@drawable/qr_code_icon" />
+
+            <LinearLayout
+                android:id="@+id/wallet_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/wallet_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="ETH"
+                    android:textColor="@color/home_title_color"
+                    android:textSize="@dimen/space_15"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="@dimen/space_17"
+                    android:layout_height="@dimen/space_11"
+                    android:layout_marginLeft="@dimen/space_5"
+                    android:background="@drawable/more_icon" />
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/scaner_code_iv"
+                android:layout_width="@dimen/space_19"
+                android:layout_height="@dimen/space_19"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/space_10"
+                android:layout_marginRight="@dimen/space_10"
+                android:background="@drawable/scanner_icon" />
+
+        </RelativeLayout>
+
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/wirte"
+                android:orientation="vertical">
+
+
+                <View
+                    style="@style/h_line"
+                    android:visibility="gone" />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="158dp">
+
+                    <ImageView
+                        android:id="@+id/left_iv"
+                        android:layout_width="15dp"
+                        android:layout_height="@dimen/dp_100"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/home_left_item_bg" />
+
+
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/viewpager"
+                        android:layout_width="match_parent"
+                        android:layout_height="158dp"
+                        android:layout_marginLeft="@dimen/space_30"
+                        android:layout_marginRight="@dimen/space_30" />
+                    <!-- <com.raistone.wallet.sealwallet.ultraviewpager.UltraViewPager
+                         android:id="@+id/viewpager"
+                         android:layout_width="match_parent"
+                         android:layout_height="158dp"/>-->
+
+                    <ImageView
+                        android:id="@+id/right_iv"
+                        android:layout_width="15dp"
+                        android:layout_height="@dimen/dp_100"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/home_right_item_bg" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/assets_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_20">
+
+                    <LinearLayout
+                        android:id="@+id/assets_filter_ll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/assets_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/space_10"
+                            android:text="@string/assets_string"
+                            android:textColor="@color/hone_ass_color"
+                            android:textSize="@dimen/space_15" />
+
+                        <ImageView
+                            android:id="@+id/three_icon"
+                            android:layout_width="@dimen/space_3"
+                            android:layout_height="@dimen/space_12"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/space_5"
+                            android:layout_toRightOf="@+id/assets_tv"
+                            android:background="@drawable/three_icon" />
+
+                    </LinearLayout>
+
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/space_21"
+                        android:layout_marginLeft="1dp"
+                        android:layout_toLeftOf="@+id/plus_ll"
+                        android:layout_toRightOf="@+id/assets_filter_ll"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true">
+
+                        <EditText
+                            android:id="@+id/search_ed"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/space_21"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/space_25"
+                            android:background="@drawable/search_ed_bg"
+                            android:gravity="center|left"
+                            android:hint="ETH"
+                            android:imeOptions="actionSearch"
+                            android:maxLength="20"
+                            android:maxLines="1"
+                            android:paddingLeft="@dimen/space_10"
+                            android:singleLine="true"
+                            android:textSize="@dimen/space_10" />
+
+                        <ImageView
+                            android:layout_width="@dimen/space_11"
+                            android:layout_height="@dimen/space_11"
+                            android:layout_gravity="right|center"
+                            android:layout_marginRight="@dimen/space_10"
+                            android:background="@drawable/search_icon"
+
+                            />
+
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:id="@+id/plus_ll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:paddingLeft="@dimen/space_20">
+
+
+                        <ImageView
+                            android:id="@+id/plus_iv"
+                            android:layout_width="@dimen/space_16"
+                            android:layout_height="@dimen/space_16"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/space_15"
+                            android:background="@drawable/plus_icon" />
+
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <!-- <android.support.v7.widget.RecyclerView
+                     android:layout_marginTop="@dimen/space_10"
+                     android:id="@+id/recyclerview"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent" />-->
+                <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
+                    android:id="@+id/recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/space_10"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+    </LinearLayout>
+
+
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>
