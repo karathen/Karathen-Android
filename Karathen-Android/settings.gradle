@@ -1,1 +1,1 @@
-include ':app', ':neoutils', ':ontolib',':picker', ':glide',':trust-sdk-client'//, ':FlycoTabLayout_Lib'
+include ':app', ':neoutils', ':ontolib'

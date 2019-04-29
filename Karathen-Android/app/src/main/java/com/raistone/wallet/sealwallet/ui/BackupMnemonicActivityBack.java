@@ -18,10 +18,9 @@ import com.raistone.wallet.sealwallet.entity.AssetsInfo;
 import com.raistone.wallet.sealwallet.entity.ChainInfo;
 import com.raistone.wallet.sealwallet.entity.MultiChainInfo;
 import com.raistone.wallet.sealwallet.entity.WalletInfo;
-import com.raistone.wallet.sealwallet.utils.ETHWalletUtils;
+import com.raistone.wallet.sealwallet.utils.ChainAddressCreateManager;
 import com.raistone.wallet.sealwallet.utils.Md5Utils;
 import com.raistone.wallet.sealwallet.utils.MultiChainCreateManager;
-import com.raistone.wallet.sealwallet.utils.StatusBarUtil;
 import com.raistone.wallet.sealwallet.widget.TitleBar;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -76,8 +75,6 @@ public class BackupMnemonicActivityBack extends BaseActivity {
         setTitle(titleBar, getResources().getString(R.string.backup_mnemonic), true);
 
         context=this;
-        //StatusBarUtil.setTransparent(this);
-
         GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
 
         recyclerview.setLayoutManager(layoutManager);
@@ -113,7 +110,6 @@ public class BackupMnemonicActivityBack extends BaseActivity {
     public void initData() {
 
 
-        //判断是否是由备份过来
         if (!isBack && !userCenter) {
 
             walletInfo = new WalletInfo();
@@ -122,8 +118,6 @@ public class BackupMnemonicActivityBack extends BaseActivity {
             codesStr = MnemonicCode.generateMnemonicCodesStr();
 
             accountId = Md5Utils.md5(codesStr);
-
-            //生成链表
 
             for (int i = 0; i < chainDatas.size(); i++) {
                 ChainInfo chainInfo = new ChainInfo();
@@ -135,7 +129,6 @@ public class BackupMnemonicActivityBack extends BaseActivity {
                 chainInfo.insert();
             }
 
-            //根据链创建地址
             chainInfos = ChainInfoDaoUtils.findAllChains();
 
             String[] mnemon = codesStr.split(" ");
@@ -159,7 +152,7 @@ public class BackupMnemonicActivityBack extends BaseActivity {
                                     eth.setName("ETH-1");
                                     eth.setHDWallet(true);
                                     eth.setCurrent(true);
-                                    eth.setType_flag(ETHWalletUtils.ETH_JAXX_TYPE);
+                                    eth.setType_flag(ChainAddressCreateManager.ETH_JAXX_TYPE);
                                     eth.setWalletType(1);
                                     eth.setAccountId(Md5Utils.md5(codesStr));
                                     LocalDataUtils.setAddresByEthAssets(eth.getAddress(), context);
@@ -235,13 +228,6 @@ public class BackupMnemonicActivityBack extends BaseActivity {
 
     }
 
-    /**
-     * 判断创建类型
-     *
-     * @param coinType
-     * @param address
-     */
-
     public void setAddresByAssets(String coinType, String address) {
 
         List<AssetsInfo.DataBean> allAssets = AssetsDaoUtils.findAllAssets();
@@ -260,17 +246,12 @@ public class BackupMnemonicActivityBack extends BaseActivity {
     public void onViewClicked() {
 
         nextBtn.setClickable(false);
-        /**
-         * 下一步
-         */
-        //是否是创建进入
+
         if (!isBack && !userCenter) {
-            //EventBus.getDefault().post(new MessageEvent(ethWallet.getAddress()));
             Router.build("MnemonicVerifyActivity").with("words", codesStr).with("ethWallet",walletInfo).go(this);
             return;
         }
         if (ethWalletBack != null && userCenter) {
-            //EventBus.getDefault().post(new MessageEvent(ethWalletBack.getAddress()));
             Router.build("MnemonicVerifyActivity").with("ethWallet", ethWalletBack).with("words", ethWalletBack.getMnemonic()).go(this);
         }
     }

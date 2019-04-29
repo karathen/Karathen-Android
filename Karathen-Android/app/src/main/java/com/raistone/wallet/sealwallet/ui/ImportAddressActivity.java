@@ -42,10 +42,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * 导入地址
- */
-
 @Route(value = "ImportAddressActivity")
 public class ImportAddressActivity extends BaseActivity {
 
@@ -73,7 +69,7 @@ public class ImportAddressActivity extends BaseActivity {
     private String coinType;
     private String defName;
     private String pwd;
-    private int defMnemonic = 0;//0 助记词 1 私钥导入 2 WIF 导入 默认为助记词导入
+    private int defMnemonic = 0;
     private Context mContext;
     private String pinValue;
     private int privateKeyLength;
@@ -153,9 +149,7 @@ public class ImportAddressActivity extends BaseActivity {
     @OnClick({R.id.mnemonic_tv, R.id.private_tv, R.id.create_btn, R.id.wif_tv, R.id.scaner_code_iv})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            /**
-             * 助记词
-             */
+
             case R.id.mnemonic_tv:
                 mnemonicTv.setBackground(getResources().getDrawable(R.drawable.tag_right_top_bg));
                 privateTv.setBackground(getResources().getDrawable(R.drawable.tag_unselect_bg));
@@ -163,9 +157,7 @@ public class ImportAddressActivity extends BaseActivity {
                 defMnemonic = 0;
                 mnemonicOrPrivatekeyEd.setHint(R.string.input_mnemonic_string);
                 break;
-            /**
-             * 私钥导入
-             */
+
             case R.id.private_tv:
                 privateTv.setBackground(getResources().getDrawable(R.drawable.tag_right_top_bg));
                 mnemonicTv.setBackground(getResources().getDrawable(R.drawable.tag_unselect_bg));
@@ -173,9 +165,7 @@ public class ImportAddressActivity extends BaseActivity {
                 defMnemonic = 1;
                 mnemonicOrPrivatekeyEd.setHint(R.string.mingwen_string);
                 break;
-            /**
-             * wif导入
-             */
+
             case R.id.wif_tv:
                 wifTv.setBackground(getResources().getDrawable(R.drawable.tag_right_top_bg));
                 privateTv.setBackground(getResources().getDrawable(R.drawable.tag_unselect_bg));
@@ -183,9 +173,7 @@ public class ImportAddressActivity extends BaseActivity {
                 defMnemonic = 2;
                 mnemonicOrPrivatekeyEd.setHint("WIF");
                 break;
-            /**
-             * 导入
-             */
+
             case R.id.create_btn:
                 mnemonicOrKey = mnemonicOrPrivatekeyEd.getText().toString().trim();
                 if (!TextUtils.isEmpty(mnemonicOrKey)) {
@@ -205,9 +193,7 @@ public class ImportAddressActivity extends BaseActivity {
 
                 }
                 break;
-            /**
-             * 扫码二维码
-             */
+
             case R.id.scaner_code_iv:
                 ZbPermission.needPermission(this, REQUEST_CAMERA, Permission.CAMERA, new ZbPermission.ZbPermissionCallback() {
                     @Override
@@ -269,7 +255,6 @@ public class ImportAddressActivity extends BaseActivity {
                         Message msg = new Message();
                         msg.what = 0;
                         handler.sendMessage(msg);
-                        //importWaallet(coinType, defMnemonic, pinValue, mnemonicOrKey);
                     } else {
                         ToastHelper.showToast(getString(R.string.pin_error));
                     }
@@ -288,14 +273,6 @@ public class ImportAddressActivity extends BaseActivity {
 
     }
 
-    /**
-     * 导入地址
-     *
-     * @param coinType 链类型
-     * @param type     导入类型
-     * @param pwd      密码
-     * @param word     助记词
-     */
     public void importWaallet(String coinType, int type, String pwd, String word) {
 
         String name = walletEc.getText().toString();
@@ -303,9 +280,7 @@ public class ImportAddressActivity extends BaseActivity {
         if (coinType.equals(ChainAddressCreateManager.ETH_COIN_TYPE)) {
 
             switch (type) {
-                /**
-                 * 助记词导入
-                 */
+
                 case 0:
                     if (word.split(" ").length == 12) {
 
@@ -403,9 +378,7 @@ public class ImportAddressActivity extends BaseActivity {
                         Looper.loop();
                     }
                     break;
-                /**
-                 * 私钥
-                 */
+
                 case 1:
 
                     if (word.trim().startsWith("0x")) {
@@ -462,7 +435,6 @@ public class ImportAddressActivity extends BaseActivity {
                         ChainAddressDaoUtils.insertNewAddress(wallet);
                         selectChain.resetChainAddressInfos();
                         LocalDataUtils.setAddresByAssets(hdWallet.getAccountId(),"assets.json", wallet.getId(), wallet.getAddress(), this);
-                        //EventBus.getDefault().post(wallet);
                         if (progressDialog != null) {
                             if (progressDialog != null) {
                                 progressDialog.dismiss();
@@ -478,17 +450,12 @@ public class ImportAddressActivity extends BaseActivity {
                         Looper.loop();
                     }
                     break;
-                /**
-                 * wif 导入
-                 */
+
                 case 2:
                     break;
             }
         }
 
-        /**
-         * NEO 链导入 ONT 链导入
-         */
         if (coinType.equals(ChainAddressCreateManager.NEO_COIN_TYPE) || coinType.equals(ChainAddressCreateManager.ONT_COIN_TYPE)) {
 
             switch (type) {
@@ -590,9 +557,6 @@ public class ImportAddressActivity extends BaseActivity {
                             }
 
 
-
-                            //ChainAddressDaoUtils.insertNewAddress(neoChainAddress);
-
                             selectChain.resetChainAddressInfos();
 
                             if (coinType.equals(ChainAddressCreateManager.NEO_COIN_TYPE)) {
@@ -602,7 +566,6 @@ public class ImportAddressActivity extends BaseActivity {
                             } else {
                                 LocalDataUtils.setAddresByAssets(hdWallet.getAccountId(),"ont_assets.json", neoChainAddress.getId(), neoChainAddress.getAddress(), this);
                             }
-                            //EventBus.getDefault().post(neoChainAddress);
 
                             if (progressDialog != null) {
                                 progressDialog.dismiss();
@@ -618,9 +581,7 @@ public class ImportAddressActivity extends BaseActivity {
                         Looper.loop();
                     }
                     break;
-                /**
-                 * 私钥
-                 */
+
                 case 1:
                     if (word.trim().startsWith("0x")) {
                         word = word.substring(2).trim();
@@ -702,9 +663,7 @@ public class ImportAddressActivity extends BaseActivity {
                         Looper.loop();
                     }
                     break;
-                /**
-                 * wif 导入
-                 */
+
                 case 2:
 
                     boolean byWif = ChainAddressDaoUtils.checkRepeatByWif(word, coinType);
@@ -777,9 +736,6 @@ public class ImportAddressActivity extends BaseActivity {
                                 Looper.loop();
                             }
 
-
-                            //ChainAddressDaoUtils.insertNewAddress(chainInfo);
-
                             selectChain.resetChainAddressInfos();
 
                             if (coinType.equals(ChainAddressCreateManager.NEO_COIN_TYPE)) {
@@ -795,7 +751,6 @@ public class ImportAddressActivity extends BaseActivity {
                             ToastHelper.showToast(getResources().getString(R.string.import_failed));
                             Looper.loop();
                         }
-                        //EventBus.getDefault().post(chainInfo);
                         if (progressDialog != null) {
                             progressDialog.dismiss();
                         }

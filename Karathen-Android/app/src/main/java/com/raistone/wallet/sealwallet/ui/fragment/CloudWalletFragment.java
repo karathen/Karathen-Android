@@ -7,9 +7,6 @@ import android.view.ViewGroup;
 import com.raistone.wallet.sealwallet.R;
 
 
-/**
- * 云钱包
- */
 public class CloudWalletFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

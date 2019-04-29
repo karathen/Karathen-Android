@@ -31,7 +31,6 @@ public class ReceiptActivityBack extends BaseActivity {
     @BindView(R.id.copy_btn)
     Button copyBtn;
 
-   // private ETHWallet wallet;
     private String address;
     private String coinName;
     private String fromName;
@@ -42,9 +41,7 @@ public class ReceiptActivityBack extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receipt);
         ButterKnife.bind(this);
-        //StatusBarUtil.setTransparent(this);
         setTitle(titleBar,getResources().getString(R.string.receipt_string),true);
-        //wallet= (ETHWallet) getIntent().getSerializableExtra("ethWallet");
         address  =  getIntent().getStringExtra("address");
         coinName =  getIntent().getStringExtra("coinName");
         fromName =  getIntent().getStringExtra("fromName");
@@ -58,12 +55,11 @@ public class ReceiptActivityBack extends BaseActivity {
 
 
                 Bitmap bitmapShare = new QREncode.Builder(this)
-                        .setColor(getResources().getColor(R.color.text_main_color))//二维码颜色
+                        .setColor(getResources().getColor(R.color.text_main_color))
                         //.setParsedResultType(ParsedResultType.TEXT)//默认是TEXT类型
-                        .setContents("toAddress:"+address+"?coinType="+coinName+"&contractAddress="+contractAddress)//二维码内容
+                        .setContents("toAddress:"+address+"?coinType="+coinName+"&contractAddress="+contractAddress)
                         .setMargin(0)
                         .setSize(500)
-                        //.setLogoBitmap(logoBitmap)//二维码中间logo
                         .build().encodeAsBitmap();
                 qrCodeIv.setImageBitmap(bitmapShare);
             }

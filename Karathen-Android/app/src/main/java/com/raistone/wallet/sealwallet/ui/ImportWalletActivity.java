@@ -3,7 +3,6 @@ package com.raistone.wallet.sealwallet.ui;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -14,7 +13,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.chenenyu.router.Router;
 import com.chenenyu.router.annotation.Route;
@@ -27,16 +25,11 @@ import com.raistone.wallet.sealwallet.factory.ChainDataInfo;
 import com.raistone.wallet.sealwallet.factory.HdWallet;
 import com.raistone.wallet.sealwallet.factory.WalletFactoryManager;
 import com.raistone.wallet.sealwallet.utils.ChainAddressCreateManager;
-import com.raistone.wallet.sealwallet.utils.Constant;
-import com.raistone.wallet.sealwallet.utils.ETHWalletUtils;
 import com.raistone.wallet.sealwallet.utils.IconCreateUtils;
-import com.raistone.wallet.sealwallet.utils.LocalManageUtil;
 import com.raistone.wallet.sealwallet.utils.Md5Utils;
 import com.raistone.wallet.sealwallet.utils.MultiChainCreateManager;
 import com.raistone.wallet.sealwallet.utils.SPUtil;
-import com.raistone.wallet.sealwallet.utils.StatusBarUtil;
 import com.raistone.wallet.sealwallet.utils.ToastHelper;
-import com.raistone.wallet.sealwallet.widget.SmoothCheckBox;
 import com.raistone.wallet.sealwallet.widget.TitleBar;
 import org.bitcoinj.crypto.MnemonicCode;
 import java.util.Arrays;
@@ -44,10 +37,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-/**
- * 导入钱包
- */
 
 @Route(value = "ImportWalletActivity")
 public class ImportWalletActivity extends BaseActivity {
@@ -133,7 +122,7 @@ public class ImportWalletActivity extends BaseActivity {
 
                                     if (eth != null) {
                                         btnImport.setClickable(false);
-                                        eth.setType_flag(ETHWalletUtils.ETH_JAXX_TYPE);
+                                        eth.setType_flag(ChainAddressCreateManager.ETH_JAXX_TYPE);
                                         eth.setIsImport(false);
                                         eth.setIsCurrent(true);
                                         eth.setAccount(true);//是否是主账号
@@ -148,8 +137,6 @@ public class ImportWalletActivity extends BaseActivity {
                                         eth.setSelectStatus(false);
 
                                         ChainAddressDaoUtils.insertNewAddress(eth);
-
-                                        //LocalDataUtils.setAddresByEthAssets(eth.getAddress(), context);
 
                                         LocalDataUtils.setAddresByAssets(walletInfo.getAccountId(),"assets.json", eth.getId(), eth.getAddress(), context);
                                     }
@@ -218,7 +205,6 @@ public class ImportWalletActivity extends BaseActivity {
         setContentView(R.layout.activity_import_wallet);
         ButterKnife.bind(this);
 
-        //StatusBarUtil.setTransparent(this);
 
         ActivityManager.getInstance().pushActivity(this);
 
@@ -229,7 +215,6 @@ public class ImportWalletActivity extends BaseActivity {
 
         context = this;
 
-        //是否是从导入界面过来
         isFormCreate = getIntent().getBooleanExtra("isFormCreate", false);
 
         etSetPin.addTextChangedListener(new TextWatcher() {
@@ -312,9 +297,6 @@ public class ImportWalletActivity extends BaseActivity {
         int savedLanguageType = SPUtil.getInstance(this).getSelectLanguage();
         switch (view.getId()) {
 
-            /**
-             * 导入
-             */
             case R.id.btn_import:
 
                 btnImport.setClickable(false);
@@ -328,7 +310,6 @@ public class ImportWalletActivity extends BaseActivity {
                         return;
                     }
 
-                    //效验助记词
                     try {
                         byte[] mnemonicSeedBytes = MnemonicCode.INSTANCE.toEntropy(Arrays.asList(words));
 
@@ -363,9 +344,7 @@ public class ImportWalletActivity extends BaseActivity {
                 }
 
                 break;
-            /**
-             * 创建
-             */
+
             case R.id.tv_create:
                 if (isFormCreate) {
                     finish();

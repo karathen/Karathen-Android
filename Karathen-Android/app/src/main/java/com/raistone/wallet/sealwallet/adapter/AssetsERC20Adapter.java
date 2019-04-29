@@ -19,7 +19,6 @@ public class AssetsERC20Adapter extends BaseQuickAdapter<AssetsInfo.DataBean,Bas
 
         helper.setText(R.id.assets_name_tv,item.getTokenSynbol())
                 .setText(R.id.token_name_tv,item.getTokenName())
-                //.setText(R.id.assets_price_tv,item.getPrice()+"")
                 .setText(R.id.assets_price_tv,item.getBalance()+"")
                 .setText(R.id.assets_rate_price_tv,item.getPriceUSD()+"")
                 .addOnClickListener(R.id.more_ll);

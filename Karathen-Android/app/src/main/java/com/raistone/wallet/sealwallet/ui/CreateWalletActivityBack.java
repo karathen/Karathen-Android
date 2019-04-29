@@ -21,10 +21,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-
-/**
- * 创建钱包
- */
 @Route(value = "CreateWalletActivityBack")
 public class CreateWalletActivityBack extends BaseActivity implements SmoothCheckBox.OnCheckedChangeListener {
 
@@ -85,9 +81,7 @@ public class CreateWalletActivityBack extends BaseActivity implements SmoothChec
     @OnClick({R.id.create_wallet_btn, R.id.import_tv, R.id.service_tv})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            //创建钱包
             case R.id.create_wallet_btn:
-                //startProgressDialog();
                 if (!mPassWord.equals(mConfirmPw)) {
                     //stopProgressDialog();
                     ToastHelper.showToast(getResources().getString(R.string.pin_input_error));
@@ -98,12 +92,10 @@ public class CreateWalletActivityBack extends BaseActivity implements SmoothChec
                 Router.build("BackupMnemonicActivity").with("mPassWord", mPassWord).go(this);
 
                 break;
-            //导入钱包
             case R.id.import_tv:
                 importTv.setClickable(false);
                 Router.build("ImportWalletActivity").with("isFormCreate", true).go(this);
                 break;
-            //服务条款
             case R.id.service_tv:
                 Intent intent = new Intent(this, WebViewActivity.class);
                 intent.putExtra(Constant.IntentKey.WEB_URL, Constant.SealWebUrl.SERVICE_AGREEMENT_URL);

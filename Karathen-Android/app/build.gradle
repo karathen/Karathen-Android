@@ -11,11 +11,11 @@ def dbflow_version = "4.2.4"
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "www.sealwallets.org"
+        applicationId "www.seal.karathen.com"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 20
-        versionName "1.1.1"
+        versionCode 1
+        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
@@ -72,100 +72,57 @@ dependencies {
     implementation 'com.android.support:design:28.0.0-alpha3'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
-    // bitcoinj
     implementation 'org.bitcoinj:bitcoinj-core:0.14.3'
 
-    // 以太坊开发库
     implementation 'org.web3j:core:3.3.1-android'
     implementation 'com.android.support:multidex:1.0.3'
 
-    //数据库
     annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
     implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
     implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
     implementation "com.github.Raizlabs.DBFlow:dbflow-sqlcipher:${dbflow_version}"
 
-    //黄油刀
     api 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
-    //扫码二维码
     implementation 'com.mylhyl:zxingscanner:2.1.2'
 
-    //沉浸式
-    //implementation 'com.jaeger.statusbarutil:library:1.4.0'
-
-    //路由
     implementation 'com.chenenyu.router:router:1.5.2'
     annotationProcessor 'com.chenenyu.router:compiler:1.5.0'
 
-    //RecyclerView 适配器
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
 
-    //底部导航栏
     implementation 'com.ashokvarma.android:bottom-navigation-bar:2.0.4'
 
-    //retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
 
-    //gson
     implementation 'com.google.code.gson:gson:2.8.5'
 
-    //navigation
     implementation 'me.listenzz:navigation:1.10.0'
 
-    //SmartRefreshLayout
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'
 
-    //超级 TextView
     implementation 'com.github.lygttpod:SuperTextView:2.1.8'
     implementation 'com.android.support:cardview-v7:28.0.0'
 
-    //图片处理
-    //implementation 'com.github.bumptech.glide:glide:4.7.1'
-
-    //权限
     implementation 'com.github.Andy-13:ZbPermission:1.0.0'
 
-    //
     implementation 'com.zhouyou:rxeasyhttp:2.1.2'
     implementation 'com.github.zyyoona7:EasyPopup:1.1.2'
     implementation 'com.github.pinguo-zhouwei:CustomPopwindow:2.1.1'
 
-    //Eventbus
     implementation 'org.greenrobot:eventbus:3.0.0'
 
-    //滑动删除
     implementation 'com.yanzhenjie:recyclerview-swipe:1.1.4'
 
-    //NEO库
     implementation project(':neoutils')
 
-    //ONT库
     implementation project(path: ':ontolib')
 
-    //数据库
     implementation 'org.greenrobot:greendao:3.2.2'
-
-    //七牛云
-    implementation files('libs/qiniu-android-sdk-7.3.13.jar')
-
-    //图片选择
-    implementation project(':glide')
-
-    // 百度统计
-    implementation files('libs/Baidu_Mtj_android_3.9.3.1.jar')
-
-    //应用更新
-    implementation 'com.qianwen:update-app:3.5.2'
-
-    //bugly
-    implementation 'com.tencent.bugly:crashreport:2.2.0'
-
-    implementation 'com.qianwen:okhttp-utils:3.8.0'
 
     implementation 'com.github.razerdp:BasePopup:2.1.4'
 
@@ -177,7 +134,10 @@ dependencies {
 
     implementation 'com.lambdaworks:scrypt:1.4.0'
 
-    implementation project(':trust-sdk-client')
+    compile ('com.github.hss01248.ImageLoader:glide:1.0.6'){
+        exclude group: 'com.android.support'
+    }
+
 }
 
 greendao {

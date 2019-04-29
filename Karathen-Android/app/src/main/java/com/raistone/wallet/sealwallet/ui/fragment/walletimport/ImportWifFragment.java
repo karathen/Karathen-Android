@@ -59,10 +59,6 @@ import io.reactivex.schedulers.Schedulers;
 
 import static android.app.Activity.RESULT_OK;
 
-
-/**
- * 导入wif
- */
 public class ImportWifFragment extends BaseFragment {
 
 
@@ -326,14 +322,6 @@ public class ImportWifFragment extends BaseFragment {
         }
     }
 
-    /**
-     * 通过私钥创建钱包
-     *
-     * @param coinType   链类型 0 ETH 1 NEO 2 ONT
-     * @param privateKye 私钥
-     * @param waName     钱包名称
-     * @param pwd        密码
-     */
     public void importWalletByWif(final int coinType, final String privateKye, final String waName, final String pwd) {
         Observable.create(new ObservableOnSubscribe<ChainAddressInfo>() {
             @Override

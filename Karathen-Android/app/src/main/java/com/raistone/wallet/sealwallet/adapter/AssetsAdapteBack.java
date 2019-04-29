@@ -25,16 +25,11 @@ public class AssetsAdapteBack extends BaseQuickAdapter<AssetsInfo.DataBean, Base
     protected void convert(BaseViewHolder helper, AssetsInfo.DataBean item) {
         helper.setText(R.id.assets_name_tv, item.getTokenSynbol())
                 .setText(R.id.token_name_tv, item.getTokenName())
-                //.setText(R.id.assets_price_tv,item.getPrice()+"")
-                //.setText(R.id.assets_price_tv,item.getBalance()+"")
-                //.setText(R.id.assets_rate_price_tv, BigDecimalUtils.intercept(item.getPrice().toString(),2)+"")
                 .addOnClickListener(R.id.more_ll);
 
         TextView balance_tv = helper.getView(R.id.assets_price_tv);
 
-        //获取精度
         String tokenDecimal = item.getTokenDecimal();
-        //判断精度是否为空
         if (!TextUtils.isEmpty(tokenDecimal)) {
 
             if (item.getBalance() != null) {
@@ -43,7 +38,6 @@ public class AssetsAdapteBack extends BaseQuickAdapter<AssetsInfo.DataBean, Base
                 BigDecimal balance = item.getBalance();
 
 
-                //判断是否为空和不等于0
                 if (!balance.equals(BigDecimal.ZERO)) {
 
                     BigDecimal bigRes = BigDecimalUtils.div(balance.toString(), String.valueOf(Math.pow(10, Double.parseDouble(tokenDecimal))), 8);
@@ -62,13 +56,11 @@ public class AssetsAdapteBack extends BaseQuickAdapter<AssetsInfo.DataBean, Base
         } else {
             balance_tv.setText(item.getBalance() + "");
         }
-        // balance_tv.setText(item.getBalance()+"");
 
 
         TextView prive_tv = helper.getView(R.id.assets_rate_price_tv);
 
 
-        //选择货币换算
         Boolean unit = SharePreUtil.getBoolean(mContext, "CurrencyUnit", true);
 
         if (unit) {
@@ -141,8 +133,8 @@ public class AssetsAdapteBack extends BaseQuickAdapter<AssetsInfo.DataBean, Base
 
     public static String subZeroAndDot(String s) {
         if (s.indexOf(".") > 0) {
-            s = s.replaceAll("0+?$", "");//去掉多余的0
-            s = s.replaceAll("[.]$", "");//如最后一位是.则去掉
+            s = s.replaceAll("0+?$", "");
+            s = s.replaceAll("[.]$", "");
         }
         return s;
     }

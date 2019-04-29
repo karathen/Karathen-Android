@@ -51,10 +51,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * 地址管理
- */
-
 @Route(value = "AddressManageActivityNews")
 public class AddressManageActivityNews extends BaseActivity implements BaseQuickAdapter.OnItemClickListener, BaseQuickAdapter.OnItemChildClickListener {
 
@@ -145,9 +141,7 @@ public class AddressManageActivityNews extends BaseActivity implements BaseQuick
     @OnClick({R.id.back_ll, R.id.add_ll, R.id.import_ll})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            /**
-             * 关闭
-             */
+
             case R.id.back_ll:
 
 
@@ -157,16 +151,12 @@ public class AddressManageActivityNews extends BaseActivity implements BaseQuick
 
 
                 break;
-            /**
-             * 添加
-             */
+
             case R.id.add_ll:
 
                 Router.build("NewAddressActivity").with("chainId", chainDataInfo.getId()).with("selectChain", chainDataInfo).go(this);
                 break;
-            /**
-             * 导入
-             */
+
             case R.id.import_ll:
                 Router.build("ImportAddressActivity").with("selectChain", chainDataInfo).with("wallet", chainAddressInfos.get(0)).go(this);
 
@@ -193,9 +183,7 @@ public class AddressManageActivityNews extends BaseActivity implements BaseQuick
 
         int id = view.getId();
         switch (id) {
-            /**
-             * 复制
-             */
+
             case R.id.copyLl:
 
                 TextView textView = (TextView) adapter.getViewByPosition(recyclerview, position, R.id.address_tv);
@@ -203,9 +191,7 @@ public class AddressManageActivityNews extends BaseActivity implements BaseQuick
                 CommonUtils.copyString(textView, chainAddressInfos.get(position).getAddress());
 
                 break;
-            /**
-             * 更多
-             */
+
             case R.id.more_ll:
 
                 AddressManagerPopup addressManagerPopup = new AddressManagerPopup(context);
@@ -220,25 +206,18 @@ public class AddressManageActivityNews extends BaseActivity implements BaseQuick
 
                         switch (v.getId()) {
                             case R.id.export_private_ll:
-                                ToastHelper.showToast("导出私钥");
                                 break;
                             case R.id.export_mnemonic_ll:
-                                ToastHelper.showToast("导出助记词");
                                 break;
                             case R.id.export_wif_ll:
-                                ToastHelper.showToast("导出wif");
                                 break;
                             case R.id.update_name_ll:
-                                ToastHelper.showToast("修改名称");
                                 break;
                             case R.id.browser_query_ll:
-                                ToastHelper.showToast("浏览器查询");
                                 break;
-                            case R.id.delete:
-                                ToastHelper.showToast("删除地址");
+                            case R.id.delete_ll:
                                 break;
                             case R.id.claim_ll:
-                                ToastHelper.showToast("提取GAS");
                                 break;
                         }
 
@@ -262,7 +241,6 @@ public class AddressManageActivityNews extends BaseActivity implements BaseQuick
         if (keyCode == KeyEvent.KEYCODE_BACK) {
 
             Intent intent = new Intent();
-            // intent.putExtra("address", wallet.getAddress());
             setResult(RESULT_OK, intent);
             finish();
 

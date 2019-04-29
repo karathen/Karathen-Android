@@ -32,12 +32,10 @@ public class SealWebChromeClient extends WebChromeClient {
         this.mActivity = (WebViewActivity) mIWebPageView;
     }
 
-    // 播放网络视频时全屏会被调用的方法
     @Override
     public void onShowCustomView(View view, CustomViewCallback callback) {
         mActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         mIWebPageView.hindWebView();
-        // 如果一个视图已经存在，那么立刻终止并新建一个
         if (mXCustomView != null) {
             callback.onCustomViewHidden();
             return;
@@ -49,10 +47,9 @@ public class SealWebChromeClient extends WebChromeClient {
         mIWebPageView.showVideoFullView();
     }
 
-    // 视频播放退出全屏会被调用的
     @Override
     public void onHideCustomView() {
-        if (mXCustomView == null)// 不是全屏播放状态
+        if (mXCustomView == null)
             return;
         mActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
@@ -66,7 +63,6 @@ public class SealWebChromeClient extends WebChromeClient {
         mIWebPageView.showWebView();
     }
 
-    // 视频加载时进程loading
     @Override
     public View getVideoLoadingProgressView() {
         if (mXProgressVideo == null) {
@@ -82,9 +78,6 @@ public class SealWebChromeClient extends WebChromeClient {
         mIWebPageView.startProgress(newProgress);
     }
 
-    /**
-     * 判断是否是全屏
-     */
     public boolean inCustomView() {
         return (mXCustomView != null);
     }
@@ -103,13 +96,11 @@ public class SealWebChromeClient extends WebChromeClient {
         return title + " ";
     }
 
-    //扩展浏览器上传文件
-    //3.0++版本
+
     public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
         openFileChooserImpl(uploadMsg);
     }
 
-    //3.0--版本
     public void openFileChooser(ValueCallback<Uri> uploadMsg) {
         openFileChooserImpl(uploadMsg);
     }
@@ -118,7 +109,6 @@ public class SealWebChromeClient extends WebChromeClient {
         openFileChooserImpl(uploadMsg);
     }
 
-    // For Android > 5.0
     @Override
     public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> uploadMsg, FileChooserParams fileChooserParams) {
         openFileChooserImplForAndroid5(uploadMsg);
@@ -146,9 +136,7 @@ public class SealWebChromeClient extends WebChromeClient {
         mActivity.startActivityForResult(chooserIntent, FILECHOOSER_RESULTCODE_FOR_ANDROID_5);
     }
 
-    /**
-     * 5.0以下 上传图片成功后的回调
-     */
+
     public void mUploadMessage(Intent intent, int resultCode) {
         if (null == mUploadMessage)
             return;
@@ -157,9 +145,7 @@ public class SealWebChromeClient extends WebChromeClient {
         mUploadMessage = null;
     }
 
-    /**
-     * 5.0以上 上传图片成功后的回调
-     */
+
     public void mUploadMessageForAndroid5(Intent intent, int resultCode) {
         if (null == mUploadMessageForAndroid5)
             return;

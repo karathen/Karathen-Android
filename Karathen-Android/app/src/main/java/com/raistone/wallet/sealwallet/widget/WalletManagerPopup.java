@@ -19,22 +19,19 @@ import com.raistone.wallet.sealwallet.factory.HdWallet;
 import razerdp.basepopup.BasePopupWindow;
 
 
-/**
- * 钱包管理 PopupWindow
- */
 public class WalletManagerPopup extends BasePopupWindow implements View.OnClickListener {
 
-    RelativeLayout multi_management_rl; //多链管理
+    RelativeLayout multi_management_rl;
 
-    RelativeLayout wallet_update_name_rl; //修改名称
+    RelativeLayout wallet_update_name_rl;
 
-    RelativeLayout reset_pwd_rl; //重置密码
+    RelativeLayout reset_pwd_rl;
 
-    RelativeLayout pwd_tips_rl;//密码提示
+    RelativeLayout pwd_tips_rl;
 
-    RelativeLayout back_rl; //备份钱包
+    RelativeLayout back_rl;
 
-    RelativeLayout delete_rl;// 删除钱包
+    RelativeLayout delete_rl;
 
 
     private Handler mHandler;
@@ -47,17 +44,11 @@ public class WalletManagerPopup extends BasePopupWindow implements View.OnClickL
 
         mHandler = new Handler();
 
-        //导出私钥
         multi_management_rl = findViewById(R.id.multi_management_rl);
-        //导出助记词
         wallet_update_name_rl = findViewById(R.id.wallet_update_name_rl);
-        //导出WIF
         reset_pwd_rl = findViewById(R.id.reset_pwd_rl);
-        //修改名称
         pwd_tips_rl = findViewById(R.id.pwd_tips_rl);
-        //浏览器查询
         back_rl = findViewById(R.id.back_rl);
-        //删除地址
         delete_rl = findViewById(R.id.delete_rl);
 
 
@@ -83,17 +74,11 @@ public class WalletManagerPopup extends BasePopupWindow implements View.OnClickL
 
         mHandler = new Handler();
 
-        //多链管理
         multi_management_rl = findViewById(R.id.multi_management_rl);
-        //修改名称
         wallet_update_name_rl = findViewById(R.id.wallet_update_name_rl);
-        //重置密码
         reset_pwd_rl = findViewById(R.id.reset_pwd_rl);
-        //密码提示
         pwd_tips_rl = findViewById(R.id.pwd_tips_rl);
-        //备份钱包
         back_rl = findViewById(R.id.back_rl);
-        //删除钱包
         delete_rl = findViewById(R.id.delete_rl);
 
         boolean isImport = wallet.getIsImport();

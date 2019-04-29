@@ -18,10 +18,6 @@ import android.widget.RelativeLayout;
 import com.raistone.wallet.sealwallet.R;
 
 
-/**
- * Created by DongJr on 2017/2/21.
- */
-
 public class FitPopupWindow extends PopupWindow implements PopupWindow.OnDismissListener {
 
     private View anchorView;
@@ -30,7 +26,6 @@ public class FitPopupWindow extends PopupWindow implements PopupWindow.OnDismiss
     private int mWindowWidth;
 
     private static final int PADDING = 0;
-    //x轴坐标
     private int mXCoordinate;
 
     private int mHorizontal;
@@ -51,7 +46,6 @@ public class FitPopupWindow extends PopupWindow implements PopupWindow.OnDismiss
 
     private void init(Activity context, int width, int height) {
         this.context = context;
-        //popupwindow会默认忽略最外层的大小,所以应该再嵌套一层
         setWidth(width);
         setHeight(height);
         setBackgroundDrawable(new ColorDrawable(0x00000000));
@@ -91,39 +85,26 @@ public class FitPopupWindow extends PopupWindow implements PopupWindow.OnDismiss
     }
 
 
-    /**
-     * @param anchorView  弹出window的view
-     * @param contentView window的内容布局
-     * @return window显示的左上角的xOff, yOff坐标
-     */
     protected int[] calculatePopWindowPos(final View anchorView, final View contentView) {
         final int windowPos[] = new int[2];
         final int anchorLoc[] = new int[2];
-        // 获取锚点View在屏幕上的左上角坐标位置
         anchorView.getLocationOnScreen(anchorLoc);
         final int anchorHeight = anchorView.getHeight();
         final int anchorWidth = anchorView.getWidth();
         mXCoordinate = anchorLoc[0];
-        // 获取屏幕的高宽
         final int screenHeight = ScreenUtils.getScreenHeight(anchorView.getContext());
         final int screenWidth = ScreenUtils.getScreenWidth(anchorView.getContext());
         contentView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-        // 计算contentView的高宽
         int windowHeight = contentView.getMeasuredHeight();
         mWindowWidth = mWindowWidth > 0 ? mWindowWidth : contentView.getMeasuredWidth();
 
-        // 判断需要向上弹出还是向下弹出,如果要改变弹出策略,改变此处即可
-        // 目前是根据屏幕的一半进行判断
+
         final boolean isNeedShowUp = (screenHeight - anchorLoc[1] - anchorHeight < screenHeight / 2);
 
-        // 判断需要向左弹出还是向右弹出
         final boolean isNeedShowLeft = (anchorLoc[0] < mWindowWidth / 2);
 
         setHorizontal(isNeedShowLeft ? FitPopupWindowLayout.LEFT : FitPopupWindowLayout.RIGHT);
         setVertical(isNeedShowUp ? FitPopupWindowLayout.UP : FitPopupWindowLayout.DOWN);
-
-//        windowPos[0] = isNeedShowLeft ?
-//                anchorLoc[0] - windowWidth : anchorLoc[0] + anchorWidth;
 
         windowPos[0] = (screenWidth - mWindowWidth) / 2;
 
@@ -158,9 +139,6 @@ public class FitPopupWindow extends PopupWindow implements PopupWindow.OnDismiss
         return mHorizontal;
     }
 
-    /**
-     * @param mHorizontal 设置水平方向
-     */
     private void setHorizontal(int mHorizontal) {
         this.mHorizontal = mHorizontal;
     }
@@ -169,9 +147,7 @@ public class FitPopupWindow extends PopupWindow implements PopupWindow.OnDismiss
         return mVertical;
     }
 
-    /**
-     * @param mVertical 设置竖直方向
-     */
+
     private void setVertical(int mVertical) {
         this.mVertical = mVertical;
     }

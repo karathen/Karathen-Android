@@ -25,12 +25,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-/**
- * <p>描述：工具类 单位转换</p>
- * 作者： zhouyou<br>
- * 日期： 2017/10/10 16:16 <br>
- * 版本： v1.0<br>
- */
+
 public class SignUtils {
     private static final File BUILD_PROP_FILE = new File(Environment.getRootDirectory(), "build.prop");
     private static Properties sBuildProperties;

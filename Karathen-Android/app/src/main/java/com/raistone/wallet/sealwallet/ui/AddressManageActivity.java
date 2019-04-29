@@ -108,10 +108,9 @@ public class AddressManageActivity extends BaseActivity implements BaseQuickAdap
 
         wallet = HdWalletDaoUtils.findWalletBySelect();
 
-        boolean isImport = wallet.getIsImport();//是否是导入
+        boolean isImport = wallet.getIsImport();
         if (isImport) {
             int importType = wallet.getImportType();
-            //助记词导入
             if (importType == 0) {
                 addLl.setVisibility(View.VISIBLE);
                 newsAddTips.setVisibility(View.VISIBLE);
@@ -158,9 +157,7 @@ public class AddressManageActivity extends BaseActivity implements BaseQuickAdap
     @OnClick({R.id.back_ll, R.id.add_ll, R.id.import_ll})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            /**
-             * 关闭
-             */
+
             case R.id.back_ll:
 
 
@@ -170,16 +167,11 @@ public class AddressManageActivity extends BaseActivity implements BaseQuickAdap
 
 
                 break;
-            /**
-             * 添加
-             */
             case R.id.add_ll:
 
                 Router.build("NewAddressActivity").with("chainId", chainDataInfo.getId()).with("selectChain", chainDataInfo).go(this);
                 break;
-            /**
-             * 导入
-             */
+
             case R.id.import_ll:
                 Router.build("ImportAddressActivity").with("selectChain", chainDataInfo).with("wallet", chainAddressInfos.get(0)).go(this);
 
@@ -209,20 +201,15 @@ public class AddressManageActivity extends BaseActivity implements BaseQuickAdap
 
         int id = view.getId();
         switch (id) {
-            /**
-             * 复制
-             */
+
             case R.id.copyLl:
-                //TextView textView = view.findViewById(R.id.address_tv);
 
                 TextView textView = (TextView) adapter.getViewByPosition(recyclerview, position, R.id.address_tv);
 
                 CommonUtils.copyString(textView, chainAddressInfos.get(position).getAddress());
 
                 break;
-            /**
-             * 更多
-             */
+
             case R.id.more_ll:
 
 
@@ -279,7 +266,7 @@ public class AddressManageActivity extends BaseActivity implements BaseQuickAdap
                                 intent.putExtra(Constant.IntentKey.WEB_TITLE, "");
                                 startActivity(intent);
                                 break;
-                            case R.id.delete:
+                            case R.id.delete_ll:
                                 addressManagerPopup.dismiss();
                                 //ToastHelper.showToast("删除地址");
                                 break;
@@ -306,7 +293,6 @@ public class AddressManageActivity extends BaseActivity implements BaseQuickAdap
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = LayoutInflater.from(context);
         View v = inflater.inflate(R.layout.update_dialog_layout, null);
-        //builer.setView(v);//这里如果使用builer.setView(v)，自定义布局只会覆盖title和button之间的那部分
         final Dialog dialog = builder.create();
         final EditText editText = v.findViewById(R.id.wallet_name_ed);
         TextView textView = v.findViewById(R.id.cancel_tv);
@@ -329,7 +315,6 @@ public class AddressManageActivity extends BaseActivity implements BaseQuickAdap
                 ChainAddressInfo addressInfo = ChainAddressDaoUtils.updateChainName(walletSelect.getId(), name);
 
                 if (addressInfo != null) {
-                    //byType = MultiChainInfoDaoUtils.loadAllByType(coinType);
                     managerAdapter.setNewData(chainAddressInfos);
                     managerAdapter.notifyDataSetChanged();
 
@@ -355,7 +340,6 @@ public class AddressManageActivity extends BaseActivity implements BaseQuickAdap
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = LayoutInflater.from(context);
         View v = inflater.inflate(R.layout.coustom_dialog_layout, null);
-        //builer.setView(v);//这里如果使用builer.setView(v)，自定义布局只会覆盖title和button之间的那部分
         final Dialog dialog = builder.create();
         final EditText editText = v.findViewById(R.id.pin_ed);
         final TextView textView = v.findViewById(R.id.cancel_tv);
@@ -379,25 +363,18 @@ public class AddressManageActivity extends BaseActivity implements BaseQuickAdap
                     if (TextUtils.equals(value, pwd)) {
 
                         switch (type) {
-                            //导出私钥
                             case 0:
                                 String privateScrect = walletSelect.getPrivateScrect();
                                 showPrivateQrCodeDialog(privateScrect, 0);
                                 dialog.dismiss();
                                 break;
-                            //导出助记词
                             case 1:
-                                //Router.build("BackupMnemonicActivity").with("mnemonic", walletSelect).with("isBack", true).go(context);
                                 Router.build("BackupMnemonicActivity").with("chainAddressInfo", walletSelect).with("isBack", true).go(context);
                                 dialog.dismiss();
                                 break;
-                            //删除导入地址
                             case 2:
 
                                 String address = walletSelect.getAddress();
-
-                                //
-
 
                                 ChainAddressDaoUtils.deleteAddressById(walletSelect.getId());
 
@@ -414,24 +391,20 @@ public class AddressManageActivity extends BaseActivity implements BaseQuickAdap
 
                                 EventBus.getDefault().post(chainAddressInfos.get(0));
                                 break;
-                            //导出wif
                             case 3:
                                 String wif = walletSelect.getWif();
                                 showPrivateQrCodeDialog(wif, 1);
                                 dialog.dismiss();
                                 break;
-                            //提取gas
                             case 4:
                                 Router.build("ClaimActivity").with("ethWallet", walletSelect).requestCode(1).go(context);
                                 break;
-                            //导出keystore
                             case 5:
 
                                 startProgressDialog(getResources().getString(R.string.exporting_string));
                                 String keystore = ChainAddressCreateManager.deriveKeystore(walletSelect.getId(), pinValue);
 
                                 showPrivateQrCodeDialog(keystore, 2);
-                                //ToastHelper.showToast("keystore "+keystore);
                                 dialog.dismiss();
                                 break;
                         }
@@ -455,17 +428,11 @@ public class AddressManageActivity extends BaseActivity implements BaseQuickAdap
 
     }
 
-
-    /**
-     * @param privateKey
-     * @param type
-     */
     private void showPrivateQrCodeDialog(String privateKey, int type) {
         stopProgressDialog();
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = LayoutInflater.from(context);
         View v = inflater.inflate(R.layout.export_dialog_two_layout, null);
-        //builer.setView(v);//这里如果使用builer.setView(v)，自定义布局只会覆盖title和button之间的那部分
         final Dialog dialog = builder.create();
 
         ImageView iv_delete = v.findViewById(R.id.delete_iv);
@@ -491,12 +458,10 @@ public class AddressManageActivity extends BaseActivity implements BaseQuickAdap
         }
 
         Bitmap bitmapShare = new QREncode.Builder(this)
-                .setColor(getResources().getColor(R.color.text_main_color))//二维码颜色
-                //.setParsedResultType(ParsedResultType.TEXT)//默认是TEXT类型
+                .setColor(getResources().getColor(R.color.text_main_color))
                 .setContents(privateKey)//二维码内容
                 .setMargin(0)
                 .setSize(500)
-                //.setLogoBitmap(logoBitmap)//二维码中间logo
                 .build().encodeAsBitmap();
         qrcode_iv.setImageBitmap(bitmapShare);
 
@@ -542,7 +507,6 @@ public class AddressManageActivity extends BaseActivity implements BaseQuickAdap
         if (keyCode == KeyEvent.KEYCODE_BACK) {
 
             Intent intent = new Intent();
-            // intent.putExtra("address", wallet.getAddress());
             setResult(RESULT_OK, intent);
             finish();
 

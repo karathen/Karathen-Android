@@ -26,16 +26,11 @@ public class AssetsAdapter extends BaseQuickAdapter<AssetsDeatilInfo, BaseViewHo
     protected void convert(BaseViewHolder helper, AssetsDeatilInfo item) {
         helper.setText(R.id.assets_name_tv, item.getTokenSynbol())
                 .setText(R.id.token_name_tv, item.getTokenName())
-                //.setText(R.id.assets_price_tv,item.getPrice()+"")
-                //.setText(R.id.assets_price_tv,item.getBalance()+"")
-                //.setText(R.id.assets_rate_price_tv, BigDecimalUtils.intercept(item.getPrice().toString(),2)+"")
                 .addOnClickListener(R.id.more_ll);
 
         TextView balance_tv = helper.getView(R.id.assets_price_tv);
 
-        //获取精度
         String tokenDecimal = item.getTokenDecimal();
-        //判断精度是否为空
         if (!TextUtils.isEmpty(tokenDecimal)) {
 
             if (!TextUtils.isEmpty(item.getBalance())) {
@@ -44,15 +39,8 @@ public class AssetsAdapter extends BaseQuickAdapter<AssetsDeatilInfo, BaseViewHo
                 String balance = item.getBalance();
                 //BigDecimal balance = item.getBalance();
 
-
-                //判断是否为空和不等于0
                 if (!balance.equals("0") && !balance.equals("0.0")) {
 
-                   /* BigDecimal bigRes = BigDecimalUtils.div(balance.toString(), String.valueOf(Math.pow(10, Double.parseDouble(tokenDecimal))), 8);
-
-                    BigDecimal bigDecimal = new BigDecimal(subZeroAndDot(bigRes + ""));
-
-                    balance_tv.setText(subZeroAndDot(bigDecimal + ""));*/
                     balance_tv.setText(subZeroAndDot(balance));
                 } else {
                     balance_tv.setText("0");
@@ -65,13 +53,11 @@ public class AssetsAdapter extends BaseQuickAdapter<AssetsDeatilInfo, BaseViewHo
         } else {
             balance_tv.setText(item.getBalance() + "");
         }
-        // balance_tv.setText(item.getBalance()+"");
 
 
         TextView prive_tv = helper.getView(R.id.assets_rate_price_tv);
 
 
-        //选择货币换算
         Boolean unit = SharePreUtil.getBoolean(mContext, "CurrencyUnit", true);
 
         if (unit) {
@@ -146,8 +132,8 @@ public class AssetsAdapter extends BaseQuickAdapter<AssetsDeatilInfo, BaseViewHo
 
     public static String subZeroAndDot(String s) {
         if (s.indexOf(".") > 0) {
-            s = s.replaceAll("0+?$", "");//去掉多余的0
-            s = s.replaceAll("[.]$", "");//如最后一位是.则去掉
+            s = s.replaceAll("0+?$", "");
+            s = s.replaceAll("[.]$", "");
         }
         return s;
     }

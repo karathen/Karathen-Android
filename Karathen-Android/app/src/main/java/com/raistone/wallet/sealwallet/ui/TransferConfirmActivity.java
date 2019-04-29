@@ -209,7 +209,6 @@ public class TransferConfirmActivity extends BaseActivity implements SeekBar.OnS
         ActivityManager.getInstance().pushActivity(this);
         ButterKnife.bind(this);
         setTitle(titleBar, getResources().getString(R.string.transfer_confirm_string), true);
-        //StatusBarUtil.setTransparent(this);
         fromAddress = getIntent().getStringExtra("fromAddress");
         toAddress = getIntent().getStringExtra("toAddress");
         coinName = getIntent().getStringExtra("coinName");
@@ -484,14 +483,10 @@ public class TransferConfirmActivity extends BaseActivity implements SeekBar.OnS
     }
 
 
-    /**
-     * @param tpye 0 代表备份钱包，1 代表退出钱包
-     */
     public void showTranDialog(final int tpye) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = LayoutInflater.from(context);
         View v = inflater.inflate(R.layout.coustom_dialog_layout, null);
-        //builer.setView(v);//这里如果使用builer.setView(v)，自定义布局只会覆盖title和button之间的那部分
         final Dialog dialog = builder.create();
         final EditText editText = v.findViewById(R.id.pin_ed);
         TextView textView = v.findViewById(R.id.cancel_tv);
@@ -511,7 +506,6 @@ public class TransferConfirmActivity extends BaseActivity implements SeekBar.OnS
 
                     final BigDecimal decimal = new BigDecimal(money);
 
-                    //String pwd = WalletManager.getInstance().getWalletChains(1l).getWalletPwd();
                     String pwd = HdWalletDaoUtils.findWalletBySelect().getWalletPwd();
                     if (TextUtils.equals(value, pwd)) {
                         dialog.dismiss();
@@ -531,7 +525,6 @@ public class TransferConfirmActivity extends BaseActivity implements SeekBar.OnS
 
                         }
                         if (tpye == 1) {
-                            //startProgressDialog(getString(R.string.transfer_middle_string));
 
                             io.reactivex.Observable
                                     .empty()
@@ -602,8 +595,6 @@ public class TransferConfirmActivity extends BaseActivity implements SeekBar.OnS
                                         @Override
                                         public void run() throws Exception {
 
-                                            //ToastHelper.showToast("ONT 转账");
-
                                             ontTransfer(fromAddress, wallet.getWif(), tokenSynbol, toAddress, Float.parseFloat(money));
                                         }
                                     }).subscribe();
@@ -628,19 +619,12 @@ public class TransferConfirmActivity extends BaseActivity implements SeekBar.OnS
     }
 
 
-    /*
-     * 16进制数字字符集
-     */
     private static String hexString = "0123456789ABCDEF";
 
-    /*
-     * 将字符串编码成16进制数字,适用于所有字符（包括中文）
-     */
+
     public static String encode(String str) {
-        // 根据默认编码获取字节数组
         byte[] bytes = str.getBytes();
         StringBuilder sb = new StringBuilder(bytes.length * 2);
-        // 将字节数组中每个字节拆解成2位16进制整数
         for (int i = 0; i < bytes.length; i++) {
             sb.append(hexString.charAt((bytes[i] & 0xf0) >> 4));
             sb.append(hexString.charAt((bytes[i] & 0x0f) >> 0));
@@ -686,7 +670,6 @@ public class TransferConfirmActivity extends BaseActivity implements SeekBar.OnS
 
         System.out.println("nonce " + nonce);
         BigInteger value = BigInteger.ZERO;
-        //token转账参数
         String methodName = "transfer";
         List<Type> inputParameters = new ArrayList<>();
         List<TypeReference<?>> outputParameters = new ArrayList<>();
@@ -723,19 +706,15 @@ public class TransferConfirmActivity extends BaseActivity implements SeekBar.OnS
 
                 String transactionHash = ethSendTransaction.getTransactionHash();
 
-                //查询哈希值本地是否有记录
                 TransferInfo transferInfo = TransferDaoUtils.selectTransfersByHash(transactionHash);
 
                 Message msg = new Message();
-                //说明本地有这条记录，说明交易重复
                 if (transferInfo != null) {
                     msg.what = 2;
                     handler.sendMessage(msg);
-                    //return null;
                 } else {
 
 
-//                Logger.e(TAG, new Gson().toJson(ethSendTransaction));
                     transactionResultBean.setGasPrice(gas.toString());
                     transactionResultBean.setTxHash(ethSendTransaction.getTransactionHash());
 
@@ -763,10 +742,6 @@ public class TransferConfirmActivity extends BaseActivity implements SeekBar.OnS
         return null;
     }
 
-
-    /**
-     * 添加交易备注
-     */
     public void addTxRemark(String txid, String content) {
 
         List<String> data = new ArrayList<>();
@@ -839,9 +814,6 @@ public class TransferConfirmActivity extends BaseActivity implements SeekBar.OnS
 
     }
 
-    /**
-     * 广播交易
-     */
     public void sendRawTxByNeo(final String tAddress, final String frAddress, final String mon, String consAddress, String sign, final String txid) {
         List<String> parms = Arrays.asList(sign);
 
@@ -910,9 +882,7 @@ public class TransferConfirmActivity extends BaseActivity implements SeekBar.OnS
 
                 int savedLanguageType = SPUtil.getInstance(this).getSelectLanguage();
 
-                //1是中文 3 是英文
                 switch (savedLanguageType) {
-                    // 1;    中文 3; //英文
                     case 3:
                         stopProgressDialog();
                         Looper.prepare();

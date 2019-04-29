@@ -213,15 +213,6 @@
                     android:layout_below="@+id/depict_ed"/>
             </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/image_string"
-                android:layout_marginLeft="@dimen/space_15"
-                android:textSize="@dimen/space_12"
-                android:textColor="@color/three_color"
-                android:layout_marginTop="@dimen/space_20"
-                />
             <ImageView
                 android:id="@+id/select_iv"
                 android:layout_width="wrap_content"
@@ -232,10 +223,6 @@
                 android:visibility="gone"
                 />
 
-            <me.iwf.photopicker.widget.MultiPickResultView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/recycler_view"/>
 
 
             <Button

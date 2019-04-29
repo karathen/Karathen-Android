@@ -16,10 +16,6 @@ import android.support.annotation.Nullable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-/**
- * Created by jiang on 2017/5/19.
- */
-
 public class TriangleDrawable extends Drawable {
     public static final int TOP = 12;
     public static final int BOTTOM = 13;

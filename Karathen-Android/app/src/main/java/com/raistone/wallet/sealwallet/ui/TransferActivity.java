@@ -74,11 +74,7 @@ public class TransferActivity extends BaseActivity {
 
 
     public  int convertsToInt=5;
-    /**
-     * 转账
-     *
-     * @param savedInstanceState
-     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -152,11 +148,8 @@ public class TransferActivity extends BaseActivity {
                     }
                 });
                 break;
-            /**
-             * 转账
-             */
+
             case R.id.tv_transfer:
-                //fromAddress 收款地址 toAddress 付款地址
                 String s = inputMoneyEd.getText().toString();
 
                 if(s.startsWith(".")){
@@ -189,7 +182,6 @@ public class TransferActivity extends BaseActivity {
                     return;
                 }
 
-                //判断地址是否合法
                 if(!TextUtils.isEmpty(coinType)){
                     if(coinType.equals(ChainAddressCreateManager.ETH_COIN_TYPE)){
                         boolean validAddress = ScannerActivity.isETHValidAddress(receiptAddress);
@@ -239,9 +231,6 @@ public class TransferActivity extends BaseActivity {
         }
     }
 
-    /**
-     * 获取gasPrice
-     */
     public void getGasPrice() {
 
         EasyHttp.getInstance().get("api")
@@ -264,7 +253,6 @@ public class TransferActivity extends BaseActivity {
 
                         String substring = gasInfo.getResult().substring(2);
 
-                        //转换后的gasPrice
                         long parseLong = Long.parseLong(substring, 16);
 
 

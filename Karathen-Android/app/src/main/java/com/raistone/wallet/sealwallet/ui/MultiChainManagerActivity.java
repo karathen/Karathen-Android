@@ -23,9 +23,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * 多链管理
- */
 
 @Route(value = "MultiChainManagerActivity")
 public class MultiChainManagerActivity extends BaseActivity implements BaseQuickAdapter.OnItemClickListener, BaseQuickAdapter.OnItemChildClickListener {
@@ -50,7 +47,6 @@ public class MultiChainManagerActivity extends BaseActivity implements BaseQuick
         setContentView(R.layout.activity_multi_chain_manager);
         ButterKnife.bind(this);
         setTitle(titleBar, getResources().getString(R.string.multi_chain_management), true);
-        //StatusBarUtil.setTransparent(this);
 
         hdwallet= (HdWallet) getIntent().getSerializableExtra("hdwallet");
 
@@ -66,7 +62,6 @@ public class MultiChainManagerActivity extends BaseActivity implements BaseQuick
         initData();
 
 
-        // 获取当前隐藏的数据
         for (int i=0;i<allChains.size();i++){
             boolean show = allChains.get(i).getIsShow();
 
@@ -81,7 +76,6 @@ public class MultiChainManagerActivity extends BaseActivity implements BaseQuick
     public void initData() {
 
         allChains=ChainDaoUtils.findAllChainByWalletId(hdwallet.getWalletId());
-        //allChains = ChainInfoDaoUtils.findAllChainsByManager();
         chainAdapter = new ChainAdapter(allChains);
 
         recyclerview.setAdapter(chainAdapter);
@@ -119,8 +113,6 @@ public class MultiChainManagerActivity extends BaseActivity implements BaseQuick
         ChainDaoUtils.updateOrder(chainInfo);
 
         EventBus.getDefault().post("Msg");
-          /*      break;
-        }*/
 
     }
 
@@ -137,22 +129,16 @@ public class MultiChainManagerActivity extends BaseActivity implements BaseQuick
     }
 
 
-    /**
-     * 监听拖拽和侧滑删除，更新UI和数据源。
-     */
     private OnItemMoveListener onItemMoveListener = new OnItemMoveListener() {
         @Override
         public boolean onItemMove(RecyclerView.ViewHolder srcHolder, RecyclerView.ViewHolder targetHolder) {
-            // 不同的ViewType不能拖拽换位置。
             if (srcHolder.getItemViewType() != targetHolder.getItemViewType()) return false;
 
-            //原始位置
             int fromPosition = srcHolder.getAdapterPosition();
 
             ChainDataInfo fromChainInfo = allChains.get(fromPosition);
 
 
-            //要去到的位置
             int toPosition = targetHolder.getAdapterPosition();
 
             ChainDataInfo toChainInfo = allChains.get(toPosition);

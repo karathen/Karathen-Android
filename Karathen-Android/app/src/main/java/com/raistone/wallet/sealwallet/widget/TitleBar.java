@@ -78,11 +78,7 @@ public class TitleBar extends FrameLayout {
         } else {
             mIcon.setVisibility(GONE);
         }
-        // Set Background
-        //setBackgroundColor(getResources().getColor(R.color.title_bg));
 
-        // Init padding
-        //setPadding(getLeft(), getTop() + UiUtils.getStatusBarHeight(getContext()), getRight(), getBottom());
     }
     public void setTitle( String titleRes) {
         if (titleRes==null)

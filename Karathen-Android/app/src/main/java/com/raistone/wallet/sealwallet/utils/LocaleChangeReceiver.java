@@ -17,20 +17,6 @@ public class LocaleChangeReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals(Intent.ACTION_LOCALE_CHANGED)) {
             Log.e("LocaleChangeReceiver", "Language change");
-            //SystemUtil.initAppLanguage(context);
-
-            //ToastHelper.showToast("监听更换语言");
-           /* ActivityManager.getInstance().finishAllActivity();
-            System.exit(0);*/
-
-            /*String language = LocalManageUtil.getSystemLocale(context).getDisplayLanguage();
-
-            if(language.contains("English") || language.contains("英文")){
-
-                SharePreUtil.saveInt(context,"saveFlag",3);
-            }else {
-                SharePreUtil.saveInt(context,"saveFlag",1);
-            }*/
 
             LocalManageUtil.saveSelectLanguage(context, 0);
             ActivityManager.getInstance().finishAllActivity();

@@ -2,15 +2,9 @@ package com.raistone.wallet.sealwallet.factory;
 
 
 import com.raistone.wallet.sealwallet.daoutils.HdWalletDaoUtils;
-import com.raistone.wallet.sealwallet.greendao.HdWalletDao;
-import com.raistone.wallet.sealwallet.utils.MultiChainCreateManager;
 
 import java.util.Arrays;
-import java.util.List;
 
-/**
- * 钱包工厂管理类
- */
 public class WalletFactoryManager {
 
     public static final int HEWALLET_TYPE=0;
@@ -28,11 +22,6 @@ public class WalletFactoryManager {
         return instance;
     }
 
-    /**
-     * 生成一个钱包
-     *
-     * @param type //钱包类型
-     */
 
     public WalletInfData createWallet(int type) {
         switch (type) {
@@ -45,23 +34,6 @@ public class WalletFactoryManager {
         return null;
     }
 
-    /**
-     * 根据链类型生成地址
-     *
-     * @param chainId  链ID
-     * @param coinType
-     */
-    public void createMultiAddress(String chainId, String coinType) {
-        switch (coinType) {
-            case MultiChainCreateManager.ETH_COIN_TYPE:
-
-                break;
-            case MultiChainCreateManager.NEO_COIN_TYPE:
-                break;
-            case MultiChainCreateManager.ONT_COIN_TYPE:
-                break;
-        }
-    }
 
 
     public static void main(String[] args) {

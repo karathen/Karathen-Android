@@ -13,10 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.chenenyu.router.Router;
 import com.raistone.wallet.sealwallet.R;
 import com.raistone.wallet.sealwallet.daoutils.ChainAddressDaoUtils;
@@ -27,25 +25,17 @@ import com.raistone.wallet.sealwallet.factory.ChainDataInfo;
 import com.raistone.wallet.sealwallet.factory.HdWallet;
 import com.raistone.wallet.sealwallet.factory.WalletFactoryManager;
 import com.raistone.wallet.sealwallet.ui.ActivityManager;
-import com.raistone.wallet.sealwallet.ui.WebViewActivity;
 import com.raistone.wallet.sealwallet.ui.fragment.BaseFragment;
 import com.raistone.wallet.sealwallet.utils.ChainAddressCreateManager;
-import com.raistone.wallet.sealwallet.utils.Constant;
-import com.raistone.wallet.sealwallet.utils.ETHWalletUtils;
 import com.raistone.wallet.sealwallet.utils.IconCreateUtils;
-import com.raistone.wallet.sealwallet.utils.LocalManageUtil;
 import com.raistone.wallet.sealwallet.utils.Md5Utils;
 import com.raistone.wallet.sealwallet.utils.SPUtil;
 import com.raistone.wallet.sealwallet.utils.ToastHelper;
 import com.raistone.wallet.sealwallet.widget.BottomMenuPopupWin;
-import com.raistone.wallet.sealwallet.widget.SmoothCheckBox;
 import com.raistone.wallet.sealwallet.widget.WalletManagerPopup;
-
 import org.greenrobot.eventbus.EventBus;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -61,9 +51,6 @@ import io.reactivex.schedulers.Schedulers;
 import static android.app.Activity.RESULT_OK;
 
 
-/**
- * 导入私钥
- */
 public class ImportPriKeyFragment extends BaseFragment {
 
 
@@ -237,9 +224,7 @@ public class ImportPriKeyFragment extends BaseFragment {
     public void onViewClicked(View view) {
         int savedLanguageType = SPUtil.getInstance(context).getSelectLanguage();
         switch (view.getId()) {
-            /**
-             * 选择类型
-             */
+
             case R.id.coin_type_ll:
 
                 final BottomMenuPopupWin bottomMenuPopupWin = new BottomMenuPopupWin(context, false);
@@ -279,10 +264,6 @@ public class ImportPriKeyFragment extends BaseFragment {
 
                 break;
 
-
-            /**
-             * 导入
-             */
             case R.id.import_wallet_btn:
 
                 String tips = pwdTipsEd.getText().toString().trim() + "";
@@ -323,21 +304,14 @@ public class ImportPriKeyFragment extends BaseFragment {
 
                     walletInfo.createChain(walletInfo.getWalletId(), chainDatas);
 
-
-                    //loadWalletByKeystore(walletName, keystoreValue, mPassWord);
-
                     importWalletByPrice(importType, priKey, walletName, mPassWord, tips);
-                    /*Message msg = new Message();
-                    msg.what = 0;
-                    handler.sendMessage(msg);*/
+
                 } catch (Exception e) {
                     ToastHelper.showToast(getResources().getString(R.string.please_enter_a_valid_mnemonic));
                 }
 
                 break;
-            /**
-             * 创建
-             */
+
             case R.id.create_tv:
                 getActivity().finish();
                 break;
@@ -345,15 +319,6 @@ public class ImportPriKeyFragment extends BaseFragment {
     }
 
 
-    /**
-     * 通过私钥创建钱包
-     *
-     * @param coinType   链类型 0 ETH 1 NEO 2 ONT
-     * @param privateKye 私钥
-     * @param waName     钱包名称
-     * @param pwd        密码
-     * @param tips       提示
-     */
     public void importWalletByPrice(final int coinType, final String privateKye, final String waName, final String pwd, final String tips) {
         Observable.create(new ObservableOnSubscribe<ChainAddressInfo>() {
             @Override
@@ -403,7 +368,7 @@ public class ImportPriKeyFragment extends BaseFragment {
                                 return;
                             }
 
-                            wallet.setType_flag(ETHWalletUtils.ETH_JAXX_TYPE);
+                            wallet.setType_flag(ChainAddressCreateManager.ETH_JAXX_TYPE);
                             wallet.setIsImport(false);
                             wallet.setIsCurrent(true);
                             wallet.setAccount(true);//是否是主账号
@@ -446,7 +411,6 @@ public class ImportPriKeyFragment extends BaseFragment {
 
                         if (wallet != null) {
 
-                            //boolean b = ChainAddressDaoUtils.checkAddressEq(wallet.getCoinType(), wallet.getAddress());
                             boolean b = ChainAddressDaoUtils.checkAddressEqAccountiD("NEO",walletInfo.getAccountId(),wallet.getAddress());
 
                             if (b) {
@@ -473,8 +437,6 @@ public class ImportPriKeyFragment extends BaseFragment {
 
                             ChainAddressDaoUtils.insertNewAddress(wallet);
 
-                            // ChainAddressDaoUtils.updateCurrent(wallet.getId(),"NEO");
-
                             dataInfo.resetChainAddressInfos();
 
                             LocalDataUtils.setAddresByAssets(walletInfo.getAccountId(),"neo_assets.json", wallet.getId(), wallet.getAddress(), context);
@@ -483,8 +445,6 @@ public class ImportPriKeyFragment extends BaseFragment {
                             if (progressDialog != null) {
                                 progressDialog.dismiss();
                             }
-                            //EventBus.getDefault().post(wallet);
-                            //finish();
 
                             e.onNext(wallet);
                         } else {
@@ -505,7 +465,6 @@ public class ImportPriKeyFragment extends BaseFragment {
 
                         if (wallet != null) {
 
-                            //boolean b = ChainAddressDaoUtils.checkAddressEq(wallet.getCoinType(), wallet.getAddress());
                             boolean b = ChainAddressDaoUtils.checkAddressEqAccountiD("ONT",walletInfo.getAccountId(),wallet.getAddress());
                             if (b) {
                                 if (progressDialog != null) {
@@ -530,8 +489,6 @@ public class ImportPriKeyFragment extends BaseFragment {
                             wallet.setChainId(dataInfo.getId());
 
                             ChainAddressDaoUtils.insertNewAddress(wallet);
-
-                            //ChainAddressDaoUtils.updateCurrent(wallet.getId(),"ONT");
 
                             dataInfo.resetChainAddressInfos();
 

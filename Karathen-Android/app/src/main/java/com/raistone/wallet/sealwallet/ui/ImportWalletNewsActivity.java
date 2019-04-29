@@ -28,10 +28,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * 导入钱包
- */
-
 @Route(value = "ImportWalletNewsActivity")
 public class ImportWalletNewsActivity extends BaseActivity {
 
@@ -68,8 +64,6 @@ public class ImportWalletNewsActivity extends BaseActivity {
 
         setContentView(R.layout.activity_import_wallet_news);
         ButterKnife.bind(this);
-
-        //StatusBarUtil.setTransparent(this);
 
         ActivityManager.getInstance().pushActivity(this);
 

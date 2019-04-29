@@ -58,8 +58,6 @@ public class WalletAdapter extends PagerAdapter {
 
         RelativeLayout one_item_layout = view.findViewById(R.id.one_item_layout);
 
-        //price_tv.setText(price);
-
         final TextView address_tv = view.findViewById(R.id.address_tv);
 
         LinearLayout copy_iv = view.findViewById(R.id.copy_ll);
@@ -112,12 +110,10 @@ public class WalletAdapter extends PagerAdapter {
             public void onClick(View v) {
                 String coinType = wallet.getCoinType();
                 if (coinType.equals(MultiChainCreateManager.NEO_COIN_TYPE)) {
-                    //ToastHelper.showToast("提取 GAS");
                     Router.build("ClaimActivity").with("ethWallet", wallet).requestCode(1).go(context);
                     return;
                 }
                 if (coinType.equals(MultiChainCreateManager.ONT_COIN_TYPE)) {
-                    //ToastHelper.showToast("提取 ONT");
                     Router.build("ClaimActivity").with("ethWallet", wallet).requestCode(1).go(context);
                     return;
                 }
@@ -130,14 +126,11 @@ public class WalletAdapter extends PagerAdapter {
 
     @Override
     public int getItemPosition(Object object) {
-        // 最简单解决 notifyDataSetChanged() 页面不刷新问题的方法
         return POSITION_NONE;
     }
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        // container.removeView(mViews.get(position));
-        /*container.removeView((View) object);*/
         RelativeLayout view = (RelativeLayout) object;
         container.removeView(view);
     }

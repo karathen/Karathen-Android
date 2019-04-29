@@ -19,9 +19,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-/**
- * 收款
- */
 @Route(value = "ReceiptActivity")
 public class ReceiptActivity extends BaseActivity {
 
@@ -43,14 +40,13 @@ public class ReceiptActivity extends BaseActivity {
     private String contractAddress;
     private String coinType;
 
-    private boolean isHome;//默认是首页进入
+    private boolean isHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receipt);
         ButterKnife.bind(this);
-        //StatusBarUtil.setTransparent(this);
 
         ActivityManager.getInstance().pushActivity(this);
         setTitle(titleBar, getResources().getString(R.string.receipt_string), true);
@@ -59,7 +55,6 @@ public class ReceiptActivity extends BaseActivity {
         coinName = getIntent().getStringExtra("coinName");
         coinType = getIntent().getStringExtra("coinType");
 
-        //fromName =  getIntent().getStringExtra("fromName");
         contractAddress = getIntent().getStringExtra("contractAddress");
 
         chainAddressInfo = (ChainAddressInfo) getIntent().getSerializableExtra("chainAddressInfo");
@@ -88,38 +83,16 @@ public class ReceiptActivity extends BaseActivity {
 
     }
 
-    public void createCode() {
-        if (!TextUtils.isEmpty(address) && !TextUtils.isEmpty(coinName)) {
-
-
-            Bitmap bitmapShare = new QREncode.Builder(this)
-                    .setColor(getResources().getColor(R.color.text_main_color))//二维码颜色
-                    //.setParsedResultType(ParsedResultType.TEXT)//默认是TEXT类型
-                    .setContents("toAddress:" + address + "?coinType=" + coinName + "&contractAddress=" + contractAddress)//二维码内容
-                    .setMargin(0)
-                    .setSize(500)
-                    //.setLogoBitmap(logoBitmap)//二维码中间logo
-                    .build().encodeAsBitmap();
-            qrCodeIv.setImageBitmap(bitmapShare);
-        }
-
-        receiptAddress.setText(address);
-        receiptNameTv.setText(fromName + "-" + coinName);
-
-    }
-
 
     public void createCode(String content) {
         if (!TextUtils.isEmpty(content)) {
 
 
             Bitmap bitmapShare = new QREncode.Builder(this)
-                    .setColor(getResources().getColor(R.color.text_main_color))//二维码颜色
-                    //.setParsedResultType(ParsedResultType.TEXT)//默认是TEXT类型
-                    .setContents(content)//二维码内容
+                    .setColor(getResources().getColor(R.color.text_main_color))
+                    .setContents(content)
                     .setMargin(0)
                     .setSize(500)
-                    //.setLogoBitmap(logoBitmap)//二维码中间logo
                     .build().encodeAsBitmap();
             qrCodeIv.setImageBitmap(bitmapShare);
         }

@@ -23,9 +23,7 @@ public class ScreenUtil {
         return metric;
     }
 
-    /**
-     * 获取屏幕宽带
-     */
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static int getScreenWidth(Context context) {
         DisplayMetrics displayMetrics = (metric == null ? initDisplayMetrics(context) : metric);

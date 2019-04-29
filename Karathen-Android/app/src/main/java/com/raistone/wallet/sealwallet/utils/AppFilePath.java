@@ -10,21 +10,17 @@ import java.io.File;
 public class AppFilePath {
 
 
-    public static String DATA_ROOT_DIR;     // 数据文件根目录
-    public static String DATA_ROOT_DIR_OUTER; // 外置卡中数据文件根目录(系统拍照等产生的文件，不允许存放到应用系统目录下)
-    public static String CACHE_ROOT_DIR;    // 缓存根目录
-    public static String DB_ROOT_DIR;       // 数据库根目录
-    // 钱包文件外置存储目录
+    public static String DATA_ROOT_DIR;
+    public static String DATA_ROOT_DIR_OUTER;
+    public static String CACHE_ROOT_DIR;
+    public static String DB_ROOT_DIR;
     public static String Wallet_DIR;
-    //walletTemp
     public static String Wallet_Tmp_DIR;
-    // 相片外置存储目录
     public static String picture;
 
     public static void init(Context context) {
 
         final boolean innerFirst = false;
-        // 优先使用app系统目录，即/data/data/com.pagoda.xxx/
         if (innerFirst) {
             CACHE_ROOT_DIR = context.getCacheDir().getPath();
             DATA_ROOT_DIR = context.getFilesDir().getPath();
@@ -57,12 +53,7 @@ public class AppFilePath {
 
     }
 
-    /**
-     * 这种目录下的文件在应用被卸载时也会跟着被删除
-     *
-     * @param context
-     * @return
-     */
+
     public static File getExternalFilesDir(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
             File path = context.getExternalFilesDir(null);
@@ -75,12 +66,7 @@ public class AppFilePath {
         return new File(Environment.getExternalStorageDirectory().getPath() + filesDir);
     }
 
-    /**
-     * 这种目录下的文件在应用被卸载时也会跟着被删除
-     *
-     * @param context
-     * @return
-     */
+
     public static File getExternalCacheDir(Context context) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
@@ -94,13 +80,6 @@ public class AppFilePath {
         return new File(Environment.getExternalStorageDirectory().getPath() + cacheDir);
     }
 
-
-    /**
-     * 这种目录下的文件在应用被卸载时不会被删除
-     * 钱包等数据可以存放到这里
-     *
-     * @return
-     */
     public static String getExternalPrivatePath(String name) {
         String namedir = "/" + name + "/";
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())

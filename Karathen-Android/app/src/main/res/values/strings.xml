@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">海豹钱包</string>
+    <string name="app_name">Karathen</string>
     <string name="multi_address_one">多地址支持 更隐私</string>
     <string name="guide_one_tips">HD (分层确定性) 技术使单个助记词可支持多地址变换,用户可方便选择链上交易地址,使交易更隐私</string>
 
@@ -102,10 +102,10 @@
     <string name="privacy_policy_string">隐私政策</string>
     <string name="check_for_updates">检查更新</string>
     <string name="contact_us">联系我们</string>
-    <string name="seal_wallet_info_string">海豹钱包是一款去中心化开源的分层确定性轻钱包，
+    <string name="seal_wallet_info_string">karathen钱包是一款去中心化开源的分层确定性轻钱包，
         具有支持多链、多地址、多资产的特点。</string>
-    <string name="seal_website">http://sealwallet.org</string>
-    <string name="seal_email_string">sealwallet@gmail.com</string>
+    <string name="seal_website">https://karathen.com</string>
+    <string name="seal_email_string">support@karathen.com</string>
     <string name="copy_success_string">复制成功</string>
     <string name="copy_string">复制</string>
     <string name="come_soon">Coming soon</string>
@@ -288,9 +288,9 @@
     <string name="hd_wallet_string">HD钱包</string>
     <string name="hardware_wallet_string">硬件钱包</string>
 
-    <string name="hd_wallet_tips_string">海豹HD钱包是一款去中心化开源的分层确定性轻钱包，用户通过单组助记词即可安全、方便、简单的管理链上数字资产，同时钱包内集成了不同类目区块链应用，让您轻松玩转DAPP</string>
+    <string name="hd_wallet_tips_string">karathen钱包是一款去中心化开源的分层确定性轻钱包，用户通过单组助记词即可安全、方便、简单的管理链上数字资产，同时钱包内集成了不同类目区块链应用，让您轻松玩转DAPP</string>
     <string name="hardware_wallet_tips_string">为大额资产用户及企业级用户量身定制，通过加密算法对密钥进行防护和存储，为您的数字资产提供安全保障，多重防护只为更安全的资产管理</string>
-    <string name="cloud_wallet_tips_string">海豹云钱包专为入门级用户贴心打造，无需导入私钥和助记词，使用用户名密码就能轻松搞定，支持密码找回，站内收发零费用，秒到账</string>
+    <string name="cloud_wallet_tips_string">karathen云钱包专为入门级用户贴心打造，无需导入私钥和助记词，使用用户名密码就能轻松搞定，支持密码找回，站内收发零费用，秒到账</string>
     <string name="connecting_device">连接设备</string>
     <string name="login_string">登录</string>
     <string name="register_string">注册</string>

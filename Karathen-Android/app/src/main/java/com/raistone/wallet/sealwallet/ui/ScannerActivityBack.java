@@ -40,7 +40,7 @@ public class ScannerActivityBack extends AppCompatActivity {
     @BindView(R.id.tv_title)
     TextView tvTitle;
 
-    boolean isHome = true;//是否从首页回来
+    boolean isHome = true;
 
     ChainAddressInfo chainAddressInfo;
 
@@ -57,8 +57,6 @@ public class ScannerActivityBack extends AppCompatActivity {
         ButterKnife.bind(this);
 
         coinType=getIntent().getStringExtra("coinType");
-
-        //current = MultiChainInfoDaoUtils.getCurrent();
 
         chainAddressInfo = ChainAddressDaoUtils.getCurrentByCoinType(coinType,"11");
 
@@ -88,14 +86,12 @@ public class ScannerActivityBack extends AppCompatActivity {
                     String str = subStr(text);
 
                     if (!TextUtils.isEmpty(str)) {
-                        //不同的链不能进行交易
                         if (!chainAddressInfo.getCoinType().equals(str)) {
                             scannerView.restartPreviewAfterDelay(1000);
                             ToastHelper.showToast(getString(R.string.cannot_transaction));
                             return;
                         } else {
 
-                            //是否从首页过来 是的话直接跳到转账页面
                             if(isHome) {
                                 int i = text.lastIndexOf("=");
                                 String tokenAddress = text.substring(i + 1);
@@ -121,7 +117,6 @@ public class ScannerActivityBack extends AppCompatActivity {
                                         .with("dataBean", byTokenAddress)
                                         .go(context);
                             }else {
-                                //从转账页面过来
                                 int start = text.indexOf(":");
 
                                 int end=text.indexOf("?");
@@ -133,11 +128,6 @@ public class ScannerActivityBack extends AppCompatActivity {
                         }
                     }
 
-                    // text.startsWith()
-
-                   /* intent.putExtra("message", text);
-                    setResult(RESULT_OK, intent);
-                    finish();*/
                 } else {
                     //intent.putExtra("",)
                     scannerView.restartPreviewAfterDelay(1000);

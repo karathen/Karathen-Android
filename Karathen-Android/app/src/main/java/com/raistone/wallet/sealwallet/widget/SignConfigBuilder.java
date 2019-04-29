@@ -21,12 +21,7 @@ import android.support.annotation.IntRange;
 
 import java.text.NumberFormat;
 
-/**
- * <p>描述：config SignSeekBar's attributes</p>
- * 作者： zhouyou<br>
- * 日期： 2017/10/10 16:15 <br>
- * 版本： v1.0<br>
- */
+
 public class SignConfigBuilder {
     float min;
     float max;

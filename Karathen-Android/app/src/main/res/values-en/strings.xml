@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Seal Wallet</string>
+    <string name="app_name">Karathen</string>
     <!-- seal wallet begin -->
     <string name="wallet_string">Wallets</string>
     <string name="discovery_string">Discover</string>
@@ -63,11 +63,11 @@
     <string name="privacy_policy_string">Privacy Policy</string>
     <string name="check_for_updates">Check for updates</string>
     <string name="contact_us">Contact us</string>
-    <string name="seal_wallet_info_string">Seal Wallet is a decentralized open source tiered light wallet.
+    <string name="seal_wallet_info_string">Karathen Wallet is a decentralized open source tiered light wallet.
         It supports multi-chain, multi-address and multi-assets.
         </string>
-    <string name="seal_website">http://sealwallet.org</string>
-    <string name="seal_email_string">sealwallet@gmail.com</string>
+    <string name="seal_website">https://karathen.com</string>
+    <string name="seal_email_string">support@karathen.com</string>
     <string name="copy_success_string">Copy Succeeded</string>
     <string name="copy_string">Copy</string>
     <string name="come_soon">Coming soon</string>
@@ -269,16 +269,16 @@
     <string name="hd_wallet_string">HD wallet</string>
     <string name="hardware_wallet_string">Hardware wallet</string>
 
-    <string name="hd_wallet_tips_string">Seal HD wallet is a decentralized open source hierarchical deterministic wallet, users could manage on-chain digital assets by only a set of mnemonics, making multi-chain asset management easier and more convenient. Seal HD wallet also integrates different blockchain applications, you can experience DAPP here!</string>
+    <string name="hd_wallet_tips_string">Karathen wallet is a decentralized open source hierarchical deterministic wallet, users could manage on-chain digital assets by only a set of mnemonics, making multi-chain asset management easier and more convenient. Karathen wallet also integrates different blockchain applications, you can experience DAPP here!</string>
     <string name="hardware_wallet_tips_string">Hardware wallet is tailored to the users with large amount of assets or enterprises users. We use encryption algorithms to protect and store the secret key, provide security for your digital assets.</string>
-    <string name="cloud_wallet_tips_string">Seal cloud wallet is designed for entry-level users，without the need to import private key or mnemonics, just use username and password to successfully get it. Cloud wallet supports password recovery, transfer assets for free with lightning speed.</string>
+    <string name="cloud_wallet_tips_string">Karathen cloud wallet is designed for entry-level users，without the need to import private key or mnemonics, just use username and password to successfully get it. Cloud wallet supports password recovery, transfer assets for free with lightning speed.</string>
     <string name="connecting_device">Connecting device</string>
 
     <string name="login_string">login</string>
     <string name="register_string">register</string>
 
     <string name="wallet_name">Wallet name</string>
-    <string name="please_enter_the_name_of_the_wallet">Please enter the name of the wallet</string>
+    <string name="please_enter_the_name_of_the_wallet">Please enter the name of the wallet</string>K
 
     <string name="set_pwd_string">set password</string>
     <string name="please_enter_your_password">Please enter at least 6 passwords</string>

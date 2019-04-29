@@ -11,11 +11,6 @@ import com.raistone.wallet.sealwallet.R;
 import com.raistone.wallet.sealwallet.entity.AssetsInfo;
 import com.raistone.wallet.sealwallet.factory.AssetsDeatilInfo;
 
-
-/**
- * Created by DongJr on 2017/2/27.
- */
-
 public class AssetsFitPopupUtil implements View.OnClickListener {
 
     private View contentView;
@@ -68,11 +63,7 @@ public class AssetsFitPopupUtil implements View.OnClickListener {
         this.listener = listener;
     }
 
-    /**
-     * 弹出自适应位置的popupwindow
-     *
-     * @param anchorView 目标view
-     */
+
     public View showPopup(View anchorView) {
         if (mPopupWindow == null) {
             mPopupWindow = new FitPopupWindow(context, ScreenUtils.getScreenWidth(context) - DensityUtils.dp2px(20),

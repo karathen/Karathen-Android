@@ -16,10 +16,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * 语言设置
- */
-
 @Route(value = "LanguageSettingActivity")
 public class LanguageSettingActivity extends BaseActivity {
 
@@ -44,15 +40,8 @@ public class LanguageSettingActivity extends BaseActivity {
         setContentView(R.layout.activity_language_setting);
         ButterKnife.bind(this);
         setTitle(titleBar, getString(R.string.language_setting_string), true);
-        //StatusBarUtil.setTransparent(this);
 
         ActivityManager.getInstance().pushActivity(this);
-
-        //savedLanguageType = MultiLanguageUtil.getInstance().getLanguageType();
-
-        //Locale locale = LocalManageUtil.getSetLanguageLocale(this);
-
-        //changType=SharePreUtil.getIntValue(this,"saveFlag",0);
 
 
         savedLanguageType = SPUtil.getInstance(this).getSelectLanguage();
@@ -104,14 +93,6 @@ public class LanguageSettingActivity extends BaseActivity {
         MainActivity.reStart(this);
     }
 
-    /*private void selectLanguage(int select) {
-        MultiLanguageUtil.getInstance().updateLanguage(select);
-
-        Intent intent = new Intent(LanguageSettingActivity.this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-
-    }*/
 
     private void updateState() {
         if (mDefaultCh) {

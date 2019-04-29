@@ -5,18 +5,14 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.webkit.WebSettings;
-
-import com.baidu.mobstat.StatService;
 import com.blankj.utilcode.util.Utils;
 import com.chenenyu.router.Configuration;
 import com.chenenyu.router.Router;
-import com.hss01248.glidepicker.GlideIniter;
 import com.raistone.wallet.sealwallet.daoutils.MyOpenHelper;
 import com.raistone.wallet.sealwallet.greendao.DaoMaster;
 import com.raistone.wallet.sealwallet.greendao.DaoSession;
 import com.raistone.wallet.sealwallet.utils.AppFilePath;
 import com.raistone.wallet.sealwallet.utils.LocalManageUtil;
-import com.raistone.wallet.sealwallet.utils.MultiLanguageUtil;
 import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
 import com.scwang.smartrefresh.header.MaterialHeader;
@@ -24,14 +20,11 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.tencent.bugly.crashreport.CrashReport;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.model.HttpHeaders;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import me.iwf.photopicker.PhotoPickUtils;
 import okhttp3.Protocol;
 
 
@@ -52,12 +45,12 @@ public class WalletApplication extends Application {
         SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {
             @Override
             public RefreshHeader createRefreshHeader(Context context, RefreshLayout layout) {
-                layout.setPrimaryColorsId(R.color.main_color, R.color.main_color);//全局设置主题颜色
+                layout.setPrimaryColorsId(R.color.main_color, R.color.main_color);
 
                 MaterialHeader materialHeader = new MaterialHeader(context);
 
                 materialHeader.setColorSchemeResources(R.color.main_color_three, R.color.main_color, R.color.main_color_three);
-                return materialHeader;//.setTimeFormat(new DynamicTimeFormat("更新于 %s"));//指定为经典Header，默认是 贝塞尔雷达Header
+                return materialHeader;
             }
         });
     }
@@ -77,12 +70,8 @@ public class WalletApplication extends Application {
 
         headers.put("User-Agent", WebSettings.getDefaultUserAgent(context));
 
-        StatService.autoTrace(context,true,true);
 
         EasyHttp.getOkHttpClientBuilder().protocols(Collections.singletonList(Protocol.HTTP_1_1));
-
-
-        PhotoPickUtils.init(context,new GlideIniter());
 
         Utils.init(this);
 
@@ -94,12 +83,10 @@ public class WalletApplication extends Application {
         FlowManager.init(new FlowConfig.Builder(this).build());
         getIconDrawable();
         LocalManageUtil.setApplicationLanguage(this);
-        //MultiLanguageUtil.init(this);
         initGreenDao();
     }
 
     private void initGreenDao() {
-        //创建数据库表
         DaoMaster.OpenHelper mHelper=new MyOpenHelper(this,"wallet_seal");
         SQLiteDatabase db = mHelper.getWritableDatabase();
         daoSession = new DaoMaster(db).newSession();

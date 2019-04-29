@@ -43,9 +43,6 @@ import butterknife.OnClick;
 import okhttp3.RequestBody;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * 添加资产
- */
 
 @Route(value = "AddAssetsActivity")
 public class AddAssetsActivity extends AppCompatActivity implements TextWatcher, BaseQuickAdapter.OnItemChildClickListener,BaseQuickAdapter.OnItemClickListener {
@@ -72,10 +69,7 @@ public class AddAssetsActivity extends AppCompatActivity implements TextWatcher,
 
     public String addresss;
 
-    //根据地址查询所有资产信息
     List<AssetsDeatilInfo> localAsstes;
-
-    //private AssetsInfo.DataBean insertData;
 
     private AssetsDeatilInfo insertData;
 
@@ -94,9 +88,6 @@ public class AddAssetsActivity extends AppCompatActivity implements TextWatcher,
         addresss = ethWallet.getAddress();
 
         ActivityManager.getInstance().pushActivity(this);
-
-
-        //localAsstes = AssetsDaoUtils.findAllAssetsByWalletAddress(addresss);
 
         localAsstes= AssetsDetailDaoUtils.findAllAssetsByAddress(addresss);
 
@@ -139,12 +130,6 @@ public class AddAssetsActivity extends AppCompatActivity implements TextWatcher,
 
     }
 
-    /**
-     * 添加资产
-     *
-     * @param assetsName
-     * @param coinType
-     */
     public void addAssets(String assetsName, String coinType) {
 
         ArrayList<String> arrayList = new ArrayList<>();
@@ -182,19 +167,16 @@ public class AddAssetsActivity extends AppCompatActivity implements TextWatcher,
 
     public void isAdd(List<AssetsDeatilInfo> localAsstes, List<AddAssetsInfo.ResultBean> infoResult) {
 
-        boolean flag = false;//默认是没有添加
+        boolean flag = false;
         for (int i = 0; i < infoResult.size(); i++) {
-            //实时数据
             AddAssetsInfo.ResultBean bean = infoResult.get(i);
             String lowerCase = bean.getTokenAddress().toLowerCase();
 
-            //本地数据
             for (int j = 0; j < localAsstes.size(); j++) {
                 AssetsDeatilInfo dataBean = localAsstes.get(j);
 
                 String tokenAddress = dataBean.getTokenAddress().toLowerCase();
 
-                //代表查到该条数据
                 if (tokenAddress.equals(lowerCase) && dataBean.getStatus()==0) {
                     flag = true;
                     break;
@@ -241,7 +223,6 @@ public class AddAssetsActivity extends AppCompatActivity implements TextWatcher,
                 addressIsEx = AssetsDetailDaoUtils.addressIsEx(ethWallet.getAddress(),toLowerCase, accountId);
 
                 if(addressIsEx!=null){
-                    //ToastHelper.showToast("有这条记录");
                     addressIsEx.setStatus(0);
                     AssetsDetailDaoUtils.updatePrice(addressIsEx);
 
@@ -253,12 +234,7 @@ public class AddAssetsActivity extends AppCompatActivity implements TextWatcher,
 
                     ethWallet.resetAssetsInfoDataList();
 
-                    //EventBus.getDefault().post(ethWallet);
                     EventBus.getDefault().post(new MessageEvent(addresss));
-
-
-                    //findAsseterMoney(datas.get(position).getTokenAddress());
-                    //getPrice_2(addressList);
 
                     assetsAddressAdapter.setNewData(datas);
 
@@ -303,13 +279,10 @@ public class AddAssetsActivity extends AppCompatActivity implements TextWatcher,
                     insertData.setWalletAddress(addresss);
                     insertData.setCoinType(coinType);
 
-                    //insertData.insert();
-
                     AssetsDetailDaoUtils.insertNewAssets(insertData);
 
                     ethWallet.resetAssetsInfoDataList();
 
-                    //EventBus.getDefault().post(ethWallet);
                     EventBus.getDefault().post(new MessageEvent(addresss));
 
 
@@ -329,10 +302,6 @@ public class AddAssetsActivity extends AppCompatActivity implements TextWatcher,
     }
 
 
-    /**
-     * 查询资产余额
-     */
-    // TODO: 2018/11/13
     public void findAsseterMoney(String tokenAddress) {
         String addre = ethWallet.getAddress();
         EasyHttp.getInstance().setBaseUrl(Constant.HttpServiceUrl.MAIN_URL).get("api")
@@ -363,16 +332,11 @@ public class AddAssetsActivity extends AppCompatActivity implements TextWatcher,
                                 AssetsDetailDaoUtils.updatePrice(insertData);
                             }
 
-                            //insertData.update();
                         }
                     }
                 });
     }
 
-
-    /**
-     * 获取代币价格
-     */
     public void getPrice_2(List<String> tokenSynbos) {
 
         String[] params = tokenSynbos.toArray(new String[tokenSynbos.size()]);

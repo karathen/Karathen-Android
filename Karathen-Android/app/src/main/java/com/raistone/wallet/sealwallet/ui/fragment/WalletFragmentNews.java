@@ -21,13 +21,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chenenyu.router.Router;
 import com.example.zhouwei.library.CustomPopWindow;
 import com.google.gson.JsonSyntaxException;
 import com.raistone.wallet.sealwallet.R;
-import com.raistone.wallet.sealwallet.WalletApplication;
 import com.raistone.wallet.sealwallet.adapter.AssetsAdapter;
 import com.raistone.wallet.sealwallet.adapter.WalletAdapterNews;
 import com.raistone.wallet.sealwallet.daoutils.AssetsDetailDaoUtils;
@@ -71,16 +69,13 @@ import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -88,9 +83,6 @@ import butterknife.Unbinder;
 import io.reactivex.disposables.Disposable;
 import okhttp3.RequestBody;
 
-/**
- * 钱包
- */
 public class WalletFragmentNews extends BaseFragment implements OnRefreshListener, ViewPager.OnPageChangeListener, BaseQuickAdapter.OnItemClickListener, BaseQuickAdapter.OnItemChildClickListener, TextWatcher {
 
     @BindView(R.id.qr_code_address)
@@ -154,8 +146,8 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
     //Set<String> parms = new LinkedHashSet<>();
 
 
-    public List<String> tokenSynbolsByLocal = new ArrayList<>();//本地资产列表 这里和服务器返回的资产进行筛选过后的返回的资产列表
-    public List<String> tokenSynbols = new ArrayList<>();//本地资产列表 这里和服务器返回的资产进行筛选过后的返回的资产列表
+    public List<String> tokenSynbolsByLocal = new ArrayList<>();
+    public List<String> tokenSynbols = new ArrayList<>();
 
     private String walletAddress;//钱包地址
 
@@ -165,9 +157,9 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
 
     private CustomPopWindow mCustomPopWindow;
 
-    private int findType = 0;// 显示类型,0 全部 1 erc20 2 erc721 3 隐藏为 o 资产
-    private int findTypeNeo = 0;// 显示类型,0 全部 1 erc20 2 erc721 3 隐藏为 o 资产
-    private int findTypeOnt = 0;// 显示类型,0 全部 1 erc20 2 erc721 3 隐藏为 o 资产
+    private int findType = 0;
+    private int findTypeNeo = 0;
+    private int findTypeOnt = 0;
 
     private boolean hideAss = false;
 
@@ -185,7 +177,6 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home_news, container, false);
         unbinder = ButterKnife.bind(this, view);
         context = getActivity();
@@ -216,7 +207,6 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
         recyclerview.setSwipeMenuCreator(swipeMenuCreator);
         recyclerview.setSwipeMenuItemClickListener(mMenuItemClickListener);
 
-        //viewpager.setPageMargin(60);
         viewpager.setPageTransformer(true, new ZoomInTransformer());
 
         viewpager.setOffscreenPageLimit(5);
@@ -249,7 +239,6 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
 
                 chainAddress = chainAddressInfos.get(selectIndex).getAddress();
 
-                //assetsInfoDataList = chainAddressInfos.get(selectIndex).getAssetsInfoDataList();
                 assetsInfoDataList = getAssetsInfoDataListByStatus(chainAddressInfos.get(selectIndex));
             }
 
@@ -307,32 +296,16 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
 
             chainAddressInfos.set(selectIndex, event);
 
-            //viewpager.refresh();
             viewpager.getAdapter().notifyDataSetChanged();
 
-            parms.clear();//地址清空
+            parms.clear();
 
-            //assetsInfoDataList.clear();
-
-            //assetsInfoDataList = event.getAssetsInfoDataList();
             assetsInfoDataList = getAssetsInfoDataListByStatus(event);
 
             assetsAdapter.setNewData(assetsInfoDataList);
 
             assetsAdapter.notifyDataSetChanged();
 
-            /**
-             * 开启线程请求最新数据
-             */
-        /*Observable
-                .empty()
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnComplete(new Action() {
-                    @Override
-                    public void run() throws Exception {
-
-                    }
-                }).subscribe();*/
 
             requestDataTwo(event, address);
         } catch (Exception e) {
@@ -375,11 +348,6 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
 
     }
 
-    /**
-     * 更新添加后的数据
-     *
-     * @param msg
-     */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onResetMsg(String msg) {
 
@@ -387,14 +355,9 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
         try {
             walletSupportChains.clear();
             selectIndex = 0;
-            //获取钱包信息
             wallet = HdWalletDaoUtils.findWalletBySelect();
-
-            //获取钱包
-            //获取账户ID
             accountId = wallet.getAccountId();
 
-            //根据账户Id获取多链信息
             walletSupportChains = ChainDaoUtils.findAllChainByAccount(accountId);
 
 
@@ -425,7 +388,6 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
             viewpager.addOnPageChangeListener(this);
 
 
-            //默认为第一条数据的资产
             chainAddress = chainAddressInfos.get(0).getAddress();
         } catch (Exception e) {
             e.printStackTrace();
@@ -434,11 +396,6 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
 
     }
 
-    /**
-     * 网络变化监听
-     *
-     * @param status
-     */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(NetStatus status) {
         boolean netStatus = status.isNetStatus();
@@ -456,32 +413,25 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
         try {
             if (!hidden) {
 
-                //selectIndex=0;
                 Boolean unit = SharePreUtil.getBoolean(context, "CurrencyUnit", true);
                 unitFlag = unit;
 
                 HdWallet wallet = HdWalletDaoUtils.findWalletBySelect();
 
-                //根据账户Id获取多链信息
                 walletSupportChains = ChainDaoUtils.findAllChainByAccount(wallet.getAccountId());
 
                 chainDataInfo = walletSupportChains.get(selectIndex);
 
                 ChainAddressInfo chainAddressInfo = chainAddressInfos.get(selectIndex);
 
-                //assetsInfoDataList = chainAddressInfo.getAssetsInfoDataList();
                 assetsInfoDataList = getAssetsInfoDataListByStatus(chainAddressInfo);
 
                 assetsAdapter.setNewData(assetsInfoDataList);
                 assetsAdapter.notifyDataSetChanged();
 
-                //chainAddressInfos.set(0, chainAddressInfo);
-
                 walletAdapter.changUnit(unit);
 
                 walletAdapter.notifyDataSetChanged();
-
-                //viewpager.refresh();
 
                 viewpager.getAdapter().notifyDataSetChanged();
             }
@@ -501,9 +451,7 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
     @OnClick({R.id.qr_code_address, R.id.wallet_ll, R.id.scaner_code_iv, R.id.plus_ll, R.id.assets_filter_ll})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            /**
-             * 二维码地址
-             */
+
             case R.id.qr_code_address:
 
 
@@ -515,23 +463,12 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
 
 
                 break;
-            /**
-             * 钱包管理
-             */
             case R.id.wallet_ll:
 
-
-                /*chainDataInfo = walletSupportChains.get(selectIndex);
-
-                if (chainDataInfo != null) {
-                    Router.build("AddressManageActivity").with("chainDataInfo", chainDataInfo).with("accountId", accountId).with("selectIndex", selectIndex).requestCode(1).go(this);
-                }*/
                 Router.build("WalletManagerActivity").with("chainDataInfo", chainDataInfo).with("accountId", accountId).with("selectIndex", selectIndex).requestCode(1).go(this);
 
                 break;
-            /**
-             * 扫描二维码
-             */
+
             case R.id.scaner_code_iv:
                 ZbPermission.needPermission(getActivity(), REQUEST_CAMERA, Permission.CAMERA, new ZbPermission.ZbPermissionCallback() {
                     @Override
@@ -546,9 +483,7 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
                 });
 
                 break;
-            /**
-             * 资产添加
-             */
+
             case R.id.plus_ll:
 
                 if (chainAddressInfos != null && chainAddressInfos.size() > 0) {
@@ -557,25 +492,21 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
                     Router.build("AddAssetsActivity").with("ethWallet", chainAddressInfo).requestCode(200).go(context);
                 }
                 break;
-            /**
-             * 筛选
-             */
+
             case R.id.assets_filter_ll:
 
-                //ETH 筛选
                 String chainType = chainDataInfo.getChainType();
 
                 if (chainType.equals(ChainAddressCreateManager.ETH_COIN_TYPE)) {
 
                     View contentView = LayoutInflater.from(context).inflate(R.layout.assets_filter_layout, null);
-                    //处理popWindow 显示内容
                     handleLogic(contentView);
 
                     mCustomPopWindow = new CustomPopWindow.PopupWindowBuilder(context)
                             .setView(contentView)
-                            .enableBackgroundDark(true) //弹出popWindow时，背景是否变暗
+                            .enableBackgroundDark(true)
                             .setClippingEnable(true)
-                            .setBgDarkAlpha(0.7f) // 控制亮度
+                            .setBgDarkAlpha(0.7f)
                             .create()
                             .showAsDropDown(assetsFilterLl, DensityUtils.dp2px(10), 0);
                 }
@@ -583,30 +514,27 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
                 if (chainType.equals(ChainAddressCreateManager.NEO_COIN_TYPE)) {
 
                     View contentView = LayoutInflater.from(context).inflate(R.layout.assets_filter_neo_layout, null);
-                    //处理popWindow 显示内容
                     handleLogicByNeo(contentView);
 
                     mCustomPopWindow = new CustomPopWindow.PopupWindowBuilder(context)
                             .setView(contentView)
-                            .enableBackgroundDark(true) //弹出popWindow时，背景是否变暗
+                            .enableBackgroundDark(true)
                             .setClippingEnable(true)
-                            .setBgDarkAlpha(0.7f) // 控制亮度
+                            .setBgDarkAlpha(0.7f)
                             .create()
                             .showAsDropDown(assetsFilterLl, DensityUtils.dp2px(10), 0);
                 }
 
-                // ONT 筛选
                 if (chainType.equals(ChainAddressCreateManager.ONT_COIN_TYPE)) {
 
                     View contentView = LayoutInflater.from(context).inflate(R.layout.assets_filter_ont_layout, null);
-                    //处理popWindow 显示内容
                     handleLogicByOnt(contentView);
 
                     mCustomPopWindow = new CustomPopWindow.PopupWindowBuilder(context)
                             .setView(contentView)
-                            .enableBackgroundDark(true) //弹出popWindow时，背景是否变暗
+                            .enableBackgroundDark(true)
                             .setClippingEnable(true)
-                            .setBgDarkAlpha(0.7f) // 控制亮度
+                            .setBgDarkAlpha(0.7f)
                             .create()
                             .showAsDropDown(assetsFilterLl, DensityUtils.dp2px(10), 0);
                 }
@@ -926,14 +854,11 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
                         findTypeOnt = 0;
 
 
-                        //assetsInfoDataList = chainAddressInfos.get(selectIndex).getAssetsInfoDataList();
-
                         assetsInfoDataList = getAssetsInfoDataListByStatus(chainAddressInfos.get(selectIndex));
 
                         assetsAdapter.setNewData(assetsInfoDataList);
                         assetsAdapter.notifyDataSetChanged();
 
-                        //filterSetData(findType);
                         break;
                     case R.id.ont_ll:
                         if (mCustomPopWindow != null) {
@@ -974,7 +899,6 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
                             hideAss = false;
                             imbutton.setBackgroundResource(R.drawable.close_icon);
 
-                            //assetsInfoDataList = chainAddressInfos.get(selectIndex).getAssetsInfoDataList();
                             assetsInfoDataList = getAssetsInfoDataListByStatus(chainAddressInfos.get(selectIndex));
 
                             assetsAdapter.setNewData(assetsInfoDataList);
@@ -999,21 +923,14 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
         hide_zero_assets_ll.setOnClickListener(listener);
     }
 
-    /**
-     * 菜单创建器，在Item要创建菜单的时候调用。
-     */
     private SwipeMenuCreator swipeMenuCreator = new SwipeMenuCreator() {
         @Override
         public void onCreateMenu(SwipeMenu swipeLeftMenu, SwipeMenu swipeRightMenu, int viewType) {
             int width = getResources().getDimensionPixelSize(R.dimen.common_dp_70);
 
-            // 1. MATCH_PARENT 自适应高度，保持和Item一样高;
-            // 2. 指定具体的高，比如80;
-            // 3. WRAP_CONTENT，自身高度，不推荐;
             int height = ViewGroup.LayoutParams.MATCH_PARENT;
 
 
-            // 添加右侧的，如果不添加，则右侧不会出现菜单。
             {
                 SwipeMenuItem deleteItem = new SwipeMenuItem(context)
                         .setBackground(R.drawable.selector_red)
@@ -1022,22 +939,19 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
                         .setTextColor(Color.WHITE)
                         .setWidth(width)
                         .setHeight(height);
-                swipeRightMenu.addMenuItem(deleteItem);// 添加菜单到右侧。
+                swipeRightMenu.addMenuItem(deleteItem);
             }
         }
     };
 
-    /**
-     * RecyclerView的Item的Menu点击监听。
-     */
     private SwipeMenuItemClickListener mMenuItemClickListener = new SwipeMenuItemClickListener() {
         @Override
         public void onItemClick(SwipeMenuBridge menuBridge) {
             menuBridge.closeMenu();
 
-            int direction = menuBridge.getDirection(); // 左侧还是右侧菜单。
-            int adapterPosition = menuBridge.getAdapterPosition(); // RecyclerView的Item的position。
-            int menuPosition = menuBridge.getPosition(); // 菜单在RecyclerView的Item中的Position。
+            int direction = menuBridge.getDirection();
+            int adapterPosition = menuBridge.getAdapterPosition();
+            int menuPosition = menuBridge.getPosition();
 
 
             AssetsDeatilInfo deatilInfo = assetsInfoDataList.get(adapterPosition);
@@ -1051,9 +965,9 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
             }
 
 
-            BigDecimal price = new BigDecimal(deatilInfo.getPrice());//人民币
+            BigDecimal price = new BigDecimal(deatilInfo.getPrice());
 
-            BigDecimal priceUSD = new BigDecimal(deatilInfo.getPriceUSD());//美元
+            BigDecimal priceUSD = new BigDecimal(deatilInfo.getPriceUSD());
 
 
             cnyPrice = BigDecimalUtils.sub(cnyPrice + "", price + "");
@@ -1075,10 +989,6 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
         }
     };
 
-
-    /**
-     * 根据钱包地址获取 钱包资产
-     */
     public void requestDataTwo(final ChainAddressInfo chainInfo, final String multAddress) {
 
         walletAddress = chainInfo.getAddress();
@@ -1088,8 +998,6 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
         parms.clear();
         tokenSynbols.clear();
         tokenSynbolsByLocal.clear();
-
-        //assetsInfoDataList.clear();
 
         chainInfo.resetAssetsInfoDataList();
         if (coinType.equals(ChainAddressCreateManager.ETH_COIN_TYPE)) {
@@ -1131,9 +1039,6 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
     private Disposable neoGetTokenHolding;
     private Disposable ontGetTokenHolding;
 
-    /**
-     * 查询资产列表
-     */
     public void getTokenHolding(final ChainAddressInfo chainInfo, final String address) {
 
         try {
@@ -1170,14 +1075,10 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
                                     if (result != null && result.size() > 0) {
                                         equstListDataTwo(chainInfo, result, address, ChainAddressCreateManager.ETH_COIN_TYPE);
                                     }
-                                    //getPrice_2(address, parms);
-                                    //getPrice_2(chainInfo, address, parms);
                                 } else {
                                     for (AssetsDeatilInfo b : assetsInfoDataList) {
                                         parms.add(b.getTokenSynbol());
                                     }
-                                    //getPrice_2(address, parms);
-
                                     getPrice_2(chainInfo, address, parms);
                                 }
                             }
@@ -1201,13 +1102,10 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
                     .execute(new SimpleCallBack<String>() {
                         @Override
                         public void onError(ApiException e) {
-                            //showToast(e.getMessage());
                         }
 
                         @Override
                         public void onSuccess(String response) {
-                            //showToast(response);
-                            //parms.clear();
 
                             AssetsInfoData assetsInfo = GsonUtils.decodeJSON(response, AssetsInfoData.class);
 
@@ -1224,14 +1122,11 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
                                     if (result != null && result.size() > 0) {
                                         equstListDataTwo(chainAddressInfo, result, address, ChainAddressCreateManager.NEO_COIN_TYPE);
                                     }
-                                    //getPrice_2(address, parms);
-                                    //getPrice_2(chainAddressInfo, address, parms);
+
                                 } else {
                                     for (AssetsDeatilInfo b : assetsInfoDataList) {
                                         parms.add(b.getTokenSynbol());
                                     }
-                                    //getPrice_2(address, parms);
-
                                     getPrice_2(chainAddressInfo, address, parms);
                                 }
                             }
@@ -1338,22 +1233,17 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
         try {
             tokenSynbolsByLocal.clear();
             tokenSynbols.clear();
-            //本地资产
-            //assetsInfoDataList.clear();
             assetsInfoDataList = chainInfo.getAssetsInfoDataList();
 
-            //循环获取到的资产
             for (int i = 0; i < dataInfos.size(); i++) {
 
-                //获取一条记录
                 AssetsDeatilInfo bean = dataInfos.get(i);
                 bean.setCoinType(coinType);
 
-                //得到    tokenAddress
                 String synbol = bean.getTokenAddress();
 
 
-                boolean flag = false;//默认没有这条数据
+                boolean flag = false;
                 AssetsDeatilInfo dataBean = null;
                 for (int j = 0; j < assetsInfoDataList.size(); j++) {
                     dataBean = assetsInfoDataList.get(j);
@@ -1364,10 +1254,7 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
                         flag = false;
                     }
                 }
-                //就代表本地有这条数据
                 if (flag) {
-                    //AssetsDaoUtils.updateBalance(bean, walletAddes);
-
                     String decimal = bean.getTokenDecimal();
 
                     String balance = bean.getBalance();
@@ -1381,10 +1268,8 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
                     }
                     dataBean.setAsset_name(chainInfo.getAccountId());
                     dataBean.setCoinType(coinType);
-                    //dataBean.update();
                     AssetsDetailDaoUtils.updatePrice(dataBean);
                 } else {
-                    //AssetsDaoUtils.insertNewAssets(bean, walletAddes);
                     if (chainInfo != null) {
                         bean.setAsset_name(chainInfo.getAccountId());
                         bean.setChainAddressId(chainInfo.getId());
@@ -1422,13 +1307,13 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
             usdPrice = BigDecimal.ZERO;
 
             for (int i = 0; i < result.size(); i++) {
-                PriceInfo.ResultBean resultBean = result.get(i);//实时的数据
+                PriceInfo.ResultBean resultBean = result.get(i);
 
                 String synbol = resultBean.getSymbol();
 
                 boolean flag = false;
 
-                AssetsDeatilInfo dataBean = null;//本地数据
+                AssetsDeatilInfo dataBean = null;
 
                 for (int j = 0; j < assetsInfoDataList.size(); j++) {
                     dataBean = assetsInfoDataList.get(j);
@@ -1441,15 +1326,14 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
 
                 }
 
-                String balance = dataBean.getBalance();//市场价格
+                String balance = dataBean.getBalance();
 
-                String price = resultBean.getCny_price().toPlainString();//人民币
+                String price = resultBean.getCny_price().toPlainString();
 
-                String priceUSD = resultBean.getUsd_price().toPlainString();//美元
+                String priceUSD = resultBean.getUsd_price().toPlainString();
 
                 dataBean.setPriceFlag("0");
                 dataBean.setPriceUsdFlag("0");
-                //dataBean.update();
 
                 AssetsDetailDaoUtils.updatePrice(dataBean);
 
@@ -1461,26 +1345,17 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
 
                         BigDecimal value1 = new BigDecimal(balance.toString());
 
-                        //double value2 = Math.pow(10, Double.parseDouble(decimal1));//币种精度
-
                         dataBean.setPriceFlag(price);
 
                         dataBean.setPriceUsdFlag(priceUSD);
-
-                        //BigDecimal decimal = BigDecimalUtils.div(value1.toString(), value2 + "");
-
 
                         BigDecimal priceValue = BigDecimalUtils.mul(value1 + "", price.toString());
 
                         BigDecimal usdPriceValue = BigDecimalUtils.mul(value1 + "", priceUSD.toString());
 
-                        //设置人民币价格
                         dataBean.setPrice(BigDecimalUtils.intercept(priceValue + "", 2).toPlainString());
 
-                        //设置美元价格
                         dataBean.setPriceUSD(BigDecimalUtils.intercept(usdPriceValue + "", 2).toPlainString());
-
-                        //dataBean.update();
 
 
                         AssetsDetailDaoUtils.updatePrice(dataBean);
@@ -1489,14 +1364,9 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
 
                         usdPrice = usdPrice.add(BigDecimalUtils.intercept(usdPriceValue + "", 2));
 
-                        //AssetsDaoUtils.updatePrice(dataBean, walletAddress);
-
                         chainAddressInfo.setCnyTotalPrice(cnyPrice.toPlainString());
                         chainAddressInfo.setUsdtTotalPrice(usdPrice.toPlainString());
                         chainAddressInfo.update();
-
-                        //wallet.setUsdtPrice(usdPrice.toPlainString());
-                        //wallet.setCnyPrice(cnyPrice.toPlainString());
 
                         AssetsDetailDaoUtils.updatePrice(dataBean);
                     }
@@ -1513,16 +1383,12 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
 
                 if (selectChainAddressInfo.getCoinType().equals(chainAddressInfo.getCoinType())) {
 
-                    //ToastHelper.showToast("相等可以设置");
-
-
                     assetsInfoDataList = getAssetsInfoDataListByStatus(chainAddressInfo);
                     assetsAdapter.setNewData(assetsInfoDataList);
                     assetsAdapter.notifyDataSetChanged();
 
                     setWalletMoney();
                 } else {
-                    //ToastHelper.showToast("不相等不设置");
                 }
             }
         } catch (Exception e) {
@@ -1567,7 +1433,6 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
 
         List<AssetsDeatilInfo> newsDatas = new ArrayList<>();
 
-        //隐藏为0的资产
         if (isHide) {
             for (int i = 0; i < srcData.size(); i++) {
                 if (!srcData.get(i).getBalance().equals("0")) {
@@ -1587,11 +1452,8 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
 
     }
 
-    private long lastClickTime = 0;
-
     ChainAddressInfo addressInfo;
 
-    //String address;
     @Override
     public void onPageSelected(int i) {
 
@@ -1600,8 +1462,6 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
             searchEd.setText("");
 
             i = i % walletSupportChains.size();
-
-            //if (selectIndex != i) {
 
             findType = 0;
             findTypeNeo = 0;
@@ -1616,7 +1476,6 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
 
                     addressInfo = chainAddressInfos.get(selectIndex);
 
-                   // assetsInfoDataList = chainAddressInfos.get(selectIndex).getAssetsInfoDataList();
                     assetsInfoDataList = getAssetsInfoDataListByStatus(chainAddressInfos.get(selectIndex));
 
                     if (addressInfo != null) {
@@ -1651,7 +1510,6 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // }
     }
 
     List<AssetsDeatilInfo> newsDatas=new ArrayList<>();
@@ -1675,15 +1533,15 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
 
         if(index==0) {
             GradientDrawable myGrad = (GradientDrawable) leftIv.getBackground();
-            myGrad.setColor(Color.parseColor("#27B3E7")); //ONT卡片 背景色
+            myGrad.setColor(Color.parseColor("#27B3E7"));
 
             GradientDrawable myGrad1 = (GradientDrawable) rightIv.getBackground();
-            myGrad1.setColor(Color.parseColor("#3F8EC8")); //NEO卡片 背景色
+            myGrad1.setColor(Color.parseColor("#3F8EC8"));
         }
 
         if(index==1) {
             GradientDrawable myGrad = (GradientDrawable) leftIv.getBackground();
-            myGrad.setColor(Color.parseColor("#7082FE")); //ETH卡片背景色
+            myGrad.setColor(Color.parseColor("#7082FE"));
 
             GradientDrawable myGrad1 = (GradientDrawable) rightIv.getBackground();
             myGrad1.setColor(Color.parseColor("#27B3E7"));
@@ -1787,9 +1645,7 @@ public class WalletFragmentNews extends BaseFragment implements OnRefreshListene
         int id = view.getId();
         View view1 = view.findViewById(R.id.more_iv);
         switch (id) {
-            /**
-             * 更多
-             */
+
             case R.id.more_ll:
 
                 AssetsFitPopupUtil fitPopupUtil = new AssetsFitPopupUtil((Activity) context, deatilInfo);

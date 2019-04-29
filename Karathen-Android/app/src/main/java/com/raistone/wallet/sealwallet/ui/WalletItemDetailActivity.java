@@ -138,8 +138,8 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
     public static String assetsTokenSynbol = "";
     public static String assetsTokenType = "";
     public static String assetsCoinType = "";
-    public static String walletsAddress = "";//钱包地址
-    boolean isLocal = true;//默认是本地交易数据
+    public static String walletsAddress = "";
+    boolean isLocal = true;
 
     private List<Object> datas = new ArrayList<>();
 
@@ -200,14 +200,11 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
         swView.setOnRefreshListener(this);
         swView.setOnLoadMoreListener(this);
 
-        //ActivityManager.getInstance().pushActivity(this);
-
         assetsTokenDecimal = dataBean.getTokenDecimal();
         assetsTokenSynbol = dataBean.getTokenSynbol();
         assetsTokenType = dataBean.getTokenType();
         assetsCoinType = dataBean.getCoinType();
         dataBean.getCoinType();
-        //精度是否为空
         if (!TextUtils.isEmpty(dataBean.getTokenDecimal())) {
 
             if (dataBean.getBalance() != null) {
@@ -215,9 +212,6 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
                 String decimal = dataBean.getTokenDecimal();
 
                 if (!dataBean.getBalance().equals("0")) {
-
-                    //BigDecimal bigDecimal = BigDecimalUtils.div(dataBean.getBalance().toString(), String.valueOf(Math.pow(10, Double.parseDouble(decimal))), 8);
-
 
                     tvBalance.setText(AssetsAdapter.subZeroAndDot(dataBean.getBalance()));
                 }
@@ -247,8 +241,6 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
                 priceTv.setText("≈ $ " + 0);
             }
         }
-        //findBalances();
-
 
         transferAdapter = new TransferAdapter(resultBeans);
 
@@ -273,11 +265,6 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
         });
 
 
-        //getTransferAllStatus(pageNo);
-
-        /**
-         * 获取 交易详情
-         */
         getAllTransacionInfo(pageNo);
 
     }
@@ -481,13 +468,10 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onError(ApiException e) {
-                        //showToast(e.getMessage());
                     }
 
                     @Override
                     public void onSuccess(String response) {
-                        //showToast(response);
-
 
                         NeoBalanceInfo assetsInfo = GsonUtils.decodeJSON(response, NeoBalanceInfo.class);
 
@@ -513,7 +497,7 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
                                     if (!result.equals("0") && !result.equals("0.0")) {
 
                                         BigDecimal bigDecimal = BigDecimalUtils.div(result, String.valueOf(Math.pow(10, Double.parseDouble(decimal))), 8);
-                                        if(dataBean.getTokenSynbol().equals("NEO") /*|| dataBean.getTokenSynbol().equals("GAS")*/) {
+                                        if(dataBean.getTokenSynbol().equals("NEO")) {
 
                                             tvBalance.setText(AssetsAdapter.subZeroAndDot(AssetsAdapter.subZeroAndDot(result)));
 
@@ -557,7 +541,6 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onError(ApiException e) {
-                        //showToast(e.getMessage());
                     }
 
                     @Override
@@ -623,14 +606,11 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
                                 for (AssetsDeatilInfo info : deatilInfos) {
                                     if (info.getTokenSynbol().toLowerCase().equals("ont")) {
                                         info.setBalance(ont);
-                                        //dataBean.setBalance(ont);
                                         AssetsDetailDaoUtils.updatePrice(info);
 
                                         break;
                                     }
                                     if (info.getTokenSynbol().toLowerCase().equals("ong")) {
-
-                                        //dataBean.setBalance(ong);
 
                                         info.setBalance(ong);
                                         AssetsDetailDaoUtils.updatePrice(info);
@@ -785,13 +765,8 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
     }
 
 
-    int count = 10; //轮询次数 10次
+    int count = 10;
 
-    /**
-     * 获取交易详情 查询ETh块高
-     *
-     * @param txid
-     */
     @SuppressLint("CheckResult")
     public void getHash(final String txid) {
 
@@ -809,7 +784,6 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
         }).takeUntil(new Predicate<String>() {
             @Override
             public boolean test(@NonNull String content) throws Exception {
-                //结果为true，说明满足条件了，就不在轮询了
                 boolean flag = false;
 
                 TransactionByHashInfo byHashInfo = GsonUtils.decodeJSON(content, TransactionByHashInfo.class);
@@ -836,7 +810,6 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
                     } else {
                         flag = false;
                     }
-                    //flag=false;
                 }
 
 
@@ -845,7 +818,6 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
         }).subscribeWith(new BaseSubscriber<String>() {
             @Override
             public void onError(ApiException e) {
-                //showToast(e.getMessage());
             }
 
             @Override
@@ -863,8 +835,6 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
                         Long conversion = CommonUtils.binaryConversion(result.getBlockNumber());
 
                         if (conversion != null) {
-
-                            //long res = SplashActivity.blockNumber - conversion;
 
                             long res = SharePreUtil.getLongValue(context, "blockNumber", 0l) - conversion;
 
@@ -894,25 +864,12 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
                     }
 
 
-                } /*else {
-
-                    TransferInfo transfers = TransferDaoUtils.selectTransfersByHash(txid);
-                    if (transfers != null) {
-                        transfers.setStatus("-1");
-                        transfers.update();
-                    }
-                    //EasyHttp.cancelSubscription(blockdisposable);
-                }*/
+                }
             }
         });
 
     }
 
-    /**
-     * 查询状态
-     *
-     * @param txid
-     */
     @SuppressLint("CheckResult")
     public void findAllStatus(final String txid) {
 
@@ -940,65 +897,42 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
 
                         if (result != null) {
 
-                            //获取状态
                             String status = result.getStatus();
 
-                            //转换为10进制
                             Long conversion = CommonUtils.binaryConversion(status);
 
-                            //状态为1 代表成功
                             if (conversion == 1) {
-                                //获取块高
                                 if (!TextUtils.isEmpty(result.getBlockNumber())) {
 
 
                                     statusArray.remove(txid);
 
-                                    //将块高转换为10进制
                                     Long block = CommonUtils.binaryConversion(result.getBlockNumber());
 
-                                    //状态设为成功
                                     transfers.setStatus("0");
 
-
-                                    //更新本地块高
                                     transfers.setBlockHeighe(new BigInteger(block + ""));
 
                                     transfers.update();
-
-                                    //获取实时块高
-                                    //getBlockNumber(txid);
-
                                     eqBlokHeight(txid);
                                 }
 
-                            }/* else {
-                                transfers.setStatus("-1");
-                                transfers.update();
-                            }*/
-                        }/* else {
-                            transfers.setStatus("-1");
-                            transfers.update();
-                        }*/
+                            }
+                        }
 
                     }
                 });
 
     }
 
-    //比对块高
-
     Disposable blockSubscribe;
 
     @SuppressLint("CheckResult")
     public void eqBlokHeight(final String txid) {
-        //定时2秒调用一次
         blockSubscribe = Flowable.interval(1, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Long>() {
                     @Override
                     public void accept(Long aLong) throws Exception {
-
-                        //Log.e("------>", (aLong++) + "");
 
 
                         Long number = SharePreUtil.getLongValue(context, "blockNumber", 0l);
@@ -1041,10 +975,6 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
 
     }
 
- /*   private Disposable findTokenbalanceDisposable,getOntBalanceDisposable,
-            getTransferAllStatusDisposable,getNeoBalanceDisposable, findAllStatusDisposable,findAllOntStatusDisposable;
-
-    private BaseSubscriber<String> getHashSubscriber,getNeoHashSubscriber,findAllNeoStatusSubscriber;*/
 
     @Override
     protected void onDestroy() {
@@ -1092,13 +1022,9 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
     }
 
 
-    int neoCount = 10; //轮询次数 10次
+    int neoCount = 10;
 
 
-
-    /**
-     * 获取块高
-     */
     @SuppressLint("CheckResult")
     public void getNeoHash(final String txid) {
 
@@ -1112,13 +1038,10 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
                 if (b) {
                     data = txid.substring(2);
                 }
-                //https://api.neoscan.io/api/main_net/v1/get_transaction/" + data
-                return EasyHttp.getInstance().setBaseUrl("https://api.neoscan.io")
-                        .setRetryCount(3)//网络不好自动重试3次
-                        //设置超时重试间隔时间,默认为500ms,不需要可以设置为0
-                        .setRetryDelay(500)//每次延时500ms重试
-                        //可以全局统一设置超时重试间隔叠加时间,默认为0ms不叠加
-                        .setRetryIncreaseDelay(500)//每次延时叠加500ms
+                return EasyHttp.getInstance().setBaseUrl("")
+                        .setRetryCount(3)
+                        .setRetryDelay(500)
+                        .setRetryIncreaseDelay(500)
                         .get("/api/main_net/v1/get_transaction/" + data)
                         //采用代理
                         .execute(new CallClazzProxy<TestApiResult6<String>, String>(String.class) {
@@ -1213,31 +1136,13 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
                     }
 
 
-                }/* else {
-
-
-                    if (transfers != null) {
-                        transfers.setStatus("-1");
-                        transfers.update();
-                    }
-                }*/
+                }
             }
         });
 
 
     }
 
-
-    /**
-     *
-     * ============================================================================================= 查询NEO交易状态 =========================================================================================================
-     */
-
-    /**
-     * 查询neo状态
-     *
-     * @param txid
-     */
     @SuppressLint("CheckResult")
     public void findAllNeoStatus(final String txid) {
 
@@ -1257,7 +1162,7 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
         findAllNeoStatusSubscriber = Observable.interval(0, 5, TimeUnit.SECONDS).flatMap(new Function<Long, ObservableSource<String>>() {
             @Override
             public ObservableSource<String> apply(@NonNull Long aLong) throws Exception {
-                return EasyHttp.getInstance().setBaseUrl("https://neoapi.trinity.ink/").post("/")
+                return EasyHttp.getInstance().setBaseUrl("").post("/")
                         .requestBody(tokenInfo)
                         //采用代理
                         .execute(new CallClazzProxy<TestApiResult6<String>, String>(String.class) {
@@ -1266,9 +1171,6 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
         }).takeUntil(new Predicate<String>() {
             @Override
             public boolean test(@NonNull String content) throws Exception {
-                //如果条件满足，就会终止轮询，这里逻辑可以自己写
-                //结果为true，说明满足条件了，就不在轮询了
-
                 NeoResultInfo resultInfo = GsonUtils.decodeJSON(content, NeoResultInfo.class);
 
                 Boolean infoResult = resultInfo.isResult();
@@ -1287,12 +1189,10 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
         }).subscribeWith(new BaseSubscriber<String>() {
             @Override
             public void onError(ApiException e) {
-                //showToast(e.getMessage());
             }
 
             @Override
             public void onNext(@NonNull String response) {
-                //showToast(content.toString());
 
                 NeoResultInfo resultInfo = GsonUtils.decodeJSON(response, NeoResultInfo.class);
 
@@ -1304,7 +1204,6 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
                     if (infoResult) {
                         neoBlockArray.remove(txid);
 
-                        //状态设为成功
                         transfers.setStatus("1");
                         transfers.setData("1/1");
                         transfers.setBlockHeighe(new BigInteger("1"));
@@ -1326,7 +1225,6 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
                         localAdapter.notifyDataSetChanged();
                     }
                 } else {
-                    //状态设为成功
                     transfers.setStatus("0");
                     transfers.setData("0/1");
                     transfers.setBlockHeighe(new BigInteger("1"));
@@ -1345,9 +1243,6 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
     }
 
 
-    /**
-     * ============================================================================================= 查询ONT交易详情 =========================================================================================================
-     */
     public void findAllOntStatus(final String txid) {
         findAllOntStatusDisposable = Observable
                 .empty()
@@ -1361,10 +1256,8 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
                         TransferInfo transfers = TransferDaoUtils.selectTransfersByHash(txid);
 
 
-                        //查询当前块高
                         int blockHeight = ontSdk.getConnect().getBlockHeight();
 
-                        //得到该交易哈希所落账的区块的高度
                         int blockJson = ontSdk.getConnect().getBlockHeightByTxHash(txid);
 
                         if (blockJson > 0) {
@@ -1372,7 +1265,6 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
                         }
 
 
-                        //	得到智能合约执行的结果
                         String ss = (String) ontSdk.getConnect().getSmartCodeEvent(txid).toString();
 
                         if (!TextUtils.isEmpty(ss)) {
@@ -1384,7 +1276,6 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
                             if (state == 1) {
                                 ontStatusArray.remove(txid);
 
-                                //状态设为成功
                                 transfers.setData("1/1");
                                 transfers.setStatus("1");
                                 transfers.setBlockHeighe(new BigInteger(blockJson + ""));
@@ -1418,14 +1309,9 @@ public class WalletItemDetailActivity extends AppCompatActivity implements OnLoa
     }
 
 
-    /**
-     * 初始化ONT sdk
-     *
-     * @return
-     */
+
     public OntSdk getOntSdk() {
-        //String ip = "http://polaris1.ont.io"; //测试网
-        String ip = "http://dappnode1.ont.io"; //主网
+        String ip = "http://dappnode1.ont.io";
         String rpcUrl = ip + ":" + "20336";
         OntSdk ontSdk = OntSdk.getInstance();
         try {

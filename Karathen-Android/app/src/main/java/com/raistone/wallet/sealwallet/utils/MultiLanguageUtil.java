@@ -6,7 +6,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.LocaleList;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
@@ -17,10 +16,6 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.Locale;
 
-/**
- * 多语言切换的帮助类
- * http://blog.csdn.net/finddreams
- */
 public class MultiLanguageUtil {
 
     private static final String TAG = "MultiLanguageUtil";
@@ -49,9 +44,7 @@ public class MultiLanguageUtil {
         this.mContext = context;
     }
 
-    /**
-     * 设置语言
-     */
+
     public void setConfiguration() {
         Locale targetLocale = getLanguageLocale();
         Configuration configuration = mContext.getResources().getConfiguration();
@@ -65,11 +58,7 @@ public class MultiLanguageUtil {
             resources.updateConfiguration(configuration, dm);//语言更换生效的代码!
     }
 
-    /**
-     * 如果不是英文、简体中文、繁体中文，默认返回简体中文
-     *
-     * @return
-     */
+
     private Locale getLanguageLocale() {
         int languageType = CommSharedUtil.getInstance(mContext).getInt(MultiLanguageUtil.SAVE_LANGUAGE, 0);
         if (languageType == LanguageType.LANGUAGE_FOLLOW_SYSTEM) {
@@ -92,7 +81,6 @@ public class MultiLanguageUtil {
 
     }
 
-    //以上获取方式需要特殊处理一下
     public Locale getSysLocale() {
         Locale locale;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -103,11 +91,7 @@ public class MultiLanguageUtil {
         return locale;
     }
 
-    /**
-     * 更新语言
-     *
-     * @param languageType
-     */
+
     public void updateLanguage(int languageType) {
         CommSharedUtil.getInstance(mContext).putInt(MultiLanguageUtil.SAVE_LANGUAGE, languageType);
         MultiLanguageUtil.getInstance().setConfiguration();
@@ -126,10 +110,6 @@ public class MultiLanguageUtil {
         return mContext.getString(R.string.simplified_chinese_string);
     }
 
-    /**
-     * 获取到用户保存的语言类型
-     * @return
-     */
     public int getLanguageType() {
         int languageType = CommSharedUtil.getInstance(mContext).getInt(MultiLanguageUtil.SAVE_LANGUAGE, LanguageType.LANGUAGE_CHINESE_SIMPLIFIED);
          if (languageType == LanguageType.LANGUAGE_CHINESE_SIMPLIFIED) {

@@ -12,10 +12,6 @@ import com.raistone.wallet.sealwallet.greendao.DaoSession;
 import com.raistone.wallet.sealwallet.greendao.ChainAddressInfoDao;
 import com.raistone.wallet.sealwallet.greendao.ChainDataInfoDao;
 
-/**
- * 多链表 (当前链对应多个地址)
- */
-
 
 
 @Entity
@@ -23,27 +19,27 @@ public class ChainDataInfo implements Serializable{
 
     private static final long serialVersionUID = -5789061602835567603L;
     @Id(autoincrement = true)
-    private Long id; //链id
+    private Long id;
 
 
-    private Long walletId;//钱包id
+    private Long walletId;
 
-    private String chainName;//链名称
+    private String chainName;
 
-    private String chainType;//链类型
+    private String chainType;
 
-    private boolean isShow;//是否显示
+    private boolean isShow;
 
-    private String accountId;//账户Id
+    private String accountId;
 
-    private String chainTokenName;//别名
+    private String chainTokenName;
 
-    private int orderInfo;//排序信息
+    private int orderInfo;
 
-    private boolean isSelect;// 是否选中
+    private boolean isSelect;
 
     @ToMany(referencedJoinProperty = "chainId")
-    private List<ChainAddressInfo> chainAddressInfos; //当前钱包下的地址
+    private List<ChainAddressInfo> chainAddressInfos;
 
 
     /** Used to resolve relations */

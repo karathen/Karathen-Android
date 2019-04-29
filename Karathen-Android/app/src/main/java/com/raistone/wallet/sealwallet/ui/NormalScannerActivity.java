@@ -35,7 +35,7 @@ public class NormalScannerActivity extends AppCompatActivity {
     @BindView(R.id.tv_title)
     TextView tvTitle;
 
-    boolean isHome = true;//是否从首页回来
+    boolean isHome = true;
 
     MultiChainInfo current;
 

@@ -63,11 +63,7 @@ public class AssetsFilterFitPopupUtil implements View.OnClickListener {
         this.listener = listener;
     }
 
-    /**
-     * 弹出自适应位置的popupwindow
-     *
-     * @param anchorView 目标view
-     */
+
     public View showPopup(View anchorView) {
         if (mPopupWindow == null) {
             mPopupWindow = new FitPopupWindow(context,    300,

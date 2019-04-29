@@ -36,10 +36,6 @@ public class SealApi extends BaseApi{
         Call<Test> getResult(@Body RequestBody body);
     }
 
-
-    /**
-     * 获取初始化信息
-     */
     public Call<Test> getPublicInfo(String methon,Object o){
         Call<Test> call = ((ApiStore) mApiStore).getResult(toRequestBody(methon,o));
         return call;

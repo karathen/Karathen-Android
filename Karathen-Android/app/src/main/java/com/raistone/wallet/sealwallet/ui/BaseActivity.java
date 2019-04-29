@@ -55,11 +55,9 @@ public class BaseActivity extends AppCompatActivity implements NetBroadcastRecei
         listener=this;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            //实例化IntentFilter对象
             IntentFilter filter = new IntentFilter();
             filter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
             netBroadcastReceiver = new NetBroadcastReceiver();
-            //注册广播接收
             registerReceiver(netBroadcastReceiver, filter);
         }
 
@@ -128,9 +126,9 @@ public class BaseActivity extends AppCompatActivity implements NetBroadcastRecei
                 darkModeFlag = field.getInt(layoutParams);
                 Method extraFlagField = clazz.getMethod("setExtraFlags", int.class, int.class);
                 if (dark) {
-                    extraFlagField.invoke(window, darkModeFlag, darkModeFlag);//状态栏透明且黑色字体
+                    extraFlagField.invoke(window, darkModeFlag, darkModeFlag);
                 } else {
-                    extraFlagField.invoke(window, 0, darkModeFlag);//清除黑色字体
+                    extraFlagField.invoke(window, 0, darkModeFlag);
                 }
                 result = true;
             } catch (Exception e) {
@@ -197,8 +195,8 @@ public class BaseActivity extends AppCompatActivity implements NetBroadcastRecei
 
     public static String subZeroAndDot(String s) {
         if (s.indexOf(".") > 0) {
-            s = s.replaceAll("0+?$", "");//去掉多余的0
-            s = s.replaceAll("[.]$", "");//如最后一位是.则去掉
+            s = s.replaceAll("0+?$", "");
+            s = s.replaceAll("[.]$", "");
         }
         return s;
     }

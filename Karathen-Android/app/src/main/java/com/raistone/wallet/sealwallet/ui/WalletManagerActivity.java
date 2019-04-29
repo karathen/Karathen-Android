@@ -36,10 +36,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * 钱包管理
- */
-
 @Route(value = "WalletManagerActivity")
 public class WalletManagerActivity extends BaseActivity implements BaseQuickAdapter.OnItemClickListener, BaseQuickAdapter.OnItemChildClickListener {
 
@@ -56,7 +52,7 @@ public class WalletManagerActivity extends BaseActivity implements BaseQuickAdap
 
     private List<HdWallet> allWallet;
 
-    private HdWallet selectWallet;//当前选中的钱包
+    private HdWallet selectWallet;
 
     private WalletManagerPopup addressManagerPopup;
 
@@ -69,8 +65,6 @@ public class WalletManagerActivity extends BaseActivity implements BaseQuickAdap
         ButterKnife.bind(this);
 
         setTitle(titleBar, getResources().getString(R.string.wallet_manager_string), true);
-
-        //StatusBarUtil.setTransparent(this);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
 
@@ -98,9 +92,6 @@ public class WalletManagerActivity extends BaseActivity implements BaseQuickAdap
         }
     }
 
-    /**
-     * 添加钱包
-     */
     @OnClick(R.id.add_btn)
     public void onViewClicked() {
         Router.build("GuideActivityNews").with("isAdd", true).go(context);
@@ -209,7 +200,6 @@ public class WalletManagerActivity extends BaseActivity implements BaseQuickAdap
 
         TextView title_tv = v.findViewById(R.id.tv_title);
         title_tv.setText(getResources().getString(R.string.update_wallet_name));
-        //builer.setView(v);//这里如果使用builer.setView(v)，自定义布局只会覆盖title和button之间的那部分
         final Dialog dialog = builder.create();
         final EditText editText = v.findViewById(R.id.wallet_name_ed);
         TextView textView = v.findViewById(R.id.cancel_tv);
@@ -258,7 +248,6 @@ public class WalletManagerActivity extends BaseActivity implements BaseQuickAdap
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = LayoutInflater.from(context);
         View v = inflater.inflate(R.layout.coustom_dialog_layout, null);
-        //builer.setView(v);//这里如果使用builer.setView(v)，自定义布局只会覆盖title和button之间的那部分
         final Dialog dialog = builder.create();
         final EditText editText = v.findViewById(R.id.pin_ed);
         TextView textView = v.findViewById(R.id.cancel_tv);

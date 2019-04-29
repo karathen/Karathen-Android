@@ -23,28 +23,20 @@ import razerdp.basepopup.BasePopupWindow;
 
 public class AddressManagerPopup extends BasePopupWindow implements View.OnClickListener {
 
-    //导出私钥
     RelativeLayout export_private_ll;
 
-    //导出助记词
     RelativeLayout export_mnemonic_ll;
 
-    //导出Keystore
     RelativeLayout export_keystore_ll;
 
-    //导出WIF
     RelativeLayout export_wif_ll;
 
-    //修改名称
     RelativeLayout update_name_ll;
 
-    //浏览器查询
     RelativeLayout browser_query_ll;
 
-    //删除地址
     RelativeLayout delete_ll;
 
-    //提取gas
     RelativeLayout claim_ll;
 
     TextView claim_tv;
@@ -60,21 +52,13 @@ public class AddressManagerPopup extends BasePopupWindow implements View.OnClick
 
         mHandler = new Handler();
 
-        //导出私钥
         export_private_ll = findViewById(R.id.export_private_ll);
-        //导出keystore
         export_keystore_ll = findViewById(R.id.export_keystore_ll);
-        //导出助记词
         export_mnemonic_ll = findViewById(R.id.export_mnemonic_ll);
-        //导出WIF
         export_wif_ll = findViewById(R.id.export_wif_ll);
-        //修改名称
         update_name_ll = findViewById(R.id.update_name_ll);
-        //浏览器查询
         browser_query_ll = findViewById(R.id.browser_query_ll);
-        //删除地址
         delete_ll = findViewById(R.id.delete_ll);
-        //提取gas
         claim_ll = findViewById(R.id.claim_ll);
 
         claim_tv=findViewById(R.id.claim_tv);
@@ -106,21 +90,14 @@ public class AddressManagerPopup extends BasePopupWindow implements View.OnClick
 
 
 
-        //导出私钥
         export_private_ll = findViewById(R.id.export_private_ll);
-        //导出助记词
         export_mnemonic_ll = findViewById(R.id.export_mnemonic_ll);
 
         export_keystore_ll = findViewById(R.id.export_keystore_ll);
-        //导出WIF
         export_wif_ll = findViewById(R.id.export_wif_ll);
-        //修改名称
         update_name_ll = findViewById(R.id.update_name_ll);
-        //浏览器查询
         browser_query_ll = findViewById(R.id.browser_query_ll);
-        //删除地址
         delete_ll = findViewById(R.id.delete_ll);
-        //提取gas
         claim_ll = findViewById(R.id.claim_ll);
 
         claim_tv=findViewById(R.id.claim_tv);
@@ -309,7 +286,7 @@ public class AddressManagerPopup extends BasePopupWindow implements View.OnClick
                     mOnCommentPopupClickListener.onCommentClick(v);
                 }
                 break;
-            case R.id.delete:
+            case R.id.delete_ll:
                 if (mOnCommentPopupClickListener != null) {
                     mOnCommentPopupClickListener.onCommentClick(v);
                 }

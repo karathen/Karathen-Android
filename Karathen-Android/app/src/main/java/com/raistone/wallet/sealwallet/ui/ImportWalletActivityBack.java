@@ -1,6 +1,5 @@
 package com.raistone.wallet.sealwallet.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -20,26 +19,19 @@ import com.raistone.wallet.sealwallet.entity.AssetsInfo;
 import com.raistone.wallet.sealwallet.entity.ChainInfo;
 import com.raistone.wallet.sealwallet.entity.MultiChainInfo;
 import com.raistone.wallet.sealwallet.entity.WalletInfo;
+import com.raistone.wallet.sealwallet.utils.ChainAddressCreateManager;
 import com.raistone.wallet.sealwallet.utils.CommonUtils;
-import com.raistone.wallet.sealwallet.utils.Constant;
-import com.raistone.wallet.sealwallet.utils.ETHWalletUtils;
 import com.raistone.wallet.sealwallet.utils.GsonUtils;
 import com.raistone.wallet.sealwallet.utils.IconCreateUtils;
 import com.raistone.wallet.sealwallet.utils.Md5Utils;
 import com.raistone.wallet.sealwallet.utils.MultiChainCreateManager;
-import com.raistone.wallet.sealwallet.utils.StatusBarUtil;
 import com.raistone.wallet.sealwallet.utils.ToastHelper;
-import com.raistone.wallet.sealwallet.widget.SmoothCheckBox;
 import com.raistone.wallet.sealwallet.widget.TitleBar;
 import java.util.Arrays;
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-/**
- * 导入钱包
- */
 
 @Route(value = "ImportWalletActivityBack")
 public class ImportWalletActivityBack extends BaseActivity {
@@ -79,21 +71,15 @@ public class ImportWalletActivityBack extends BaseActivity {
 
         setTitle(titleBar, getString(R.string.import_wallet), true);
 
-        //todo 加载本地json数据到数据库
-
         String json = CommonUtils.getJson("assets.json", this);
 
-        //解析json
         AssetsInfo assetsInfo = GsonUtils.decodeJSON(json, AssetsInfo.class);
 
-        //获取本地九条数据
         List<AssetsInfo.DataBean> result = assetsInfo.getResult();
-        //插入数据到数据库
         for (AssetsInfo.DataBean bean : result) {
             bean.insert();
         }
 
-        //是否是从导入界面过来
         isFormCreate = getIntent().getBooleanExtra("isFormCreate", false);
 
         etSetPin.addTextChangedListener(new TextWatcher() {
@@ -173,9 +159,7 @@ public class ImportWalletActivityBack extends BaseActivity {
     @OnClick({R.id.service_tv, R.id.btn_import, R.id.tv_create})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            /**
-             * 导入
-             */
+
             case R.id.btn_import:
 
                 btnImport.setClickable(false);
@@ -188,7 +172,6 @@ public class ImportWalletActivityBack extends BaseActivity {
                     return;
                 }
 
-                //生成链表
                 String accountId = Md5Utils.md5(mnemonics);
 
                 for (int i = 0; i < chainDatas.size(); i++) {
@@ -201,7 +184,6 @@ public class ImportWalletActivityBack extends BaseActivity {
                     chainInfo.insert();
                 }
 
-                //根据链创建地址
                 List<ChainInfo> chainInfos = ChainInfoDaoUtils.findAllChains();
 
                 for (int i = 0; i < chainInfos.size(); i++) {
@@ -236,15 +218,12 @@ public class ImportWalletActivityBack extends BaseActivity {
                         }
 
 
-                        /**
-                         * ======================  根据助记词 创建 ETH 链 ======================================
-                         */
                         if (eth != null) {
                             btnImport.setClickable(false);
-                            eth.setType_flag(ETHWalletUtils.ETH_JAXX_TYPE);
+                            eth.setType_flag(ChainAddressCreateManager.ETH_JAXX_TYPE);
                             eth.setImport(false);
                             eth.setCurrent(true);
-                            eth.setAccount(true);//是否是主账号
+                            eth.setAccount(true);
                             eth.setCoinType("ETH");
                             eth.setImagePath(IconCreateUtils.getIcon());
                             eth.setAccountId(accountId);
@@ -291,9 +270,6 @@ public class ImportWalletActivityBack extends BaseActivity {
                 Router.build("MainActivity").go(this);
 
                 break;
-            /**
-             * 创建
-             */
             case R.id.tv_create:
                 if (isFormCreate) {
                     finish();

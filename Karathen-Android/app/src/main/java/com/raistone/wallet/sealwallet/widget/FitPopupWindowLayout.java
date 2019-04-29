@@ -9,11 +9,6 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
-/**
- * Created by DongJr on 2017/2/21.
- * <p>
- * 气泡
- */
 
 public class FitPopupWindowLayout extends RelativeLayout {
 

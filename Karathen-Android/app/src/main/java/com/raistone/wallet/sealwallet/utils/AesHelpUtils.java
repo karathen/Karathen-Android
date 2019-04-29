@@ -28,13 +28,6 @@ public class AesHelpUtils {
     public static final String AES_ALGORITHM = "AES";
 
 
-    /**
-     * 加密
-     *
-     * @param content 需要加密的内容
-     * @param key     加密密码
-     * @return
-     */
     public static byte[] encrypt(String content, String key) {
         try {
             KeyGenerator kgen = KeyGenerator.getInstance(AES_ALGORITHM);
@@ -66,13 +59,7 @@ public class AesHelpUtils {
         return null;
     }
 
-    /**
-     * 解密
-     *
-     * @param content 待解密内容
-     * @param key     解密密钥
-     * @return
-     */
+
     public static byte[] decrypt(byte[] content, String key) {
         try {
             KeyGenerator kgen = KeyGenerator.getInstance(AES_ALGORITHM);
@@ -101,12 +88,6 @@ public class AesHelpUtils {
         return null;
     }
 
-    /**
-     * 将二进制转换成16进制
-     *
-     * @param buf
-     * @return
-     */
     public static String parseByte2HexStr(byte buf[]) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < buf.length; i++) {
@@ -119,12 +100,7 @@ public class AesHelpUtils {
         return sb.toString();
     }
 
-    /**
-     * 将16进制转换为二进制
-     *
-     * @param hexStr
-     * @return
-     */
+
     public static byte[] parseHexStr2Byte(String hexStr) {
         if (hexStr.length() < 1)
             return null;
@@ -137,35 +113,13 @@ public class AesHelpUtils {
         return result;
     }
 
-    /**
-     * 加密
-     *
-     * @param content
-     * @param key
-     * @return String
-     * @throws
-     * @Title: encryptString
-     * @Description: TODO(这里用一句话描述这个方法的作用)
-     * @date 2015年11月26日 下午1:42:20
-     * @author wuxiaoning
-     */
+
     public static String encryptString(String content, String key) {
         byte[] encrypt = encrypt(content, key);
         return parseByte2HexStr(encrypt);
     }
 
-    /**
-     * 解密
-     *
-     * @param content
-     * @param key
-     * @return String
-     * @throws
-     * @Title: decryptString
-     * @Description: TODO(这里用一句话描述这个方法的作用)
-     * @date 2015年11月26日 下午1:42:33
-     * @author wuxiaoning
-     */
+
     public static String decryptString(String content, String key) {
 
         byte[] encryptbyte = parseHexStr2Byte(content);
@@ -181,31 +135,15 @@ public class AesHelpUtils {
     }
 
     public static byte[] initKey() throws Exception {
-        //实例化
         KeyGenerator kgen = KeyGenerator.getInstance(AES_ALGORITHM);
-        //设置密钥长度
         kgen.init(128);
-        //生成密钥
         SecretKey skey = kgen.generateKey();
-        //返回密钥的二进制编码
         return skey.getEncoded();
     }
 
     public static void main(String[] args) throws Exception {
 
 
-        String content="retire one chef trash rude viable curve pink slice sea sand merry ";
-        String key="123456";
-
-        System.out.println("加密前："+content);
-
-
-        String  encrypt =encryptString( content,key);
-        System.out.println("加密后："+encrypt);
-
-        String decrypt = decryptString(encrypt, key);
-
-        System.out.println("解密后："+new String(decrypt));
 
     }
 

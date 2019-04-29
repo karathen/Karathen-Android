@@ -59,7 +59,6 @@ public class AddressManagerAdapterNews extends BaseQuickAdapter<ChainAddressInfo
             flag_view.setVisibility(View.GONE);
         }
 
-        //头像
         helper.setImageDrawable(R.id.item_iv, WalletApplication.IconDrawable.get(item.getImagePath()));
 
         ImageView gouView=helper.getView(R.id.select_iv);
@@ -81,27 +80,5 @@ public class AddressManagerAdapterNews extends BaseQuickAdapter<ChainAddressInfo
         }
 
 
-    }
-
-    private int mLastCheckedPosition = -1;
-
-    /**
-     * @param position
-     */
-   synchronized public void setItemChecked(int position) {
-
-       if (mLastCheckedPosition == position)
-           return;
-
-       mBooleanArray.put(position, true);
-
-       if (mLastCheckedPosition > -1) {
-           mBooleanArray.put(mLastCheckedPosition, false);
-           this.notifyItemChanged(mLastCheckedPosition);
-       }
-
-       this.notifyDataSetChanged();
-
-       mLastCheckedPosition = position;
     }
 }

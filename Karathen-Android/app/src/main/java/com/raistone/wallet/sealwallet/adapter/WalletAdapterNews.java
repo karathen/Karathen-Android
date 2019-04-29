@@ -63,12 +63,9 @@ public class WalletAdapterNews extends PagerAdapter {
         TextView price_tv = view.findViewById(R.id.price_tv);
 
         TextView get_tv = view.findViewById(R.id.get_tv);
-        //网络状态
         TextView status_net_tv = view.findViewById(R.id.status_net_tv);
 
         RelativeLayout one_item_layout = view.findViewById(R.id.one_item_layout);
-
-        //price_tv.setText(price);
 
         final TextView address_tv = view.findViewById(R.id.address_tv);
 
@@ -116,7 +113,6 @@ public class WalletAdapterNews extends PagerAdapter {
 
         }
 
-        //RelativeLayout ll=view.findViewById(R.id.one_item_layout);
         final int finalPosition = position;
         one_item_layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,14 +148,11 @@ public class WalletAdapterNews extends PagerAdapter {
 
     @Override
     public int getItemPosition(Object object) {
-        // 最简单解决 notifyDataSetChanged() 页面不刷新问题的方法
         return POSITION_NONE;
     }
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        // container.removeView(mViews.get(position));
-        /*container.removeView((View) object);*/
         FrameLayout view = (FrameLayout) object;
         container.removeView(view);
     }

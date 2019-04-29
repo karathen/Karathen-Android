@@ -16,11 +16,6 @@ import com.raistone.wallet.sealwallet.R;
 
 import java.util.List;
 
-/**
- * Created by JiaM
- * https://jiam.pro
- * 2018/9/18.
- */
 public class SealUtils {
 
     public static void clipData(Context context, String str) {
@@ -33,14 +28,9 @@ public class SealUtils {
         }
     }
 
-    /**
-     * 判断app 是否安装
-     */
     public static boolean isApplicationAviliable(Context context, String appPackageName) {
         try {
-            //获取packageManager
             PackageManager packageManager = context.getPackageManager();
-            //获取所有已安装程序的包信息
             List<PackageInfo> pinfo = packageManager.getInstalledPackages(0);
             if (pinfo != null) {
                 for (int i = 0; i < pinfo.size(); i++) {
@@ -56,9 +46,7 @@ public class SealUtils {
         }
     }
 
-    /**
-     * 判断网络是否连接
-     */
+
     public static boolean isNetworkConnected(Context context) {
         try {
             if (context != null) {

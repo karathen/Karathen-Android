@@ -32,10 +32,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * 关于我们
- */
-
 @Route(value = "AboutUsActivity")
 public class AboutUsActivity extends BaseActivity {
 
@@ -72,43 +68,22 @@ public class AboutUsActivity extends BaseActivity {
         int savedLanguageType = SPUtil.getInstance(this).getSelectLanguage();
         switch (view.getId()) {
 
-            /**
-             * 检查更新
-             */
+
             case R.id.rl_check_for_updates:
 
                 ToastHelper.showToast(getResources().getString(R.string.latest_version_string));
                 break;
-            /**
-             * 联系我们
-             */
+
             case R.id.rl_contact:
                 showContactUsDialog();
                 break;
-            /**
-             * 网址
-             */
+
             case R.id.tv_website:
                 targetToWeb(Constant.SealWebUrl.SEAL_OFFICIAL_WEBSITE_URL, "");
                 break;
         }
     }
 
-    public String getBaiduMobAdChannel() {
-        String baiduMobAdChannel = "sealwallet.org";
-        try {
-            ApplicationInfo activityInfo = this.getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
-
-            baiduMobAdChannel = activityInfo.metaData.getString("BaiduMobAd_CHANNEL");
-
-            return baiduMobAdChannel;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return baiduMobAdChannel;
-
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void showContactUsDialog() {

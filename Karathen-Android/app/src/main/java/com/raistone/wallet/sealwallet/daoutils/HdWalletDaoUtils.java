@@ -22,19 +22,11 @@ public class HdWalletDaoUtils {
 
     public static HdWalletDao hdWalletDao = WalletApplication.getsInstance().getDaoSession().getHdWalletDao();
 
-    /**
-     * 插入新数据
-     *
-     * @param wallet 新创建钱包
-     */
+
     public static void insertNewWallet(HdWallet wallet) {
         hdWalletDao.insert(wallet);
     }
 
-
-    /**
-     * 查询所有钱包
-     */
     public static List<HdWallet> findAllWallet() {
         List<HdWallet> hdWallets = hdWalletDao.loadAll();
 
@@ -42,12 +34,7 @@ public class HdWalletDaoUtils {
 
     }
 
-
-    /**
-     * 获取当前选中钱包
-     */
     public static HdWallet findWalletBySelect() {
-        //List<HdWallet> hdWallets = hdWalletDao.loadAll();
 
         QueryBuilder<HdWallet> queryBuilder = hdWalletDao.queryBuilder().where(HdWalletDao.Properties.IsCurrent.eq(true));
 
@@ -61,11 +48,6 @@ public class HdWalletDaoUtils {
     }
 
 
-    /**
-     * 更新选中钱包
-     *
-     * @param id 钱包ID
-     */
     public static HdWallet updateCurrent(long id) {
         List<HdWallet> addressInfos = findAllWallet();
         if (addressInfos != null) {
@@ -84,40 +66,19 @@ public class HdWalletDaoUtils {
         return null;
     }
 
-    /**
-     * 根据钱包Id查询钱包
-     *
-     * @param walletId 钱包ID
-     */
+
     public static HdWallet findAllWalletById(Long walletId) {
         HdWallet hdWallet = hdWalletDao.queryBuilder().where(HdWalletDao.Properties.WalletId.eq(walletId)).unique();
         return hdWallet;
 
     }
 
-    /**
-     * 获取账户id
-     */
     public static String getAccountId(Long walletId) {
         HdWallet load = hdWalletDao.load(walletId);
         String accountId = load.getAccountId();
         return accountId;
     }
 
-    /**
-     * 根据账户Id 查询钱包信息
-     *
-     * @param accountId 账户id
-     */
-    public static HdWallet findWalletByAccount(String accountId) {
-
-        HdWallet walletInfo = hdWalletDao.queryBuilder().where(HdWalletDao.Properties.AccountId.eq(accountId)).unique();
-        return walletInfo;
-    }
-
-    /**
-     * 获取钱包密码
-     */
     public static String getWalletPwd(Long walletId) {
 
         HdWallet walletInfo = hdWalletDao.queryBuilder().where(HdWalletDao.Properties.WalletId.eq(walletId)).unique();
@@ -126,33 +87,17 @@ public class HdWalletDaoUtils {
         return walletPwd;
     }
 
-    /**
-     * 修改钱包密码
-     */
+
     public static void updateWalletPwd(HdWallet hdWallet) {
 
         hdWalletDao.update(hdWallet);
     }
 
-    /**
-     * 修改钱包密码
-     */
     public static void updateWallet(HdWallet hdWallet) {
 
         hdWalletDao.update(hdWallet);
     }
 
-    /**
-     * 删除所有钱包信息
-     */
-    public static void deleteAllData() {
-        //SQLite.delete(WalletInfo.class);
-        hdWalletDao.deleteAll();
-    }
-
-    /**
-     * 删除钱包
-     */
     public static List<HdWallet> deleteWalletById(Long walletId) {
 
         HdWallet hdWallet = hdWalletDao.queryBuilder().where(HdWalletDao.Properties.WalletId.eq(walletId)).unique();
@@ -205,40 +150,6 @@ public class HdWalletDaoUtils {
 
     }
 
-    /**
-     * 删除钱包
-     */
-    public static void deleteWalletByIdTwo(Long walletId) {
-
-        HdWallet hdWallet = hdWalletDao.queryBuilder().where(HdWalletDao.Properties.WalletId.eq(walletId)).unique();
-
-        if (hdWallet != null) {
-
-            List<ChainDataInfo> chainDataInfos = hdWallet.getChainDataInfos();
-
-            if (chainDataInfos != null && chainDataInfos.size() > 0)
-                for (ChainDataInfo infos : chainDataInfos) {
-                    ChainDaoUtils.deleteDataById(infos);
-
-                    List<ChainAddressInfo> addressInfos = infos.getChainAddressInfos();
-                    if (chainDataInfos != null && chainDataInfos.size() > 0) {
-                        for (ChainAddressInfo addressInfo : addressInfos) {
-                            ChainAddressDaoUtils.deleteAddressById(addressInfo.getId());
-                        }
-                    }
-
-                }
-
-        }
-
-    }
-
-    /**
-     * 以助记词检查钱包是否存在
-     *
-     * @param mnemonic
-     * @return
-     */
     public static boolean checkRepeatByMenmonic(String mnemonic) {
         List<HdWallet> ethWallets = findAllWallet();
 

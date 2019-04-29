@@ -1,13 +1,10 @@
 package com.raistone.wallet.sealwallet.ui.fragment.walletimport;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -17,40 +14,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.chenenyu.router.Router;
 import com.raistone.wallet.sealwallet.R;
 import com.raistone.wallet.sealwallet.daoutils.ChainAddressDaoUtils;
 import com.raistone.wallet.sealwallet.daoutils.HdWalletDaoUtils;
 import com.raistone.wallet.sealwallet.datavases.LocalDataUtils;
-import com.raistone.wallet.sealwallet.datavases.WalletDaoUtils;
-import com.raistone.wallet.sealwallet.entity.ETHWallet;
 import com.raistone.wallet.sealwallet.factory.ChainAddressInfo;
 import com.raistone.wallet.sealwallet.factory.ChainDataInfo;
 import com.raistone.wallet.sealwallet.factory.HdWallet;
 import com.raistone.wallet.sealwallet.factory.WalletFactoryManager;
 import com.raistone.wallet.sealwallet.ui.ActivityManager;
-import com.raistone.wallet.sealwallet.ui.WebViewActivity;
 import com.raistone.wallet.sealwallet.ui.fragment.BaseFragment;
 import com.raistone.wallet.sealwallet.utils.ChainAddressCreateManager;
-import com.raistone.wallet.sealwallet.utils.Constant;
-import com.raistone.wallet.sealwallet.utils.ETHWalletUtils;
 import com.raistone.wallet.sealwallet.utils.IconCreateUtils;
-import com.raistone.wallet.sealwallet.utils.LocalManageUtil;
 import com.raistone.wallet.sealwallet.utils.Md5Utils;
-import com.raistone.wallet.sealwallet.utils.MultiChainCreateManager;
 import com.raistone.wallet.sealwallet.utils.SPUtil;
 import com.raistone.wallet.sealwallet.utils.ToastHelper;
-import com.raistone.wallet.sealwallet.widget.SmoothCheckBox;
-
-import org.bitcoinj.crypto.MnemonicCode;
 import org.greenrobot.eventbus.EventBus;
-
 import java.util.Arrays;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -65,10 +48,6 @@ import io.reactivex.schedulers.Schedulers;
 
 import static android.app.Activity.RESULT_OK;
 
-
-/**
- * 导入keystore
- */
 public class ImportKeystoreFragment extends BaseFragment implements View.OnTouchListener {
 
 
@@ -215,7 +194,7 @@ public class ImportKeystoreFragment extends BaseFragment implements View.OnTouch
         unbinder.unbind();
     }
 
-    @OnClick({R.id.service_tv, R.id.service_ll, R.id.import_keystort_wallet_btn, R.id.create_tv})
+    @OnClick({R.id.import_keystort_wallet_btn, R.id.create_tv})
     public void onViewClicked(View view) {
         int savedLanguageType = SPUtil.getInstance(context).getSelectLanguage();
         switch (view.getId()) {
@@ -263,9 +242,7 @@ public class ImportKeystoreFragment extends BaseFragment implements View.OnTouch
 
 
                     loadWalletByKeystore("ETH-1", keystoreValue, mPassWord);
-                    /*Message msg = new Message();
-                    msg.what = 0;
-                    handler.sendMessage(msg);*/
+
                 } catch (Exception e) {
                     ToastHelper.showToast(getResources().getString(R.string.please_enter_a_valid_mnemonic));
                 }
@@ -305,12 +282,11 @@ public class ImportKeystoreFragment extends BaseFragment implements View.OnTouch
 
 
                         importKeystortWalletBtn.setClickable(false);
-                        eth.setType_flag(ETHWalletUtils.ETH_JAXX_TYPE);
+                        eth.setType_flag(ChainAddressCreateManager.ETH_JAXX_TYPE);
                         eth.setIsImport(false);
                         eth.setIsCurrent(true);
-                        eth.setAccount(true);//是否是主账号
+                        eth.setAccount(true);
                         eth.setCoinType("ETH");
-                        //eth.setKeystorePath(keystoreValue);
                         eth.setImportType(1);
                         eth.setImagePath(IconCreateUtils.getIcon());
                         eth.setAccountId(walletInfo.getAccountId());
@@ -380,28 +356,19 @@ public class ImportKeystoreFragment extends BaseFragment implements View.OnTouch
     @Override
     public boolean onTouch(View view, MotionEvent event) {
         if ((view.getId() == R.id.keystroe_ed && canVerticalScroll(keystroeEd))) {
-            view.getParent().requestDisallowInterceptTouchEvent(true);//告诉父view，我的事件自己处理
+            view.getParent().requestDisallowInterceptTouchEvent(true);
             if (event.getAction() == MotionEvent.ACTION_UP) {
-                view.getParent().requestDisallowInterceptTouchEvent(false);//告诉父view，你可以处理了
+                view.getParent().requestDisallowInterceptTouchEvent(false);
             }
         }
         return false;
     }
 
-    /**
-     * EditText竖直方向是否可以滚动
-     *
-     * @param editText 需要判断的EditText
-     * @return true：可以滚动   false：不可以滚动
-     */
+
     private boolean canVerticalScroll(EditText editText) {
-        //滚动的距离
         int scrollY = editText.getScrollY();
-        //控件内容的总高度
         int scrollRange = editText.getLayout().getHeight();
-        //控件实际显示的高度
         int scrollExtent = editText.getHeight() - editText.getCompoundPaddingTop() - editText.getCompoundPaddingBottom();
-        //控件内容总高度与实际显示高度的差值
         int scrollDifference = scrollRange - scrollExtent;
 
         if (scrollDifference == 0) {

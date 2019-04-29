@@ -33,11 +33,6 @@ public class AddressManagerAdapter  extends BaseQuickAdapter<MultiChainInfo,Base
         .addOnClickListener(R.id.more_ll);
 
         ImageView view = helper.getView(R.id.item_iv);
-
-      /*  Glide.with(mContext)
-                .load(WalletApplication.IconDrawable.get(item.getImagePath()))
-                .into(view);*/
-
         TextView flag_view = helper.getView(R.id.wallet_flag_tv);
 
         if(item.isImport()){
@@ -48,18 +43,12 @@ public class AddressManagerAdapter  extends BaseQuickAdapter<MultiChainInfo,Base
             flag_view.setText("HDM44 "+strh);
         }
 
-        //头像
         helper.setImageDrawable(R.id.item_iv, WalletApplication.IconDrawable.get(item.getImagePath()));
 
         ImageView gouView=helper.getView(R.id.select_iv);
         boolean current = item.isCurrent();
-       /* if(current){
-            gouView.setVisibility(View.VISIBLE);
-        }else {
-            gouView.setVisibility(View.GONE);
-        }*/
+
         if (!mBooleanArray.get(helper.getAdapterPosition())) {
-            //没有选中
             gouView.setVisibility(View.GONE);
         } else {
             gouView.setVisibility(View.VISIBLE);
@@ -67,54 +56,4 @@ public class AddressManagerAdapter  extends BaseQuickAdapter<MultiChainInfo,Base
 
     }
 
-    private int mLastCheckedPosition = -1;
-
-    /**
-     * @param position
-     */
-   synchronized public void setItemChecked(int position) {
-       /* if (mLastCheckedPosition == position)
-            return;
-
-        for (int i=0;i<mData.size();i++){
-            MultiChainInfo chainInfo = mData.get(i);
-            chainInfo.setCurrent(false);
-            chainInfo.update();
-        }
-
-        MultiChainInfo chainInfo = mData.get(position);
-
-        chainInfo.setCurrent(true);
-        chainInfo.update();
-
-        //mBooleanArray.put(position, true);
-
-
-        if (mLastCheckedPosition > -1) {
-
-            MultiChainInfo chainInfoTwo = mData.get(mLastCheckedPosition);
-
-            chainInfoTwo.setCurrent(false);
-            chainInfoTwo.update();
-            //mBooleanArray.put(mLastCheckedPosition, false);
-            this.notifyItemChanged(mLastCheckedPosition);
-        }
-
-        this.notifyDataSetChanged();
-
-        mLastCheckedPosition = position;*/
-       if (mLastCheckedPosition == position)
-           return;
-
-       mBooleanArray.put(position, true);
-
-       if (mLastCheckedPosition > -1) {
-           mBooleanArray.put(mLastCheckedPosition, false);
-           this.notifyItemChanged(mLastCheckedPosition);
-       }
-
-       this.notifyDataSetChanged();
-
-       mLastCheckedPosition = position;
-    }
 }

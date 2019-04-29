@@ -137,10 +137,7 @@ public class TestActivity extends BaseActivity {
                         //m_bConnectStarted = false;
 
                         if (m_retValue == MiddlewareInterface.PAEW_RET_SUCCESS) {
-                           /* Intent intent = new Intent(MainActivity.this, DevTestActivity.class);
-                            intent.putExtra("contextHandle", m_contextHandle);
-                            intent.putExtra("devIndex", 0);
-                            startActivityForResult(intent, DEV_TSET_ACTIVITY);*/
+
                             ToastHelper.showToast("连接成功...");
                         } else {
                             ToastHelper.showToast("连接失败...");

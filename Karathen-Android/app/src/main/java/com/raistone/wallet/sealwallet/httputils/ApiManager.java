@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiManager {
     private static ApiManager instance;
     private SealApi sealApi;
-    private static String BASE_URL="https://appserver.trinity.ink/";
+    private static String BASE_URL="";
 
     public static ApiManager getInstance() {
         if (instance == null) {

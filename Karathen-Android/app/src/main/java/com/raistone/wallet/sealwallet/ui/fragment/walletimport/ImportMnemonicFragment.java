@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -16,50 +17,34 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.chenenyu.router.Router;
 import com.raistone.wallet.sealwallet.R;
 import com.raistone.wallet.sealwallet.daoutils.ChainAddressDaoUtils;
 import com.raistone.wallet.sealwallet.daoutils.HdWalletDaoUtils;
 import com.raistone.wallet.sealwallet.datavases.LocalDataUtils;
-import com.raistone.wallet.sealwallet.datavases.WalletDaoUtils;
 import com.raistone.wallet.sealwallet.factory.ChainAddressInfo;
 import com.raistone.wallet.sealwallet.factory.ChainDataInfo;
 import com.raistone.wallet.sealwallet.factory.HdWallet;
 import com.raistone.wallet.sealwallet.factory.WalletFactoryManager;
 import com.raistone.wallet.sealwallet.ui.ActivityManager;
-import com.raistone.wallet.sealwallet.ui.WebViewActivity;
 import com.raistone.wallet.sealwallet.ui.fragment.BaseFragment;
 import com.raistone.wallet.sealwallet.utils.ChainAddressCreateManager;
-import com.raistone.wallet.sealwallet.utils.Constant;
-import com.raistone.wallet.sealwallet.utils.ETHWalletUtils;
 import com.raistone.wallet.sealwallet.utils.IconCreateUtils;
-import com.raistone.wallet.sealwallet.utils.LocalManageUtil;
 import com.raistone.wallet.sealwallet.utils.Md5Utils;
 import com.raistone.wallet.sealwallet.utils.MultiChainCreateManager;
 import com.raistone.wallet.sealwallet.utils.SPUtil;
 import com.raistone.wallet.sealwallet.utils.ToastHelper;
-import com.raistone.wallet.sealwallet.widget.SmoothCheckBox;
-
 import org.bitcoinj.crypto.MnemonicCode;
 import org.greenrobot.eventbus.EventBus;
-
 import java.util.Arrays;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-
 import static android.app.Activity.RESULT_OK;
 
-
-/**
- * 导入助记词
- */
 public class ImportMnemonicFragment extends BaseFragment {
 
 
@@ -156,7 +141,7 @@ public class ImportMnemonicFragment extends BaseFragment {
 
                                     if (eth != null) {
                                         importWalletBtn.setClickable(false);
-                                        eth.setType_flag(ETHWalletUtils.ETH_JAXX_TYPE);
+                                        eth.setType_flag(ChainAddressCreateManager.ETH_JAXX_TYPE);
                                         eth.setIsImport(false);
                                         eth.setIsCurrent(true);
                                         eth.setAccount(true);//是否是主账号
@@ -172,7 +157,6 @@ public class ImportMnemonicFragment extends BaseFragment {
 
                                         ChainAddressDaoUtils.insertNewAddress(eth);
 
-                                        //LocalDataUtils.setAddresByEthAssets(eth.getAddress(), context);
 
                                         LocalDataUtils.setAddresByAssets(walletInfo.getAccountId(),"assets.json", eth.getId(), eth.getAddress(), context);
                                     }
@@ -365,15 +349,13 @@ public class ImportMnemonicFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.service_tv, R.id.service_ll, R.id.import_wallet_btn, R.id.create_tv})
+    @Nullable
+    @OnClick({R.id.import_wallet_btn, R.id.create_tv})
     public void onViewClicked(View view) {
         int savedLanguageType = SPUtil.getInstance(context).getSelectLanguage();
         switch (view.getId()) {
 
             case R.id.import_wallet_btn:
-                /**
-                 * 导入钱包
-                 */
 
                 String tips = pwdTipsEd.getText().toString().trim()+"";
 
@@ -394,13 +376,10 @@ public class ImportMnemonicFragment extends BaseFragment {
                         if (progressDialog != null) {
                             progressDialog.dismiss();
                         }
-                        //HdWalletDaoUtils.deleteWalletById(walletInfo.getWalletId());
                         ToastHelper.showToast(getResources().getString(R.string.existing_address));
                         return;
                     }
-                    //importWalletBtn.setClickable(false);
 
-                    //效验助记词
                     try {
                         byte[] mnemonicSeedBytes = MnemonicCode.INSTANCE.toEntropy(Arrays.asList(words));
 

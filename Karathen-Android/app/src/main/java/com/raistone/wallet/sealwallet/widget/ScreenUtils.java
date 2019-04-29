@@ -2,9 +2,7 @@ package com.raistone.wallet.sealwallet.widget;
 
 import android.content.Context;
 
-/**
- * Created by DongJr on 2017/2/21.
- */
+
 
 public class ScreenUtils {
 

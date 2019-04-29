@@ -13,41 +13,41 @@ public class AssetsDeatilInfo implements Serializable{
     @Id(autoincrement = true)
     private Long assets_id;
 
-    private String asset_name; //资产名称
+    private String asset_name;
 
-    private boolean isDefault; //是否默认
+    private boolean isDefault;
 
-    private boolean notDelete; //能否删除
+    private boolean notDelete;
 
-    private String tokenAddress; //合约地址
+    private String tokenAddress;
 
-    private String tokenDecimal; //精度
+    private String tokenDecimal;
 
-    private String tokenIcon; //资产icon
+    private String tokenIcon;
 
-    private String tokenName;//资产名称
+    private String tokenName;
 
-    private String tokenSynbol;//资产代币
+    private String tokenSynbol;
 
-    private String coinType;//币种类型
+    private String coinType;
 
-    private String tokenType;//币种类型
+    private String tokenType;
 
-    private String balance;//余额
+    private String balance;
 
-    private String price;//人民币
+    private String price;
 
-    private String priceUSD;//美元
+    private String priceUSD;
 
-    private int status;//状态
+    private int status;
 
-    private String walletAddress;//钱包地址
+    private String walletAddress;
 
-    private String priceFlag;//后台查询人民币价格
+    private String priceFlag;
 
-    private String priceUsdFlag;//后台查询美元价格
+    private String priceUsdFlag;
 
-    private Long chainAddressId;//对应链ID
+    private Long chainAddressId;
 
 
 

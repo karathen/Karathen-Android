@@ -29,10 +29,8 @@ import com.raistone.wallet.sealwallet.factory.ChainDataInfo;
 import com.raistone.wallet.sealwallet.factory.HdWallet;
 import com.raistone.wallet.sealwallet.factory.WalletFactoryManager;
 import com.raistone.wallet.sealwallet.utils.ChainAddressCreateManager;
-import com.raistone.wallet.sealwallet.utils.ETHWalletUtils;
 import com.raistone.wallet.sealwallet.utils.Md5Utils;
 import com.raistone.wallet.sealwallet.utils.MultiChainCreateManager;
-import com.raistone.wallet.sealwallet.utils.StatusBarUtil;
 import com.raistone.wallet.sealwallet.utils.ToastHelper;
 import com.raistone.wallet.sealwallet.widget.TitleBar;
 import org.greenrobot.eventbus.EventBus;
@@ -45,9 +43,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-/**
- * 助记词验证
- */
 
 @Route(value = "MnemonicVerifyActivity")
 public class MnemonicVerifyActivity extends BaseActivity {
@@ -128,7 +123,7 @@ public class MnemonicVerifyActivity extends BaseActivity {
                                     eth.setCnyTotalPrice("0");
                                     eth.setUsdtTotalPrice("0");
                                     eth.setIsCurrent(true);
-                                    eth.setType_flag(ETHWalletUtils.ETH_JAXX_TYPE);
+                                    eth.setType_flag(ChainAddressCreateManager.ETH_JAXX_TYPE);
                                     eth.setWalletType(1);
                                     eth.setChainId(dataInfo.getId());
                                     eth.setAccountId(Md5Utils.md5(codesStr));
@@ -152,8 +147,6 @@ public class MnemonicVerifyActivity extends BaseActivity {
                                     neo.setChainId(dataInfo.getId());
                                     neo.setSelectStatus(false);
                                     ChainAddressDaoUtils.insertNewAddress(neo);
-
-                                    //LocalDataUtils.setAddresByNeoAssets(neo.getAddress(), context);
 
                                     LocalDataUtils.setAddresByAssets(Md5Utils.md5(codesStr),"neo_assets.json",neo.getId(),neo.getAddress() ,context);
 
@@ -223,8 +216,8 @@ public class MnemonicVerifyActivity extends BaseActivity {
 
         ethWallet = (HdWallet) getIntent().getSerializableExtra("ethWallet");
 
-        isBack=getIntent().getBooleanExtra("isBack",false);//是否是备份
-        isAdd=getIntent().getBooleanExtra("isAdd",false);//是否是备份
+        isBack=getIntent().getBooleanExtra("isBack",false);
+        isAdd=getIntent().getBooleanExtra("isAdd",false);
 
 
         initData();
@@ -244,18 +237,6 @@ public class MnemonicVerifyActivity extends BaseActivity {
         mnemonicAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
-               /* String s = newsDatas.get(position);
-
-                for (int i = 0; i < datas.size(); i++) {
-                    if (datas.get(i).getWord().equals(s)) {
-                        datas.get(i).setSelect(false);
-                    }
-                }
-                mnemonicVerifyAdapter.notifyDataSetChanged();
-                newsDatas.remove(newsDatas.get(position));
-                flagDatas.remove(flagDatas.get(position));
-                mnemonicAdapter.notifyDataSetChanged();*/
 
                 String s = flagDatas.get(position);
 
@@ -287,7 +268,6 @@ public class MnemonicVerifyActivity extends BaseActivity {
                 datas.add(wordsBean);
             }
 
-            //datas = Arrays.asList(split);
             Collections.shuffle(datas);
 
             mnemonicVerifyAdapter = new MnemonicVerifyAdapter(datas);
@@ -324,9 +304,7 @@ public class MnemonicVerifyActivity extends BaseActivity {
     @OnClick({R.id.jump_tv, R.id.complete_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            /**
-             * 跳过
-             */
+
             case R.id.jump_tv:
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -356,9 +334,7 @@ public class MnemonicVerifyActivity extends BaseActivity {
                 dialog.show();
 
                 break;
-            /**
-             * 完成
-             */
+
             case R.id.complete_btn:
 
                 String newWords = getNewWords(newsDatas);
@@ -368,8 +344,7 @@ public class MnemonicVerifyActivity extends BaseActivity {
                 if (!TextUtils.isEmpty(newWords) && !TextUtils.isEmpty(oldWords)) {
 
                     if (TextUtils.equals(oldWords, newWords)) {
-                        /*ethWallet.setBackup(true);
-                        ethWallet.update();*/
+
                         if(!isBack) {
                             createChain(true);
                         }else {
@@ -392,8 +367,6 @@ public class MnemonicVerifyActivity extends BaseActivity {
     private void createChain(boolean isBack) {
         progressDialog.show();
 
-    /*    walletInfo = new WalletInfo();
-        walletInfo.setBackup(isBack);*/
 
         walletInfo = (HdWallet) WalletFactoryManager.getInstance().createWallet(walletType);
 

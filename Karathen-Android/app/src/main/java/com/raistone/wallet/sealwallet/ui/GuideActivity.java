@@ -22,9 +22,6 @@ import com.unistrong.yang.zb_permission.ZbPermissionSuccess;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-/**
- * 引导页
- */
 
 @Route(value ="GuideActivity")
 public class GuideActivity extends AppCompatActivity {
@@ -52,7 +49,6 @@ public class GuideActivity extends AppCompatActivity {
         setContentView(R.layout.activity_guide);
         ButterKnife.bind(this);
 
-        //StatusBarUtil.setTransparent(this);
         ActivityManager.getInstance().pushActivity(this);
 
         guideAdapter = new GuideAdapter(this, layouts);

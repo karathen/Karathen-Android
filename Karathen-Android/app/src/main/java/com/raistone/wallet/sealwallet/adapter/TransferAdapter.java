@@ -31,19 +31,15 @@ public class TransferAdapter extends BaseQuickAdapter<TransferDetailInfo.ResultB
     @Override
     protected void convert(BaseViewHolder helper, TransferDetailInfo.ResultBean item) {
         helper.setText(R.id.content_tv, item.getTxId())
-                //.setText(R.id.value_tv,item.getValue())
                 .setText(R.id.time_tv, CommonUtils.conversionTime(item.getBlockTime()))
                 .setText(R.id.status_tv, item.getTxReceiptStatus());
 
         TextView view = helper.getView(R.id.status_tv);
 
-        String tokenDecimal = WalletItemDetailActivity.assetsTokenDecimal;//精度
+        String tokenDecimal = WalletItemDetailActivity.assetsTokenDecimal;
 
-        String tokenSynbol = WalletItemDetailActivity.assetsTokenSynbol;//币种
-        String tokenType = WalletItemDetailActivity.assetsTokenType;//币种
-
-
-        //value_tv
+        String tokenSynbol = WalletItemDetailActivity.assetsTokenSynbol;
+        String tokenType = WalletItemDetailActivity.assetsTokenType;
 
 
         ImageView icView = helper.getView(R.id.icon_iv);
@@ -54,12 +50,10 @@ public class TransferAdapter extends BaseQuickAdapter<TransferDetailInfo.ResultB
 
         String value = item.getValue();
 
-        //如果精度为空代表是721资产
         if (!TextUtils.isEmpty(tokenDecimal)) {
 
-            double value2 = Math.pow(10, Double.parseDouble(tokenDecimal));//币种精度
+            double value2 = Math.pow(10, Double.parseDouble(tokenDecimal));
 
-            //代表是出
             if (!WalletItemDetailActivity.walletsAddress.toLowerCase().equals(addressTo.toLowerCase())) {
                 Glide.with(mContext).load(R.drawable.out_icon).into(icView);
 
@@ -100,7 +94,6 @@ public class TransferAdapter extends BaseQuickAdapter<TransferDetailInfo.ResultB
                 }
             }
         } else {
-            //代表是出
             if (!WalletItemDetailActivity.walletsAddress.toLowerCase().equals(addressTo.toLowerCase())) {
 
 

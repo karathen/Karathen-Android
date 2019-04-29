@@ -33,13 +33,10 @@ public class Constant {
     public static final class ETHParams {
 
         public static String BASE_MAIN_URL = "";
-        //获取 gasPrice
         public static String GAS_PRICE = "";
 
-        //获取当前的块高
         public static String BLOCK_NUMBER = "";
 
-        //获取 nonce
         public static String FETCH_NONCE = "";
     }
 

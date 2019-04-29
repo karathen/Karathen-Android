@@ -33,9 +33,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * 新建地址
- */
 
 @Route(value = "NewAddressActivityBack")
 public class NewAddressActivityBack extends BaseActivity {
@@ -93,7 +90,6 @@ public class NewAddressActivityBack extends BaseActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View v = inflater.inflate(R.layout.coustom_dialog_layout, null);
-        //builer.setView(v);//这里如果使用builer.setView(v)，自定义布局只会覆盖title和button之间的那部分
         final Dialog dialog = builder.create();
         final EditText editText = v.findViewById(R.id.pin_ed);
         TextView textView = v.findViewById(R.id.cancel_tv);
@@ -137,16 +133,10 @@ public class NewAddressActivityBack extends BaseActivity {
     }
 
 
-    /**
-     * 根据 coinTyoe 创建多链
-     * @param coinType
-     */
     public MultiChainInfo createChainByCoinType(String coinType){
         MultiChainInfo ew = null;
 
-        /**
-         * 创建ETH链
-         */
+
         if(coinType.equals(MultiChainCreateManager.ETH_COIN_TYPE)){
             String mnemonic = ethWallet.getMnemonic().trim();
             String[] split = mnemonic.split(" ");
@@ -155,9 +145,6 @@ public class NewAddressActivityBack extends BaseActivity {
 
             String lastType = MultiChainInfoDaoUtils.getLastType(coinType);
 
-                        /*int sum = 02;
-                        sum++;
-                        String name = "ETH-" + sum;*/
             String name = walletEc.getText().toString();
 
             if (TextUtils.isEmpty(name)) {
@@ -179,9 +166,7 @@ public class NewAddressActivityBack extends BaseActivity {
             LocalDataUtils.setAddresByEthAssets(ew.getAddress(),this);
 
         }
-        /**
-         * 创建NEO 链
-         */
+
         if(coinType.equals(MultiChainCreateManager.NEO_COIN_TYPE)){
             String mnemonic = ethWallet.getMnemonic().trim();
 
@@ -212,9 +197,7 @@ public class NewAddressActivityBack extends BaseActivity {
 
         }
 
-        /**
-         * 创建ONT 链
-         */
+
         if(coinType.equals(MultiChainCreateManager.ONT_COIN_TYPE)){
 
             String mnemonic = ethWallet.getMnemonic().trim();

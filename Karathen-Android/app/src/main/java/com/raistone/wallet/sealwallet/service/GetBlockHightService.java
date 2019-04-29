@@ -28,7 +28,6 @@ public class GetBlockHightService extends Service {
 
     Disposable polldisposable;
 
-    //public static Integer convertsToInt=5;
     public Long blockNumber = 0l;
 
     public GetBlockHightService() {
@@ -60,9 +59,6 @@ public class GetBlockHightService extends Service {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    /**
-     * 获取块高
-     */
     public void getBlockNumber() {
         polldisposable = Observable.interval(0, 5, TimeUnit.SECONDS).flatMap(new Function<Long, ObservableSource<String>>() {
             @Override

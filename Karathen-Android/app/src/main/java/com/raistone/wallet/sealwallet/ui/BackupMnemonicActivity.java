@@ -71,8 +71,6 @@ public class BackupMnemonicActivity extends BaseActivity {
 
         context = this;
 
-        //StatusBarUtil.setTransparent(this);
-
         GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
 
         recyclerview.setLayoutManager(layoutManager);
@@ -115,7 +113,6 @@ public class BackupMnemonicActivity extends BaseActivity {
     public void initData() {
 
 
-        //判断是否是由备份过来
         if (!isBack && !userCenter) {
 
 
@@ -169,7 +166,6 @@ public class BackupMnemonicActivity extends BaseActivity {
     @OnClick({R.id.qr_code_address_ll, R.id.next_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            //生成二维码
             case R.id.qr_code_address_ll:
 
                 if (!isBack && !userCenter) {
@@ -181,15 +177,12 @@ public class BackupMnemonicActivity extends BaseActivity {
                 }
                 break;
 
-            //下一步
             case R.id.next_btn:
 
                 nextBtn.setClickable(false);
 
 
-                //是否是创建进入
                 if (!isBack && !userCenter) {
-                    //EventBus.getDefault().post(new MessageEvent(ethWallet.getAddress()));
                     Router.build("MnemonicVerifyActivity").with("words", codesStr).with("mPassWord", mPassWord)
                             .with("codesStr", codesStr).with("walletType", walletType)
                             .with("walletName", walletName)
@@ -198,7 +191,6 @@ public class BackupMnemonicActivity extends BaseActivity {
                     return;
                 }
                 if (ethWalletBack != null && userCenter) {
-                    //EventBus.getDefault().post(new MessageEvent(ethWalletBack.getAddress()));
                     Router.build("MnemonicVerifyActivity").with("ethWallet", ethWalletBack).with("words", ethWalletBack.getMnemonic()).with("isBack", true).go(this);
                 }
 
@@ -207,14 +199,10 @@ public class BackupMnemonicActivity extends BaseActivity {
     }
 
 
-    /**
-     * @param mnemonic
-     */
     private void showMnemonicQrCodeDialog(String mnemonic) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = LayoutInflater.from(context);
         View v = inflater.inflate(R.layout.export_dialog_two_layout, null);
-        //builer.setView(v);//这里如果使用builer.setView(v)，自定义布局只会覆盖title和button之间的那部分
         final Dialog dialog = builder.create();
 
         ImageView iv_delete = v.findViewById(R.id.delete_iv);
@@ -231,12 +219,10 @@ public class BackupMnemonicActivity extends BaseActivity {
 
 
         Bitmap bitmapShare = new QREncode.Builder(this)
-                .setColor(getResources().getColor(R.color.text_main_color))//二维码颜色
-                //.setParsedResultType(ParsedResultType.TEXT)//默认是TEXT类型
-                .setContents(mnemonic)//二维码内容
+                .setColor(getResources().getColor(R.color.text_main_color))
+                .setContents(mnemonic)
                 .setMargin(0)
                 .setSize(500)
-                //.setLogoBitmap(logoBitmap)//二维码中间logo
                 .build().encodeAsBitmap();
         qrcode_iv.setImageBitmap(bitmapShare);
 

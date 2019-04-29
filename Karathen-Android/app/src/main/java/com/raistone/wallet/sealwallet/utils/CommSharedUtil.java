@@ -6,10 +6,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 
-/**
- * CommSharedUtils
- * 通用的SharedPreferences
- */
 public class CommSharedUtil {
 
     private static final String SHARED_PATH = "app_info";

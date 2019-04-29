@@ -55,14 +55,10 @@ public class ChainAddressCreateManager {
     public static final String ONT_COIN_TYPE = "ONT";
 
     private static ObjectMapper objectMapper = ObjectMapperFactory.getObjectMapper();
-    /**
-     * 随机
-     */
+
     private static final SecureRandom secureRandom = SecureRandomUtils.secureRandom();
     private Credentials credentials;
-    /**
-     * 通用的以太坊基于bip44协议的助记词路径 （imtoken jaxx Metamask myetherwallet）
-     */
+
     public static String ETH_JAXX_TYPE = "m/44'/60'/0'/0/0";
 
 
@@ -82,18 +78,6 @@ public class ChainAddressCreateManager {
     static final String SCRYPT = "scrypt";
 
 
-    /**
-     * =============================================================================创建ETH链===================================================================================================================
-     */
-
-
-    /**
-     * 创建助记词，并通过助记词创建钱包
-     *
-     * @param walletName
-     * @param pwd
-     * @return
-     */
     public static ChainAddressInfo generateMnemonic(String walletName, String pwd) {
         String[] pathArray = ETH_JAXX_TYPE.split("/");
         String passphrase = "";
@@ -103,14 +87,6 @@ public class ChainAddressCreateManager {
         return generateWalletByMnemonic(walletName, ds, pathArray, pwd);
     }
 
-    /**
-     * 创建助记词，并通过助记词创建钱包
-     *
-     * @param jaxx_type  协议路径
-     * @param walletName
-     * @param pwd
-     * @return
-     */
     public static ChainAddressInfo generateMnemonic(String jaxx_type, String walletName, String pwd, List<String> list) {
         //String[] pathArray = ETH_JAXX_TYPE.split("/");
 
@@ -118,31 +94,20 @@ public class ChainAddressCreateManager {
         String passphrase = "";
         long creationTimeSeconds = System.currentTimeMillis() / 1000;
 
-        //DeterministicSeed ds = new DeterministicSeed(secureRandom, 128, passphrase, creationTimeSeconds);
         DeterministicSeed ds = new DeterministicSeed(list, null, passphrase, creationTimeSeconds);
         return generateWalletByMnemonic(walletName, ds, pathArray, pwd);
     }
 
-    /**
-     * 通过导入助记词，导入钱包
-     *
-     * @param
-     * @param list 助记词
-     * @param pwd  密码
-     * @return
-     */
+
     public static ChainAddressInfo importMnemonic(List<String> list, String pwd) {
         if (!ETH_JAXX_TYPE.startsWith("m") && !ETH_JAXX_TYPE.startsWith("M")) {
-            //参数非法
             return null;
         }
         String[] pathArray = ETH_JAXX_TYPE.split("/");
         if (pathArray.length <= 1) {
-            //内容不对
             return null;
         }
 
-        //效验助记词
         try {
             byte[] mnemonicSeedBytes = MnemonicCode.INSTANCE.toEntropy(list);
         } catch (Exception e) {
@@ -155,27 +120,15 @@ public class ChainAddressCreateManager {
         return generateWalletByMnemonic(generateNewWalletName(), ds, pathArray, pwd);
     }
 
-
-    /**
-     * 导入助记词
-     *
-     * @param walletName 钱包名称
-     * @param list       助记词
-     * @param pwd        密码
-     * @return
-     */
     public static ChainAddressInfo importMnemonic(String walletName, List<String> list, String pwd) {
         if (!ETH_JAXX_TYPE.startsWith("m") && !ETH_JAXX_TYPE.startsWith("M")) {
-            //参数非法
             return null;
         }
         String[] pathArray = ETH_JAXX_TYPE.split("/");
         if (pathArray.length <= 1) {
-            //内容不对
             return null;
         }
 
-        //效验助记词
         try {
             byte[] mnemonicSeedBytes = MnemonicCode.INSTANCE.toEntropy(list);
         } catch (Exception e) {
@@ -189,26 +142,15 @@ public class ChainAddressCreateManager {
     }
 
 
-    /**
-     * 导入助记词
-     *
-     * @param walletName 钱包名称
-     * @param list       助记词
-     * @param pwd        密码
-     * @return
-     */
     public static ChainAddressInfo importMnemonic(String javaType, String walletName, List<String> list, String pwd) {
         if (!javaType.startsWith("m") && !javaType.startsWith("M")) {
-            //参数非法
             return null;
         }
         String[] pathArray = javaType.split("/");
         if (pathArray.length <= 1) {
-            //内容不对
             return null;
         }
 
-        //效验助记词
         try {
             byte[] mnemonicSeedBytes = MnemonicCode.INSTANCE.toEntropy(list);
         } catch (Exception e) {
@@ -226,30 +168,15 @@ public class ChainAddressCreateManager {
         char letter1 = (char) (int) (Math.random() * 26 + 97);
         char letter2 = (char) (int) (Math.random() * 26 + 97);
         String walletName = String.valueOf(letter1) + String.valueOf(letter2) + "-新钱包";
-      /*  while (NEOWalletDaoUtils.walletNameChecking(walletName)) {
-            letter1 = (char) (int) (Math.random() * 26 + 97);
-            letter2 = (char) (int) (Math.random() * 26 + 97);
-            walletName = String.valueOf(letter1) + String.valueOf(letter2) + "-新钱包";
-        }*/
+
         return walletName;
     }
 
-    /**
-     * @param walletName 钱包名称
-     * @param ds         助记词加密种子
-     * @param pathArray  助记词标准
-     * @param pwd        密码
-     * @return
-     */
 
     public static ChainAddressInfo generateWalletByMnemonic(String walletName, DeterministicSeed ds,
                                                             String[] pathArray, String pwd) {
-        //种子
         byte[] seedBytes = ds.getSeedBytes();
-//        System.out.println(Arrays.toString(seedBytes));
-        //助记词
         List<String> mnemonic = ds.getMnemonicCode();
-//        System.out.println(Arrays.toString(mnemonic.toArray()));
         if (seedBytes == null)
             return null;
         DeterministicKey dkKey = HDKeyDerivation.createMasterPrivateKey(seedBytes);
@@ -300,7 +227,6 @@ public class ChainAddressCreateManager {
         String keystorePath = "keystore_" + walletName + ".json";
         File destination = new File(wallet_dir, "keystore_" + walletName + ".json");
 
-        //目录不存在则创建目录，创建不了则报错
         if (!createParentDir(destination)) {
             return null;
         }
@@ -320,20 +246,11 @@ public class ChainAddressCreateManager {
         return ethWallet;
     }
 
-    /**
-     * 通过keystore.json文件导入钱包
-     *
-     * @param keystore 原json文件
-     * @param pwd      json文件密码
-     * @return
-     */
     public static ChainAddressInfo loadWalletByKeystore(String walletName, String keystore, String pwd) throws Exception {
         Credentials credentials = null;
         WalletFile walletFile = null;
         walletFile = objectMapper.readValue(keystore, WalletFile.class);
 
-//            WalletFile walletFile = new Gson().fromJson(keystore, WalletFile.class);
-        //credentials = Credentials.create(Wallet.decrypt(pwd, walletFile));
 
         ECKeyPair decrypt = decrypt(pwd, walletFile);
 
@@ -361,9 +278,6 @@ public class ChainAddressCreateManager {
         if (!prf.equals("hmac-sha256")) {
             throw new CipherException("Unsupported prf:" + prf);
         }
-
-        // Java 8 supports this, but you have to convert the password to a character array, see
-        // http://stackoverflow.com/a/27928435/3211687
 
         PKCS5S2ParametersGenerator gen = new PKCS5S2ParametersGenerator(new SHA256Digest());
         gen.init(password, salt, c);
@@ -430,7 +344,6 @@ public class ChainAddressCreateManager {
             int p = scryptKdfParams.getP();
             int r = scryptKdfParams.getR();
             byte[] salt = Numeric.hexStringToByteArray(scryptKdfParams.getSalt());
-//            derivedKey = generateDerivedScryptKey(password.getBytes(Charset.forName("UTF-8")), salt, n, r, p, dklen);
             derivedKey = com.lambdaworks.crypto.SCrypt.scryptN(password.getBytes(Charset.forName("UTF-8")), salt, n, r, p, dklen);
         } else if (crypto.getKdfparams() instanceof WalletFile.Aes128CtrKdfParams) {
             WalletFile.Aes128CtrKdfParams aes128CtrKdfParams =
@@ -474,39 +387,13 @@ public class ChainAddressCreateManager {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * 通过明文私钥导入钱包
-     *
-     * @param privateKey
-     * @param pwd
-     * @return
-     */
     public static ChainAddressInfo loadWalletByPrivateKey(String privateKey, String pwd) {
         Credentials credentials = null;
         ECKeyPair ecKeyPair = ECKeyPair.create(Numeric.toBigInt(privateKey));
         return generateWallet(generateNewWalletName(), pwd, ecKeyPair);
     }
 
-    /**
-     * 通过明文私钥导入钱包
-     *
-     * @param privateKey
-     * @param pwd
-     * @return
-     */
+
     public static ChainAddressInfo loadWalletByPrivateKey(String wallerName, String privateKey, String pwd) {
 
         try {
@@ -519,16 +406,7 @@ public class ChainAddressCreateManager {
     }
 
 
-    /**
-     * 导出明文私钥
-     *
-     * @param walletId 钱包Id
-     * @param pwd      钱包密码
-     * @return
-     */
     public static String derivePrivateKey(long walletId, String pwd) {
-        //ETHWallet ethWallet = WalletDaoUtils.ethWalletDao.load(walletId);
-
         ChainAddressInfo ethWallet = ChainAddressDaoUtils.loadSingle(walletId);
         Credentials credentials;
         ECKeyPair keypair;
@@ -545,17 +423,9 @@ public class ChainAddressCreateManager {
         return privateKey;
     }
 
-    /**
-     * 导出keystore文件
-     *
-     * @param walletId
-     * @param pwd
-     * @return
-     */
+
     public static String deriveKeystore(long walletId, String pwd) {
-        //ETHWallet ethWallet = WalletDaoUtils.ethWalletDao.load(walletId);
         ChainAddressInfo ethWallet = ChainAddressDaoUtils.loadSingle(walletId);
-        //HdWallet hdWallet = HdWalletDaoUtils.findAllWalletById(walletId);
         String keystore = null;
         WalletFile walletFile;
         try {
@@ -569,9 +439,7 @@ public class ChainAddressCreateManager {
 
 
     private static boolean createParentDir(File file) {
-        //判断目标文件所在的目录是否存在
         if (!file.getParentFile().exists()) {
-            //如果目标文件所在的目录不存在，则创建父目录
             System.out.println("目标文件所在目录不存在，准备创建");
             if (!file.getParentFile().mkdirs()) {
                 System.out.println("创建目标文件所在目录失败！");
@@ -593,29 +461,13 @@ public class ChainAddressCreateManager {
         }
     }
 
-    /**
-     * =============================================================================创建NEO链===================================================================================================================
-     */
 
-
-    /**
-     * 通用的NEO基于bip44协议的助记词路径 （imtoken jaxx Metamask myNeowallet）
-     */
     public static String NEO_JAXX_TYPE = "m/44'/888'/0'/0/0";
 
 
-    /**
-     * 通用的ONT基于bip44协议的助记词路径 （imtoken jaxx Metamask myOntwallet）
-     */
     public static String ONT_JAXX_TYPE = "m/44'/1024'/0'/0/0";
 
 
-    /**
-     * 通过助记词生成钱包
-     *
-     * @param word
-     * @return
-     */
     public static ChainAddressInfo generateMnemonicByNeoOrOnt(String name, String word, String coinType, String jaxxType) {
 
         ChainAddressInfo neoWallet = null;
@@ -623,7 +475,6 @@ public class ChainAddressCreateManager {
 
             byte[] prikey = com.github.ontio.crypto.MnemonicCode.getPrikeyFromMnemonicCodesStrBip44(jaxxType, word);
 
-            //私钥
             String hexString = Helper.toHexString(prikey);
 
 
@@ -651,14 +502,6 @@ public class ChainAddressCreateManager {
     }
 
 
-    /**
-     * 通过私钥导入链
-     *
-     * @param privateKey 私钥
-     * @param name       名称
-     * @param coinType   链类型
-     * @return
-     */
     public static ChainAddressInfo generateByPrivateKeyNeoOrOnt(String privateKey, String name, String coinType) {
 
         ChainAddressInfo neoWallet = null;
@@ -675,7 +518,7 @@ public class ChainAddressCreateManager {
             neoWallet.setPublicScrect(Helper.toHexString(wallet.getPublicKey()));
             neoWallet.setCoinType(coinType);
             neoWallet.setIsImport(true);
-            neoWallet.setImportType(1);  // 导入类型 0 助记词导入 1 私钥导入 2 wif 导入
+            neoWallet.setImportType(1);
             neoWallet.setIsCurrent(false);
             neoWallet.setPrivateScrect(privateKey);
 
@@ -689,14 +532,6 @@ public class ChainAddressCreateManager {
     }
 
 
-    /**
-     * 通过导入助记词生成 NEO 或者 ONT 链
-     *
-     * @param walletName
-     * @param jaxxType
-     * @param word
-     * @return
-     */
     public static ChainAddressInfo importMnemonicByNeoOrOnt(String walletName, String jaxxType, String word, String coinType) {
 
         ChainAddressInfo neoWallet = null;
@@ -704,11 +539,9 @@ public class ChainAddressCreateManager {
 
             byte[] prikey = com.github.ontio.crypto.MnemonicCode.getPrikeyFromMnemonicCodesStrBip44(jaxxType, word);
 
-            //私钥
             String hexString = Helper.toHexString(prikey);
 
 
-            //通过私钥生成钱包
             neoutils.Wallet wallet = Neoutils.generateFromPrivateKey(hexString);
 
 
@@ -722,7 +555,7 @@ public class ChainAddressCreateManager {
             neoWallet.setIsImport(true);
             neoWallet.setIsCurrent(false);
             neoWallet.setMnemonic(word);
-            neoWallet.setImportType(0);// 导入类型 0 助记词导入 1 私钥导入 2 wif 导入
+            neoWallet.setImportType(0);
             neoWallet.setPrivateScrect(hexString);
             neoWallet.setType_flag(jaxxType);
 
@@ -734,19 +567,11 @@ public class ChainAddressCreateManager {
         return neoWallet;
     }
 
-
-    /**
-     * 导入WIF生成钱包
-     *
-     * @param wif
-     * @return
-     */
     public static ChainAddressInfo importWifByWalletByNeoOrOnt(String walletName, String wif, String coinType) {
 
         ChainAddressInfo neoWallet = null;
         try {
 
-            //通过私钥生成钱包
             neoutils.Wallet wallet = Neoutils.generateFromWIF(wif);
 
 
@@ -760,7 +585,7 @@ public class ChainAddressCreateManager {
             neoWallet.setIsImport(true);
             neoWallet.setIsCurrent(false);
             neoWallet.setWif(wif);
-            neoWallet.setImportType(2);// 导入类型 0 助记词导入 1 私钥导入 2 wif 导入
+            neoWallet.setImportType(2);
             neoWallet.setPrivateScrect(Helper.toHexString(wallet.getPrivateKey()));
 
         } catch (Exception e) {

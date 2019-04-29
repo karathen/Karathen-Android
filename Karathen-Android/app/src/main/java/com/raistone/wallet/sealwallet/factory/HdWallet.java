@@ -14,53 +14,49 @@ import com.raistone.wallet.sealwallet.greendao.DaoSession;
 import com.raistone.wallet.sealwallet.greendao.ChainDataInfoDao;
 import com.raistone.wallet.sealwallet.greendao.HdWalletDao;
 
-
-/**
- * 钱包表(一个钱包对应多条链)
- */
 @Entity
 public class HdWallet extends WalletInfData implements Serializable{
 
     private static final long serialVersionUID = 2771643488088293651L;
     @Id(autoincrement = true)
-    private Long walletId;//钱包Id
+    private Long walletId;
 
-    private String walletName;//钱包名称
+    private String walletName;
 
-    private String accountId;//账户Id
+    private String accountId;
 
-    private String walletPwd;//钱包密码
+    private String walletPwd;
 
-    private String mnemonic; //助记词
+    private String mnemonic;
 
-    private String privateScrect; //私钥
+    private String privateScrect;
 
-    private String publicScrect; //公钥
+    private String publicScrect;
 
-    private boolean isCurrent; //是否选中
+    private boolean isCurrent;
 
-    private boolean isBackup; //是否备份
+    private boolean isBackup;
 
-    private boolean isHDWallet; //是否是 HD 钱包
+    private boolean isHDWallet;
 
-    private boolean isImport; //是否是导入钱包
+    private boolean isImport;
 
-    private int walletType;//钱包类型 0 HD 钱包  1 硬件钱包 2 云钱包
+    private int walletType;
 
-    private String wif;// wif
+    private String wif;
 
-    private int importType;// 0 助记词导入 1 keystore导入 2 私钥导入  3 wif导入
+    private int importType;
 
-    private String pwdTips;//密码提示
+    private String pwdTips;
 
-    private String cnyPrice;//人民币总价格
+    private String cnyPrice;
 
-    private String usdtPrice;//美元总价格
+    private String usdtPrice;
 
     private String keystore;
 
     @ToMany(referencedJoinProperty = "walletId")
-    private List<ChainDataInfo> chainDataInfos; //当前钱包支持的链
+    private List<ChainDataInfo> chainDataInfos;
 
     /** Used to resolve relations */
     @Generated(hash = 2040040024)

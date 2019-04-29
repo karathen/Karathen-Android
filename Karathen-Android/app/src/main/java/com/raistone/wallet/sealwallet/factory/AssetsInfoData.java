@@ -1,18 +1,5 @@
 package com.raistone.wallet.sealwallet.factory;
 
-import com.raistone.wallet.sealwallet.datavases.AppDataBase;
-import com.raistone.wallet.sealwallet.entity.AssetsInfo;
-import com.raizlabs.android.dbflow.annotation.Column;
-import com.raizlabs.android.dbflow.annotation.PrimaryKey;
-import com.raizlabs.android.dbflow.annotation.Table;
-import com.raizlabs.android.dbflow.structure.BaseModel;
-
-import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.Generated;
-
-import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
 
 

@@ -9,10 +9,6 @@ import android.widget.TextView;
 import com.raistone.wallet.sealwallet.R;
 
 
-/**
- * Created by DongJr on 2017/2/27.
- */
-
 public class FitPopupUtil implements View.OnClickListener {
 
     private View contentView;
@@ -56,11 +52,7 @@ public class FitPopupUtil implements View.OnClickListener {
         this.listener = listener;
     }
 
-    /**
-     * 弹出自适应位置的popupwindow
-     *
-     * @param anchorView 目标view
-     */
+
     public View showPopup(View anchorView) {
         if (mPopupWindow == null) {
             mPopupWindow = new FitPopupWindow(context,

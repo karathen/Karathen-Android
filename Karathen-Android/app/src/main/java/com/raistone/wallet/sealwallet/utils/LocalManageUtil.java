@@ -16,11 +16,6 @@ public class LocalManageUtil {
 
     private static final String TAG = "LocalManageUtil";
 
-    /**
-     * 获取系统的locale
-     *
-     * @return Locale对象
-     */
     public static Locale getSystemLocale(Context context) {
         return SPUtil.getInstance(context).getSystemCurrentLocal();
     }
@@ -39,12 +34,7 @@ public class LocalManageUtil {
         }
     }
 
-    /**
-     * 获取选择的语言设置
-     *
-     * @param context
-     * @return
-     */
+
     public static Locale getSetLanguageLocale(Context context) {
 
         switch (SPUtil.getInstance(context).getSelectLanguage()) {
@@ -84,9 +74,6 @@ public class LocalManageUtil {
         return context;
     }
 
-    /**
-     * 设置语言类型
-     */
     public static void setApplicationLanguage(Context context) {
         Resources resources = context.getApplicationContext().getResources();
         DisplayMetrics dm = resources.getDisplayMetrics();

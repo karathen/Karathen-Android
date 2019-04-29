@@ -1,16 +1,8 @@
 package com.raistone.wallet.sealwallet.utils;
 
-/**
- * 进制转换工具类
- * @author zenglm
- *
- */
+
 public class ParseSystemUtil {
 
-    /**将二进制转换成16进制 
-     * @param buf 
-     * @return 
-     */  
     public static String parseByte2HexStr(byte buf[]) {  
             StringBuffer sb = new StringBuffer();  
             for (int i = 0; i < buf.length; i++) {  
@@ -22,11 +14,7 @@ public class ParseSystemUtil {
             }  
             return sb.toString();  
     } 
-    
-    /**将16进制转换为二进制 
-     * @param hexStr 
-     * @return 
-     */  
+
     public static byte[] parseHexStr2Byte(String hexStr) {  
             if (hexStr.length() < 1)  
                     return null;  

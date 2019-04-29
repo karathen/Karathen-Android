@@ -36,9 +36,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * 新建地址
- */
 
 @Route(value = "NewAddressActivity")
 public class NewAddressActivity extends BaseActivity {
@@ -84,7 +81,6 @@ public class NewAddressActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_address);
         ButterKnife.bind(this);
-        //StatusBarUtil.setTransparent(this);
 
         ActivityManager.getInstance().pushActivity(this);
         mContext = this;
@@ -94,12 +90,10 @@ public class NewAddressActivity extends BaseActivity {
 
         coinType = selectChain.getChainType();
 
-        //wd = WalletInfoDaoUtils.getWalletPwd();
         wallet= HdWalletDaoUtils.findWalletBySelect();
 
         pwd= wallet.getWalletPwd();
 
-        //lastId = MultiChainInfoDaoUtils.getCountByType(coinType);
 
         lastId = ChainAddressDaoUtils.getCountByType(coinType,wallet.getAccountId());
 
@@ -172,10 +166,6 @@ public class NewAddressActivity extends BaseActivity {
     }
 
 
-    /**
-     * 根据 coinTyoe 创建多链
-     * @param coinType
-     */
     public ChainAddressInfo createChainByCoinType(String coinType){
 
 
@@ -190,7 +180,7 @@ public class NewAddressActivity extends BaseActivity {
 
             List<String> list = Arrays.asList(split);
 
-            String lastType = ChainAddressDaoUtils.getLastType(coinType);
+            String lastType = ChainAddressDaoUtils.getLastType(coinType,wallet.getAccountId());
 
             String name = walletEc.getText().toString();
 
@@ -230,13 +220,9 @@ public class NewAddressActivity extends BaseActivity {
 
         }
 
-        /**
-         * 创建NEO 链
-         */
         if(coinType.equals(MultiChainCreateManager.NEO_COIN_TYPE)){
-            //String mnemonic = ethWallet.getMnemonic().trim();
 
-            String lastType = ChainAddressDaoUtils.getLastType(coinType);
+            String lastType = ChainAddressDaoUtils.getLastType(coinType,wallet.getAccountId());
 
             String name = walletEc.getText().toString();
 
@@ -279,7 +265,7 @@ public class NewAddressActivity extends BaseActivity {
 
             String mnemonic = wallet.getMnemonic().trim();
 
-            String lastType = ChainAddressDaoUtils.getLastType(coinType);
+            String lastType = ChainAddressDaoUtils.getLastType(coinType,wallet.getAccountId());
 
             String name = walletEc.getText().toString();
 

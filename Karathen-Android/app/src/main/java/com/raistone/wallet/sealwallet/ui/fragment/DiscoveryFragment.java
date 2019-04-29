@@ -43,16 +43,8 @@ import java.math.BigInteger;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import trust.Call;
-import trust.OnCompleteListener;
-import trust.Response;
-import trust.SignTransactionRequest;
-import trust.Trust;
-import trust.core.entity.Address;
 
-/**
- * 发现
- */
+
 public class DiscoveryFragment extends BaseFragment implements OnRefreshListener/*implements IWebPageView*/ {
 
 
@@ -74,7 +66,6 @@ public class DiscoveryFragment extends BaseFragment implements OnRefreshListener
 
     private Context context;
 
-    Call<SignTransactionRequest> requestCall;
 
 
     @Override
@@ -83,9 +74,8 @@ public class DiscoveryFragment extends BaseFragment implements OnRefreshListener
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_discovery, container, false);
         unbinder = ButterKnife.bind(this, view);
-        getFindPage();
+        //getFindPage();
         initWebView();
-        //https://appserver.trinity.ink/dapp/?lang=en
         context = getActivity();
 
         savedLanguageType = SPUtil.getInstance(context).getSelectLanguage();
@@ -115,23 +105,12 @@ public class DiscoveryFragment extends BaseFragment implements OnRefreshListener
         return view;
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        requestCall.onActivityResult(requestCode, resultCode, data, new OnCompleteListener<SignTransactionRequest>() {
-            @Override
-            public void onComplete(Response<SignTransactionRequest> response) {
-                ToastHelper.showToast("回调完成 ====="+response);
-            }
-        });
-
-    }
 
     public void getFindPage() {
 
         String[] s = new String[]{};
 
-        EasyHttp.getInstance().setBaseUrl("https://appserver.trinity.ink/").post("/")
+        EasyHttp.getInstance().setBaseUrl("").post("/")
                 .params("jsonrpc", "2.0")
                 .requestBody(SealApi.toRequestBody("getFindPage", s))
                 .execute(new SimpleCallBack<String>() {
@@ -154,52 +133,34 @@ public class DiscoveryFragment extends BaseFragment implements OnRefreshListener
     private void initWebView() {
         pbProgress.setVisibility(View.VISIBLE);
         WebSettings ws = webviewDetail.getSettings();
-        // 网页内容的宽度是否可大于WebView控件的宽度
         ws.setLoadWithOverviewMode(false);
-        // 保存表单数据
         ws.setSaveFormData(true);
-        // 是否应该支持使用其屏幕缩放控件和手势缩放
         ws.setSupportZoom(true);
         ws.setBuiltInZoomControls(true);
         ws.setDisplayZoomControls(false);
-        // 启动应用缓存
         ws.setAppCacheEnabled(true);
-        // 设置缓存模式
         ws.setCacheMode(WebSettings.LOAD_DEFAULT);
-        // setDefaultZoom  api19被弃用
-        // 设置此属性，可任意比例缩放。
         ws.setUseWideViewPort(true);
-        // 不缩放
         webviewDetail.setInitialScale(100);
-        // 告诉WebView启用JavaScript执行。默认的是false。
         ws.setJavaScriptEnabled(true);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             webviewDetail.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
 
-        //  页面加载好以后，再放开图片
         ws.setBlockNetworkImage(false);
-        // 使用localStorage则必须打开
         ws.setDomStorageEnabled(true);
 
 
-        // 排版适应屏幕
         ws.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
-        // WebView是否新窗口打开(加了后可能打不开网页)
-//        ws.setSupportMultipleWindows(true);
 
-        // webview从5.0开始默认不允许混合模式,https中不能加载http资源,需要设置开启。
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ws.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
-        /** 设置字体默认缩放大小(改变网页字体大小,setTextSize  api14被弃用)*/
         ws.setTextZoom(100);
 
 
         webviewDetail.setWebChromeClient(new WebChromeClient());
-        // 与js交互
-        //webviewDetail.addJavascriptInterface(new ImageClickInterface(getActivity()), "injectedObject");
 
         webviewDetail.addJavascriptInterface(new JavaScriptUtils(), "sealWallet");
 
@@ -222,8 +183,6 @@ public class DiscoveryFragment extends BaseFragment implements OnRefreshListener
 
         @JavascriptInterface
         public void getNewUrl(String url) {
-            //ToastHelper.showToast(url);
-            //webviewDetail.loadUrl(url);
             Intent intent = new Intent(context, WebViewActivity.class);
             intent.putExtra(Constant.IntentKey.WEB_URL, url);
             intent.putExtra(Constant.IntentKey.WEB_TITLE, "");
@@ -235,7 +194,7 @@ public class DiscoveryFragment extends BaseFragment implements OnRefreshListener
     class MyWebViewClient extends WebViewClient {
         @Override
         public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-            if (url.contains("trust.js")) {//加载指定.js时 引导服务端加载本地Assets/www文件夹下的cordova.js
+            if (url.contains("trust.js")) {
                 try {
                     return new WebResourceResponse("application/x-javascript", "utf-8", getResources().getAssets().open("trust-min.js"));
                 } catch (IOException e) {

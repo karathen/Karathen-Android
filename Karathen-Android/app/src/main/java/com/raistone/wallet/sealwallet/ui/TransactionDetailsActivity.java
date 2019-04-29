@@ -65,7 +65,7 @@ public class TransactionDetailsActivity extends BaseActivity {
     LinearLayout remarkLl;
 
     private String txid, decimal, tokenSynbol;
-    private boolean isLocal;//默认是从本地过来
+    private boolean isLocal;
 
     private TransferDetailInfo.ResultBean resultBean;
 
@@ -90,8 +90,6 @@ public class TransactionDetailsActivity extends BaseActivity {
         setTitle(titleBar, getString(R.string.transfer_detail_string), true);
 
         ActivityManager.getInstance().pushActivity(this);
-
-        //StatusBarUtil.setTransparent(this);
 
         if (isLocal) {
             transferHash = TransferDaoUtils.getTransferHash(txid);
@@ -123,19 +121,16 @@ public class TransactionDetailsActivity extends BaseActivity {
             if (resultBean != null) {
 
 
-                //BigDecimalUtils.div()
+                String tokenDecimal = WalletItemDetailActivity.assetsTokenDecimal;
 
+                String tokenSynbol = WalletItemDetailActivity.assetsTokenSynbol;
 
-                String tokenDecimal = WalletItemDetailActivity.assetsTokenDecimal;//精度
-
-                String tokenSynbol = WalletItemDetailActivity.assetsTokenSynbol;//币种
-
-                String tokenType= WalletItemDetailActivity.assetsTokenType;//币种
+                String tokenType= WalletItemDetailActivity.assetsTokenType;
 
 
                 if (!TextUtils.isEmpty(tokenDecimal)) {
 
-                    double value2 = Math.pow(10, Double.parseDouble(tokenDecimal));//币种精度
+                    double value2 = Math.pow(10, Double.parseDouble(tokenDecimal));
 
 
                     BigDecimal bigDecimal = BigDecimalUtils.div(resultBean.getValue(), value2 + "");
@@ -224,15 +219,12 @@ public class TransactionDetailsActivity extends BaseActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    /**
-     * 查询交易备注
-     */
     public void getTxRemark(String txid) {
 
         List<String> data = new ArrayList<>();
         data.add(txid);
         RequestBody body = SealApi.toRequestBody("getTxRemark", data);
-        EasyHttp.getInstance().setBaseUrl("https://appserver.trinity.ink/").post("/")
+        EasyHttp.getInstance().setBaseUrl("").post("/")
                 .addConverterFactory(GsonConverterFactory.create()).requestBody(body).execute(new SimpleCallBack<String>() {
             @Override
             public void onError(ApiException e) {

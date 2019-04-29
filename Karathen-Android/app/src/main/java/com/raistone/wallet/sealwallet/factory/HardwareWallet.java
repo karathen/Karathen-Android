@@ -4,17 +4,10 @@ import org.greenrobot.greendao.annotation.Entity;
 
 import java.util.List;
 
-/**
- * 硬件钱包
- */
 
 @Entity
 public class HardwareWallet extends WalletInfData {
 
-    /**
-     * 创建多链
-     * @param chain
-     */
 
 
     @Override

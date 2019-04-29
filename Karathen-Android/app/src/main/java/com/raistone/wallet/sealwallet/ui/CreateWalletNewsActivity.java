@@ -26,10 +26,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-/**
- * 创建钱包
- */
-
 @Route(value = "CreateWalletNewsActivity")
 public class CreateWalletNewsActivity extends BaseActivity  {
 
@@ -48,7 +44,7 @@ public class CreateWalletNewsActivity extends BaseActivity  {
     Button createWalletBtn;
     @BindView(R.id.import_tv)
     TextView importTv;
-    private int type;//钱包类型
+    private int type;
 
     private String walletName, walletPwd, walletConfirmPwd, pwdTips;
 
@@ -147,10 +143,6 @@ public class CreateWalletNewsActivity extends BaseActivity  {
     public void onViewClicked(View view) {
         int savedLanguageType = SPUtil.getInstance(this).getSelectLanguage();
         switch (view.getId()) {
-
-            /**
-             * 创建钱包
-             */
             case R.id.create_wallet_btn:
 
                 pwdTips=pwdTipsEd.getText().toString();
@@ -159,23 +151,15 @@ public class CreateWalletNewsActivity extends BaseActivity  {
 
                 if (!TextUtils.isEmpty(mnemonicCode)) {
                     Router.build("BackupMnemonicActivity")
-                            //助记词
                             .with("codesStr", mnemonicCode)
-                            //密码
                             .with("mPassWord", walletPwd)
-                            //钱包类型
                             .with("walletType",type)
-                            //钱包名称
                             .with("walletName",walletName)
-                            //钱包提示信息
                             .with("walletTips",pwdTips+"")
                             .with("isAdd",isAdd)
                             .go(context);
                 }
                 break;
-            /**
-             * 导入钱包
-             */
             case R.id.import_tv:
                 break;
         }

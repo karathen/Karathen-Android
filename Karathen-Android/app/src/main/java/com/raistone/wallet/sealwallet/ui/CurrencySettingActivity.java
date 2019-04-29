@@ -13,10 +13,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * 货币单位
- */
-
 @Route(value = "CurrencySettingActivity")
 public class CurrencySettingActivity extends BaseActivity {
 

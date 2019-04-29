@@ -16,9 +16,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * 重置Pin码
- */
 
 @Route(value = "ResetPinActivity")
 public class ResetPinActivity extends BaseActivity {

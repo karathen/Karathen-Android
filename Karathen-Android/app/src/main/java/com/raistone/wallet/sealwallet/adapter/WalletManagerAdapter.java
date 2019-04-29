@@ -28,7 +28,7 @@ public class WalletManagerAdapter extends BaseQuickAdapter<HdWallet,BaseViewHold
 
     @Override
     protected void convert(BaseViewHolder helper, HdWallet item) {
-        helper//.setText(R.id.wallet_name_tv,item.getWalletName())
+        helper
         .addOnClickListener(R.id.more_ll);
 
         TextView nameTv=helper.getView(R.id.wallet_name_tv);
@@ -91,7 +91,6 @@ public class WalletManagerAdapter extends BaseQuickAdapter<HdWallet,BaseViewHold
             status.setVisibility(View.VISIBLE);
         }
 
-        //是否选中
         ImageView gouView=helper.getView(R.id.select_iv);
 
 

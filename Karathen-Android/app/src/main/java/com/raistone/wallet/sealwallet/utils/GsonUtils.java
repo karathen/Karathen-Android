@@ -14,7 +14,6 @@ public class GsonUtils {
         return gson.toJson(src);
     }
 
-    //解析json
     public static <T> T decodeJSON(String jsonString, Class<T> cls)
             throws JsonSyntaxException {
         Gson gson = new Gson();
@@ -30,11 +29,6 @@ public class GsonUtils {
     }
 
 
-    /**
-     * Bitmap 转为 Base64
-     * @param bitmap
-     * @return
-     */
     public static String bitmap2Base64(Bitmap bitmap) {
         if (bitmap != null) {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();

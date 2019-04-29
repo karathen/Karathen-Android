@@ -36,38 +36,21 @@ public class ChainAdapter extends BaseQuickAdapter<ChainDataInfo,BaseViewHolder>
 
         boolean show = item.getIsShow();
 
-        //判断是否可用
         if(show){
             imageButton.setBackground(mContext.getResources().getDrawable(R.drawable.open_icon));
         }else {
             imageButton.setBackground(mContext.getResources().getDrawable(R.drawable.close_icon));
         }
 
-        //判断是否被选中
-        /*boolean select = item.isSelect();
-
-        if(select){
-            imageButton.setVisibility(View.VISIBLE);
-        }else {
-            imageButton.setVisibility(View.GONE);
-        }*/
-        /**
-         * ETH
-         */
         if(chaType.equals(MultiChainCreateManager.ETH_COIN_TYPE)){
             Glide.with(mContext).load(R.drawable.ehd_def_icon).into(iconView);
         }
 
-        /**
-         * NEO
-         */
+
         if(chaType.equals(MultiChainCreateManager.NEO_COIN_TYPE)){
             Glide.with(mContext).load(R.drawable.neo_def_icon).into(iconView);
         }
 
-        /**
-         * ONT
-         */
         if(chaType.equals(MultiChainCreateManager.ONT_COIN_TYPE)){
             Glide.with(mContext).load(R.drawable.ont_def_icon).into(iconView);
         }

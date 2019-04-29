@@ -57,9 +57,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-/**
- * 个人中心
- */
 public class UserCenterFragment extends BaseFragment implements OnRefreshListener {
 
 
@@ -196,15 +193,10 @@ public class UserCenterFragment extends BaseFragment implements OnRefreshListene
         }
     }
 
-
-    /**
-     * @param tpye 0 代表备份钱包，1 代表退出钱包
-     */
     private void showDialog(final int tpye) {
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View v = inflater.inflate(R.layout.coustom_dialog_layout, null);
-        //builer.setView(v);//这里如果使用builer.setView(v)，自定义布局只会覆盖title和button之间的那部分
         final Dialog dialog = builder.create();
         final EditText editText = v.findViewById(R.id.pin_ed);
         TextView textView = v.findViewById(R.id.cancel_tv);

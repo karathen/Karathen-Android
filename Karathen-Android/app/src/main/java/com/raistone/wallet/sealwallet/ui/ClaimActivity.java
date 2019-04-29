@@ -33,10 +33,6 @@ import butterknife.OnClick;
 import neoutils.Neoutils;
 import okhttp3.RequestBody;
 
-/**
- * 提取Gas 或者 ong
- */
-
 @Route(value = "ClaimActivity")
 public class ClaimActivity extends BaseActivity {
 
@@ -95,9 +91,6 @@ public class ClaimActivity extends BaseActivity {
         setContentView(R.layout.activity_claim);
         ButterKnife.bind(this);
 
-
-        //StatusBarUtil.setTransparent(this);
-
         chainAddressInfo = (ChainAddressInfo) getIntent().getSerializableExtra("ethWallet");
 
         ActivityManager.getInstance().pushActivity(this);
@@ -134,13 +127,10 @@ public class ClaimActivity extends BaseActivity {
     @OnClick(R.id.commit_btn)
     public void onViewClicked() {
 
-        //Neoutils.claimONG()
-
         if (extractableBalance.equals("0")) {
             ToastHelper.showToast(getResources().getString(R.string.insufficient_balance_string));
             return;
         }
-        //提取ONG
         if (chainAddressInfo.getCoinType().equals("ONT")) {
             startProgressDialog();
 
@@ -180,7 +170,6 @@ public class ClaimActivity extends BaseActivity {
 
         }
 
-        // 提取GAS
         if (chainAddressInfo.getCoinType().equals("NEO")) {
 
             startProgressDialog();
@@ -189,12 +178,6 @@ public class ClaimActivity extends BaseActivity {
         }
     }
 
-
-    /**
-     * 查询可提取的 gas
-     *
-     * @param address
-     */
     public void getClaimableGas(String address, final String allGas) {
 
         List<String> params = new ArrayList();
@@ -219,13 +202,11 @@ public class ClaimActivity extends BaseActivity {
 
                         if (gasInfo != null) {
 
-                            //可提取gas
                             extractableBalance = gasInfo.getResult();
 
 
                             extractableValueTv.setText(extractableBalance);
 
-                            //不可提取gas
                             BigDecimal sub = BigDecimalUtils.sub(allGas, extractableBalance);
                             notExtractableValueTv.setText(sub.toPlainString());
                         }
@@ -235,11 +216,6 @@ public class ClaimActivity extends BaseActivity {
 
     }
 
-    /**
-     * 查询所有的 gas
-     *
-     * @param address
-     */
     public void getUnClaimedGas(final String address) {
 
         List<String> params = new ArrayList();
@@ -269,12 +245,9 @@ public class ClaimActivity extends BaseActivity {
                     }
                 });
 
-        //StatService.setAppChannel();
     }
 
-    /**
-     * 提取gas
-     */
+
     public void extractGas(final String address) {
 
         List<String> params = new ArrayList();
@@ -314,14 +287,9 @@ public class ClaimActivity extends BaseActivity {
 
     }
 
-    /**
-     * 查询所有的 ong
-     *
-     * @param address
-     */
+
     public void getONG(final String address) {
 
-        // https://explorer.ont.io/api/v1/explorer/address/AURRtYmGrrg1hLiZWcWf62AiZN1SG5s7Vk/0/0
 
         EasyHttp.getInstance().setBaseUrl(Constant.ONTParams.ONT_BALANCE_URL).get(address)
                 .execute(new SimpleCallBack<String>() {
@@ -343,15 +311,12 @@ public class ClaimActivity extends BaseActivity {
 
                             ClaimOngInfo.ResultBean resultBean = resultBeans.get(i);
 
-                            //不可提取
                             boolean waitboundong = resultBean.getAssetName().equals("waitboundong");
 
-                            //不可提取
                             if (waitboundong) {
                                 notExtractableValueTv.setText(resultBean.getBalance());
                             }
 
-                            //可提取
                             boolean unboundong = resultBean.getAssetName().equals("unboundong");
 
                             if (unboundong) {

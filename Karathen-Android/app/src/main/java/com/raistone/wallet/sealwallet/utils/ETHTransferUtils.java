@@ -22,9 +22,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public class ETHTransferUtils {
-    /**
-     * 签名交易
-     */
+
     public static String signTransaction(BigInteger nonce, BigInteger gasPrice, BigInteger gasLimit, String to,
                                          BigInteger value, String data, byte chainId, String privateKey) throws IOException {
         byte[] signedMessage;
@@ -53,18 +51,6 @@ public class ETHTransferUtils {
     }
 
 
-    /**
-     * 以太币转账
-     *
-     * @param web3j       web3连接
-     * @param privateKey  私钥
-     * @param fromAddress from
-     * @param toAddress   to
-     * @param amount      金额
-     * @param data        备注
-     * @param gas         gas(没有为null)
-     * @param gaslimit    gaslimit(没有为null)
-     */
     public void ETHTransaction(Web3j web3j, String privateKey, String fromAddress, String toAddress, BigDecimal amount, String data, BigInteger gas, BigInteger gaslimit) {
 
 
@@ -76,16 +62,10 @@ public class ETHTransferUtils {
             e.printStackTrace();
         }
         if (ethGetTransactionCount == null) return;
-        // TransactionResultBean transactionResultBean = new TransactionResultBean();
         nonce = ethGetTransactionCount.getTransactionCount();
-      /*  BigInteger maxNonce = DBInTransferUtils.getMaxNonce(wallet_id + "");
-        if (maxNonce != null && nonce != null) {
-            if (nonce.compareTo(maxNonce) <= 0) {
-                nonce = maxNonce.add(new BigInteger("1"));
-            }
-        }*/
+
         BigInteger value = Convert.toWei(BigDecimal.valueOf(amount.doubleValue()), Convert.Unit.ETHER).toBigInteger();
-        byte chainId = ChainId.NONE;//测试网络
+        byte chainId = ChainId.NONE;
         String signedData;
         try {
             BigInteger gasPrice = null;
@@ -112,7 +92,6 @@ public class ETHTransferUtils {
                 Message msg = new Message();
                 msg.what = 0;
                 msg.obj = hash;
-                //handler.sendMessage(msg);
 
             }
         } catch (IOException e) {
@@ -121,19 +100,12 @@ public class ETHTransferUtils {
     }
 
 
-    /*
-     * 16进制数字字符集
-     */
     private static String hexString = "0123456789ABCDEF";
 
-    /*
-     * 将字符串编码成16进制数字,适用于所有字符（包括中文）
-     */
+
     public static String encode(String str) {
-        // 根据默认编码获取字节数组
         byte[] bytes = str.getBytes();
         StringBuilder sb = new StringBuilder(bytes.length * 2);
-        // 将字节数组中每个字节拆解成2位16进制整数
         for (int i = 0; i < bytes.length; i++) {
             sb.append(hexString.charAt((bytes[i] & 0xf0) >> 4));
             sb.append(hexString.charAt((bytes[i] & 0x0f) >> 0));
@@ -141,18 +113,6 @@ public class ETHTransferUtils {
         return sb.toString();
     }
 
-
-    /**
-     * 生成一个普通交易对象
-     *
-     * @param fromAddress 放款方
-     * @param toAddress   收款方
-     * @param nonce       交易序号
-     * @param gasPrice    gas 价格
-     * @param gasLimit    gas 数量
-     * @param value       金额
-     * @return 交易对象
-     */
     private static Transaction makeTransaction(String fromAddress, String toAddress,
                                                BigInteger nonce, BigInteger gasPrice,
                                                BigInteger gasLimit, BigInteger value) {
@@ -161,18 +121,6 @@ public class ETHTransferUtils {
         return transaction;
     }
 
-
-    /**
-     * 生成一个token交易对象
-     *
-     * @param fromAddress 放款方
-     * @param toAddress   收款方
-     * @param nonce       交易序号
-     * @param gasPrice    gas 价格
-     * @param gasLimit    gas 数量
-     * @param data        token转账信息
-     * @return 交易对象
-     */
     private static Transaction makeTokenTransaction(String fromAddress, String toAddress,
                                                     BigInteger nonce, BigInteger gasPrice,
                                                     BigInteger gasLimit, String data) {

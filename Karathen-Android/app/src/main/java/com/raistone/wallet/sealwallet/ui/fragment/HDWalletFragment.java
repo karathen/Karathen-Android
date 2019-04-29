@@ -19,10 +19,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-
-/**
- * HD钱包
- */
 public class HDWalletFragment extends BaseFragment {
     @BindView(R.id.imageView1)
     ImageView imageView1;
@@ -58,15 +54,10 @@ public class HDWalletFragment extends BaseFragment {
     @OnClick({R.id.create_btn, R.id.import_wallet_tv})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            /**
-             * 创建钱包
-             */
+
             case R.id.create_btn:
                 Router.build("CreateWalletNewsActivity").with("walletType",0).with("isAdd",isAdd).go(this);
                 break;
-            /**
-             * 导入钱包
-             */
             case R.id.import_wallet_tv:
                 Router.build("ImportWalletNewsActivity").with("walletType",0).with("isAdd",isAdd).go(this);
                 break;

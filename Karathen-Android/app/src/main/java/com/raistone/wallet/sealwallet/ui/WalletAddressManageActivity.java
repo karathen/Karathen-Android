@@ -36,9 +36,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * 首页点击 进入地址管理
- */
+
 
 @Route(value = "WalletAddressManageActivity")
 public class WalletAddressManageActivity extends BaseActivity {
@@ -73,7 +71,6 @@ public class WalletAddressManageActivity extends BaseActivity {
         setContentView(R.layout.activity_wallet_address_manage);
         ButterKnife.bind(this);
         setTitle(titleBar, getResources().getString(R.string.address_manager_string), true);
-        //StatusBarUtil.setTransparent(this);
 
         ActivityManager.getInstance().pushActivity(this);
 
@@ -131,7 +128,6 @@ public class WalletAddressManageActivity extends BaseActivity {
                 intent.putExtra(Constant.IntentKey.WEB_URL, url + ethWallet.getAddress());
                 intent.putExtra(Constant.IntentKey.WEB_TITLE, "");
                 startActivity(intent);
-                //targetToWeb(Constant.SealWebUrl.SEAL_OFFICIAL_WEBSITE_URL, "");
                 break;
         }
     }
@@ -160,8 +156,6 @@ public class WalletAddressManageActivity extends BaseActivity {
                     return;
                 }
                 ChainAddressInfo addressInfo = ChainAddressDaoUtils.updateChainName(ethWallet.getId(), name);
-               // MultiChainInfo chainInfo = MultiChainInfoDaoUtils.updateWalletName(ethWallet.getId(), name);
-
 
                 tvWalletName.setText(addressInfo.getName());
 
@@ -203,21 +197,16 @@ public class WalletAddressManageActivity extends BaseActivity {
                 pinValue = editText.getText().toString();
                 if (!TextUtils.isEmpty(pinValue)) {
                     String value = Md5Utils.md5(pinValue);
-                    //String pwd = WalletManager.getInstance().getWalletChains(1).getWalletPwd();
                     String pwd = HdWalletDaoUtils.findWalletBySelect().getWalletPwd();
                     if (TextUtils.equals(value, pwd)) {
 
                         switch (type) {
-                            //导出私钥
                             case 0:
-                                //String privateKey = MultiChainCreateManager.derivePrivateKey(ethWallet.getId(), pinValue);
 
                                 String privateScrect = ethWallet.getPrivateScrect();
-                                //showPrivateDialog(privateScrect);
                                 showPrivateQrCodeDialog(privateScrect,0);
                                 dialog.dismiss();
                                 break;
-                            //导出助记词
                             case 1:
                                 Router.build("BackupMnemonicActivity").with("chainAddressInfo", ethWallet).with("isBack", true).go(WalletAddressManageActivity.this);
                                 dialog.dismiss();
@@ -244,16 +233,10 @@ public class WalletAddressManageActivity extends BaseActivity {
     }
 
 
-
-    /**
-     * @param privateKey
-     * @param type
-     */
     private void showPrivateQrCodeDialog(String privateKey, int type) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = LayoutInflater.from(context);
         View v = inflater.inflate(R.layout.export_dialog_two_layout, null);
-        //builer.setView(v);//这里如果使用builer.setView(v)，自定义布局只会覆盖title和button之间的那部分
         final Dialog dialog = builder.create();
 
         ImageView iv_delete = v.findViewById(R.id.delete_iv);
@@ -274,12 +257,10 @@ public class WalletAddressManageActivity extends BaseActivity {
         }
 
         Bitmap bitmapShare = new QREncode.Builder(this)
-                .setColor(getResources().getColor(R.color.text_main_color))//二维码颜色
-                //.setParsedResultType(ParsedResultType.TEXT)//默认是TEXT类型
+                .setColor(getResources().getColor(R.color.text_main_color))
                 .setContents(privateKey)//二维码内容
                 .setMargin(0)
                 .setSize(500)
-                //.setLogoBitmap(logoBitmap)//二维码中间logo
                 .build().encodeAsBitmap();
         qrcode_iv.setImageBitmap(bitmapShare);
 

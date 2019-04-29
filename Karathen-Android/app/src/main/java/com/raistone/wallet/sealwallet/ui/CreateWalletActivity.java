@@ -27,9 +27,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-/**
- * 创建钱包
- */
 @Route(value = "CreateWalletActivity")
 public class CreateWalletActivity extends BaseActivity {
 
@@ -101,7 +98,6 @@ public class CreateWalletActivity extends BaseActivity {
     public void onViewClicked(View view) {
         int savedLanguageType = SPUtil.getInstance(this).getSelectLanguage();
         switch (view.getId()) {
-            //创建钱包
             case R.id.create_wallet_btn:
 
                 if (!mPassWord.equals(mConfirmPw)) {
@@ -115,7 +111,6 @@ public class CreateWalletActivity extends BaseActivity {
                 Router.build("BackupMnemonicActivity").with("codesStr", codesStr).with("mPassWord", mPassWord).go(context);
 
                 break;
-            //导入钱包
             case R.id.import_tv:
                 importTv.setClickable(false);
                 Router.build("ImportWalletActivity").with("isFormCreate", true).go(this);

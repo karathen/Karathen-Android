@@ -13,65 +13,63 @@ import com.raistone.wallet.sealwallet.greendao.DaoSession;
 import com.raistone.wallet.sealwallet.greendao.ChainAddressInfoDao;
 import com.raistone.wallet.sealwallet.greendao.AssetsDeatilInfoDao;
 
-/**
- * 多链地址
- */
+
 
 @Entity
 public class ChainAddressInfo implements Serializable{
 
     private static final long serialVersionUID = -1127146031936387227L;
     @Id(autoincrement = true)
-    private Long id;//地址id
+    private Long id;
 
-    private String address;//链地址
+    private String address;
 
-    private String name;//链名称
+    private String name;
 
-    private String password;//密码
+    private String password;
 
-    private String keystorePath;//keyStore 文件
+    private String keystorePath;
 
-    private String mnemonic; //助记词
+    private String mnemonic;
 
-    private String privateScrect; //私钥
+    private String privateScrect;
 
-    private String publicScrect; //公钥
+    private String publicScrect;
 
-    private boolean isCurrent; //设置为选中状态
+    private boolean isCurrent;
 
-    private boolean isBackup; //是否备份
+    private boolean isBackup;
 
-    private String type_flag;// 通用的以太坊基于bip44协议的助记词路径  m/44'/60'/0'/0/0
+    private String type_flag;
 
-    private boolean isHDWallet; //是否是 HD 钱包
+    private boolean isHDWallet;
 
-    private boolean isImport; //是否是导入钱包
+    private boolean isImport;
 
-    private String coinType;//钱包类型 ETH  NEO ONT
+    private String coinType;
 
     private int imagePath;
 
-    private boolean account;//是否是主账号
+    private boolean account;
 
-    private int importType;//0 助记词导入 1 私钥导入 2 wif 导入       4钱包导入
+    private int importType;
 
     private String wif;
 
-    private String accountId;//账户ID
+    private String accountId;
 
-    private int walletType;//钱包类型 0 云钱包  1 HD 钱包  2 硬件钱包
+    private int walletType;
 
 
-    private String cnyTotalPrice;//RMB总价格
+    private String cnyTotalPrice;
 
-    private String usdtTotalPrice;//美元总价格
+    private String usdtTotalPrice;
 
-    private boolean selectStatus;//当前链选中状态
+    private boolean selectStatus;
 
     private int selectIndex;
 
-    private Long chainId;//属于哪条链
+    private Long chainId;
 
     @ToMany(referencedJoinProperty = "chainAddressId")
     private List<AssetsDeatilInfo> assetsInfoDataList;

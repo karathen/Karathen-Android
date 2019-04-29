@@ -42,7 +42,7 @@ public class ScannerActivity extends AppCompatActivity {
     @BindView(R.id.tv_title)
     TextView tvTitle;
 
-    boolean isHome = true;//是否从首页回来
+    boolean isHome = true;
 
     ChainAddressInfo chainAddressInfo;
 
@@ -67,8 +67,6 @@ public class ScannerActivity extends AppCompatActivity {
         accountId = getIntent().getStringExtra("accountId");
         tokenSynbol = getIntent().getStringExtra("tokenSynbol");
 
-        //current = MultiChainInfoDaoUtils.getCurrent();
-
         chainAddressInfo = ChainAddressDaoUtils.getCurrentByCoinType(coinType, accountId);
 
         isHome = getIntent().getBooleanExtra("isHome", true);
@@ -87,32 +85,26 @@ public class ScannerActivity extends AppCompatActivity {
 
                 String text = rawResult.getText();
 
-                //取出前缀
                 String[] strs = text.split(":");
 
                 String str = strs[0];
 
                 if (text.contains("?") && text.contains("ethereum") || text.contains("neo") || text.contains("ontology")) {
 
-                    //判断是哪条链
 
 
-                    String type = chainAddressInfo.getCoinType();//获取进来是哪条链
+                    String type = chainAddressInfo.getCoinType();
 
-                    //str是扫出来的链类型
 
-                    //ETH
                     if (str.equals("ethereum")) {
                         str = "ETH";
                     }
 
 
-                    //NEO
                     if (str.equals("neo")) {
                         str = "NEO";
                     }
 
-                    //ONT
                     if (str.equals("ontology")) {
                         str = "ONT";
                     }
@@ -120,70 +112,54 @@ public class ScannerActivity extends AppCompatActivity {
 
                     if (type.equals(str)) {
 
-                        //问号截取字符串
                         String[] split = text.split("\\?");
 
                         String s = split[0];
 
                         if (s.contains(":")) {
 
-                            //通过冒号截取
                             String[] strings = s.split(":");
 
-                            //获取到最终的地址信息
                             String scanAddress = strings[1];
 
-                            //ETH链
                             if (str.equals("ETH")) {
 
-                                //判断地址是否有效
                                 boolean validAddress = isETHValidAddress(scanAddress);
 
                                 if (validAddress) {
-                                    //ToastHelper.showToast("ETH地址有效");
                                     scannerView.restartPreviewAfterDelay(1000);
                                     gotoTransfer(text);
                                 } else {
-                                    //ToastHelper.showToast("ETH地址无效 跳转到详情页");
                                     scannerView.restartPreviewAfterDelay(1000);
                                     Router.build("ScannerResultActivity").with("result", text).go(context);
                                 }
 
                             }
 
-                            //NEO链
                             if (str.equals("NEO")) {
-                                //判断地址是否有效
                                 boolean validAddress = Neoutils.validateNEOAddress(scanAddress);
 
                                 if (validAddress) {
-                                    //ToastHelper.showToast("NEO地址有效");
                                     scannerView.restartPreviewAfterDelay(1000);
                                     gotoTransfer(text);
                                 } else {
-                                    //ToastHelper.showToast("NEO地址无效 跳转到详情页");
                                     scannerView.restartPreviewAfterDelay(1000);
                                     Router.build("ScannerResultActivity").with("result", text).go(context);
                                 }
                             }
 
-                            //ONT链
                             if (coinType.equals("ONT")) {
-                                //判断地址是否有效
                                 boolean validAddress = Neoutils.validateNEOAddress(scanAddress);
 
                                 if (validAddress) {
-                                    //ToastHelper.showToast("ONT地址有效");
                                     scannerView.restartPreviewAfterDelay(1000);
                                     gotoTransfer(text);
                                 } else {
-                                    //ToastHelper.showToast("ONT地址无效 跳转到详情页");
                                     scannerView.restartPreviewAfterDelay(1000);
                                     Router.build("ScannerResultActivity").with("result", text).go(context);
                                 }
                             }
                         } else {
-                            //ToastHelper.showToast("地址无效 直接跳转到详情页");
                             scannerView.restartPreviewAfterDelay(1000);
                             Router.build("ScannerResultActivity").with("result", text).go(context);
                         }
@@ -197,7 +173,6 @@ public class ScannerActivity extends AppCompatActivity {
 
 
                 } else {
-                    //纯文本 判断是否是有效地址
 
                     String coinType = chainAddressInfo.getCoinType();
 
@@ -210,11 +185,9 @@ public class ScannerActivity extends AppCompatActivity {
                     }
 
                     if (checkAddress) {
-                        //ToastHelper.showToast("checkAddress 是有效地址");
                         scannerView.restartPreviewAfterDelay(1000);
                         gotoTransfer(text);
                     } else {
-                        //ToastHelper.showToast("checkAddress 无效地址");
                         scannerView.restartPreviewAfterDelay(1000);
                         Router.build("ScannerResultActivity").with("result", text).go(context);
                     }
@@ -228,11 +201,8 @@ public class ScannerActivity extends AppCompatActivity {
     public void gotoTransfer(String text) {
         Intent intent = new Intent();
         if (isHome) {
-            //ethereum:0x0dF63Ff925a5E0e9632a109E5115D9936A33036b?contractAddress=0x1234567461d3f8db7496581774bd869c83d51c93;
             int i = text.lastIndexOf("=");
             String tokenAddress = text.substring(i + 1);
-
-            //AssetsInfo.DataBean byTokenAddress = AssetsDaoUtils.findAssterByTokenAddress(tokenAddress);
 
             if (text.contains(":") && text.contains("?")) {
 
@@ -290,7 +260,6 @@ public class ScannerActivity extends AppCompatActivity {
                         .go(context);
             }
         } else {
-            //从转账页面过来
             if (text.contains(":") && text.contains("?")) {
 
 

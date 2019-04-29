@@ -11,7 +11,7 @@ public class BaseApi {
     public BaseApi() {
 
         mRetrofit = new Retrofit.Builder()
-                .baseUrl("https://appserver.trinity.ink/")
+                .baseUrl("")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(getClient())
                 .build();

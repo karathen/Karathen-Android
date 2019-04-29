@@ -17,9 +17,6 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 
-/**
- * 硬件钱包
- */
 public class HardwareWalletFragment extends BaseFragment {
     @BindView(R.id.imageView1)
     ImageView imageView1;

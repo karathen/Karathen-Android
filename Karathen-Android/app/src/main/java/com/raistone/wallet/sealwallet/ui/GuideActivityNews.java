@@ -32,8 +32,7 @@ public class GuideActivityNews extends BaseActivity {
     private final int REQUEST_STORAGE = 100;
 
     boolean permission;
-    /*    @BindView(R.id.tabLayout)
-        TabLayout tabLayout;*/
+
     @BindView(R.id.viewPager)
     ViewPager viewPager;
     @BindView(R.id.titleBar)

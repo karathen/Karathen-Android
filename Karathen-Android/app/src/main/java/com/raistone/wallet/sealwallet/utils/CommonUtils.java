@@ -29,9 +29,7 @@ package com.raistone.wallet.sealwallet.utils;
 
 public class CommonUtils {
 
-    /**
-     * 得到年月日的"日"
-     */
+
     private String getDate() {
         Date date = new Date();
         SimpleDateFormat dateFm = new SimpleDateFormat("dd");
@@ -77,14 +75,8 @@ public class CommonUtils {
         }
     }
 
-    /**
-     * 实现文本复制功能
-     * add by wangqianzhou
-     *
-     * @param content
-     */
+
     public static void copy(String content, Context context) {
-// 得到剪贴板管理器
         ClipboardManager cmb = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         //cmb.setText(content.trim());
         if (cmb != null) {
@@ -93,15 +85,8 @@ public class CommonUtils {
         }
     }
 
-    /**
-     * 实现粘贴功能
-     * add by wangqianzhou
-     *
-     * @param context
-     * @return
-     */
+
     public static String paste(Context context) {
-// 得到剪贴板管理器
         ClipboardManager cmb = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
 
 
@@ -144,11 +129,7 @@ public class CommonUtils {
     }
 
 
-    /**
-     * 16进制转换
-     *
-     * @param converStr 16进制字符
-     */
+
     public static Long binaryConversion(String converStr) {
 
         String substring = converStr.substring(2);
@@ -159,9 +140,6 @@ public class CommonUtils {
     }
 
 
-    /**
-     * 除以10 N 次方
-     */
     public static String getDecimalValue(String value,int tokenDecimal){
 
         double powThree = Math.pow(10, -tokenDecimal);
@@ -175,10 +153,6 @@ public class CommonUtils {
     }
 
 
-    /**
-     * 获取当前时间
-     * @return
-     */
     public static String getCurrentTime() {
         long time = System.currentTimeMillis();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -187,9 +161,6 @@ public class CommonUtils {
         return t1;
     }
 
-    /**
-     * 时间戳转时间
-     */
     public static String conversionTime(String timeData){
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         long date_temp = Long.valueOf(timeData);
@@ -201,13 +172,6 @@ public class CommonUtils {
 
 
 
-
-
-    /**
-     * 获取转换后的balance
-     * value 要转换的值
-     * decimal 精度
-     */
     public static String getBalance(BigDecimal value,String decimal){
         BigDecimal balance = BigDecimalUtils.div(value.toString(), String.valueOf(Math.pow(10, Double.parseDouble(decimal))));
         return balance.toString();
